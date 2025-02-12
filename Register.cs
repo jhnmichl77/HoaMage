@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace HoaMage
 {
-    public partial class Registration : BaseForm
+    public partial class Registration : Shared
     {
         public Registration()
         {

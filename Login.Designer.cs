@@ -35,7 +35,6 @@
             tbxPassword = new TextBox();
             btnLogin = new Button();
             lblRegister = new Label();
-            SuspendLayout();
             // 
             // label1
             // 

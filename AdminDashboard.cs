@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace HoaMage
 {
-    public partial class AdminDashboard : BaseForm
+    public partial class AdminDashboard : Shared
     {
         public AdminDashboard()
         {

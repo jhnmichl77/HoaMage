@@ -1,6 +1,6 @@
 namespace HoaMage
 {
-    public partial class Login : BaseForm
+    public partial class Login : Shared
     {
         public Login()
         {

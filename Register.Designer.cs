@@ -48,8 +48,7 @@
             tbxCity = new TextBox();
             label11 = new Label();
             tbxUnit = new TextBox();
-            SuspendLayout();
-            // 
+            //
             // label1
             // 
             label1.AutoSize = true;
