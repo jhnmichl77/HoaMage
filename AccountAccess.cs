@@ -7,23 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 
 namespace HoaMage
 {
-    public partial class Registration : Shared
+    public partial class AccountAccess : UserControl
     {
-        public Registration()
+        public AccountAccess()
         {
             InitializeComponent();
-            ShowUserControl(new AccountAccess(), panel2);
         }
 
-
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void btnNext_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+
         }
-        
     }
 }

@@ -32,11 +32,12 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             materialButton1 = new MaterialSkin.Controls.MaterialButton();
-            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             tbxUsername = new MaterialSkin.Controls.MaterialTextBox2();
             tbxPassword = new MaterialSkin.Controls.MaterialTextBox2();
-            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            pictureBox2 = new PictureBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -79,19 +80,6 @@
             materialButton1.UseAccentColor = false;
             materialButton1.UseVisualStyleBackColor = false;
             materialButton1.Click += btnLogin_Click;
-            // 
-            // materialLabel1
-            // 
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(567, 339);
-            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(129, 19);
-            materialLabel1.TabIndex = 11;
-            materialLabel1.Text = "Create an account";
-            materialLabel1.Click += lblRegister_Click;
             // 
             // tbxUsername
             // 
@@ -151,19 +139,28 @@
             tbxPassword.TrailingIcon = null;
             tbxPassword.UseSystemPasswordChar = true;
             // 
-            // materialLabel2
+            // pictureBox2
             // 
-            materialLabel2.AutoSize = true;
-            materialLabel2.Depth = 0;
-            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.ForeColor = Color.DarkRed;
-            materialLabel2.Location = new Point(764, 9);
-            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel2.Name = "materialLabel2";
-            materialLabel2.Size = new Size(11, 19);
-            materialLabel2.TabIndex = 14;
-            materialLabel2.Text = "X";
-            materialLabel2.Click += materialLabel2_Click;
+            pictureBox2.Image = Properties.Resources.ddada8a9_6050_435f_ad92_a666724f9114_removalai_preview;
+            pictureBox2.Location = new Point(747, -2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(40, 39);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 14;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += materialLabel2_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.LightSeaGreen;
+            label2.Location = new Point(566, 339);
+            label2.Name = "label2";
+            label2.Size = new Size(133, 17);
+            label2.TabIndex = 15;
+            label2.Text = "Create an account";
+            label2.Click += lblRegister_Click;
             // 
             // Login
             // 
@@ -171,10 +168,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(787, 450);
-            Controls.Add(materialLabel2);
+            Controls.Add(label2);
+            Controls.Add(pictureBox2);
             Controls.Add(tbxPassword);
             Controls.Add(tbxUsername);
-            Controls.Add(materialLabel1);
             Controls.Add(materialButton1);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
@@ -182,6 +179,7 @@
             Name = "Login";
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -192,9 +190,9 @@
         
         private PictureBox pictureBox1;
         private MaterialSkin.Controls.MaterialButton materialButton1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialTextBox2 tbxUsername;
         private MaterialSkin.Controls.MaterialTextBox2 tbxPassword;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private PictureBox pictureBox2;
+        private Label label2;
     }
 }

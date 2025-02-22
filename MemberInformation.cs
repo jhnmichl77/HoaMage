@@ -10,20 +10,11 @@ using System.Windows.Forms;
 
 namespace HoaMage
 {
-    public partial class Registration : Shared
+    public partial class MemberInformation : UserControl
     {
-        public Registration()
+        public MemberInformation()
         {
             InitializeComponent();
-            ShowUserControl(new AccountAccess(), panel2);
         }
-
-
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        
     }
 }

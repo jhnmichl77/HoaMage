@@ -1,7 +1,8 @@
-﻿using System;
+﻿using HoaMage;
+using System;
 using System.Windows.Forms;
 
-public class Shared : Form  // Ensure Shared is public
+public class Shared : Form
 {
     public Shared()
     {
@@ -10,15 +11,21 @@ public class Shared : Form  // Ensure Shared is public
 
     private void InitializeComponent()
     {
-        // Common settings for all forms
         this.StartPosition = FormStartPosition.CenterScreen;
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
         this.MaximizeBox = false;
     }
 
-    // Example shared method for all forms
+    public void ShowUserControl(UserControl userControl, Panel panel)
+    {
+        panel.Controls.Clear();
+        userControl.Dock = DockStyle.Fill;
+        panel.Controls.Add(userControl);
+    }
     protected void ShowMessage(string message, string title = "Information")
     {
         MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
+
+
 }
