@@ -10,26 +10,24 @@ using System.Windows.Forms;
 
 namespace HoaMage
 {
-    public partial class MemberInformation : UserControl
+    public partial class VehicleInformation : UserControl
     {
-        public MemberInformation()
+        public VehicleInformation()
         {
             InitializeComponent();
         }
 
-        private void MemberInformation_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
+        private void btnFinish_Click(object sender, EventArgs e)
         {
             Registration parentForm = (Registration)this.FindForm();
-
             if (parentForm != null)
             {
-                parentForm.MarkCheckbox("MemberInformation");
-                Shared.ShowUserControl(new PropertyInformation(), this.Parent);
+                parentForm.MarkCheckbox("VehicleInfo");
+
+                HomeownerDashBoard dashboard = new HomeownerDashBoard();
+                dashboard.Show();
+
+                parentForm.Close();
             }
         }
     }

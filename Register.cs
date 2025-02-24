@@ -24,6 +24,29 @@ namespace HoaMage
         {
             Application.Exit();
         }
-        
-    }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+        public void MarkCheckbox(string section)
+        {
+            if (section == "AccountAccess")
+            {
+                cbxAccountAccess.Checked = true;
+            }
+            else if (section == "MemberInformation")
+            {
+                cbxMemberInformation.Checked = true;
+            }
+            else if (section == "PropertyInformation")
+            {
+                cbxPropertyInformation.Checked = true;
+            }
+            else if (section == "VehicleInformation")
+            {
+                cbxVehicleInformation.Checked = true;
+            }
+            }
+        }
 }

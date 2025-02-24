@@ -10,26 +10,26 @@ using System.Windows.Forms;
 
 namespace HoaMage
 {
-    public partial class MemberInformation : UserControl
+    public partial class PropertyInformation : UserControl
     {
-        public MemberInformation()
+        public PropertyInformation()
         {
             InitializeComponent();
         }
 
-        private void MemberInformation_Load(object sender, EventArgs e)
+        private void PropertyInformation_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        private void materialButton1_Click(object sender, EventArgs e)
         {
             Registration parentForm = (Registration)this.FindForm();
 
             if (parentForm != null)
             {
-                parentForm.MarkCheckbox("MemberInformation");
-                Shared.ShowUserControl(new PropertyInformation(), this.Parent);
+                parentForm.MarkCheckbox("PropertyInformation");
+                Shared.ShowUserControl(new VehicleInformation(), this.Parent);
             }
         }
     }

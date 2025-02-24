@@ -36,6 +36,7 @@
             tbxPassword = new MaterialSkin.Controls.MaterialTextBox2();
             pictureBox2 = new PictureBox();
             label2 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -162,12 +163,22 @@
             label2.Text = "Create an account";
             label2.Click += lblRegister_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(545, 410);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 16;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(787, 450);
+            Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(pictureBox2);
             Controls.Add(tbxPassword);
@@ -194,5 +205,6 @@
         private MaterialSkin.Controls.MaterialTextBox2 tbxPassword;
         private PictureBox pictureBox2;
         private Label label2;
+        private Button button1;
     }
 }

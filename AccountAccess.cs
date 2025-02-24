@@ -20,6 +20,23 @@ namespace HoaMage
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbxUsername.Text) || string.IsNullOrWhiteSpace(tbxPassword.Text))
+            {
+                   MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                   return;
+            }
+            Registration parentForm = (Registration)this.FindForm();
+
+            if (parentForm != null)
+            {
+                parentForm.MarkCheckbox("AccountAccess"); 
+                Shared.ShowUserControl(new MemberInformation(), this.Parent); 
+            }
+            
+        }
+
+        private void AccountAccess_Load(object sender, EventArgs e)
+        {
 
         }
     }

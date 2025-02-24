@@ -63,6 +63,36 @@ namespace HoaMage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _0ac81286_c507_4f48_9480_59c2934c1aa3_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("0ac81286-c507-4f48-9480-59c2934c1aa3_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _274c61d5_e0b8_4c7a_bd67_f6adf21e17fa_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("274c61d5-e0b8-4c7a-bd67-f6adf21e17fa_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap c52ecfb6_cbc4_4ef2_b554_ebd49559bb66_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("c52ecfb6-cbc4-4ef2-b554-ebd49559bb66_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ddada8a9_6050_435f_ad92_a666724f9114_removalai_preview {
             get {
                 object obj = ResourceManager.GetObject("ddada8a9-6050-435f-ad92-a666724f9114_removalai_preview", resourceCulture);

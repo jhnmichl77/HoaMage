@@ -31,10 +31,10 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
-            checkBox4 = new CheckBox();
-            checkBox3 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
+            cbxVehicleInformation = new CheckBox();
+            cbxPropertyInformation = new CheckBox();
+            cbxMemberInformation = new CheckBox();
+            cbxAccountAccess = new CheckBox();
             panel2 = new Panel();
             pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -67,69 +67,70 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(72, 202, 228);
-            panel1.Controls.Add(checkBox4);
-            panel1.Controls.Add(checkBox3);
-            panel1.Controls.Add(checkBox2);
-            panel1.Controls.Add(checkBox1);
+            panel1.Controls.Add(cbxVehicleInformation);
+            panel1.Controls.Add(cbxPropertyInformation);
+            panel1.Controls.Add(cbxMemberInformation);
+            panel1.Controls.Add(cbxAccountAccess);
             panel1.Location = new Point(0, 90);
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 42);
             panel1.TabIndex = 2;
             // 
-            // checkBox4
+            // cbxVehicleInformation
             // 
-            checkBox4.AutoCheck = false;
-            checkBox4.AutoSize = true;
-            checkBox4.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBox4.Location = new Point(587, 9);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(181, 25);
-            checkBox4.TabIndex = 3;
-            checkBox4.Text = "Vehicle Information";
-            checkBox4.UseVisualStyleBackColor = true;
+            cbxVehicleInformation.AutoCheck = false;
+            cbxVehicleInformation.AutoSize = true;
+            cbxVehicleInformation.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxVehicleInformation.Location = new Point(587, 9);
+            cbxVehicleInformation.Name = "cbxVehicleInformation";
+            cbxVehicleInformation.Size = new Size(181, 25);
+            cbxVehicleInformation.TabIndex = 3;
+            cbxVehicleInformation.Text = "Vehicle Information";
+            cbxVehicleInformation.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // cbxPropertyInformation
             // 
-            checkBox3.AutoCheck = false;
-            checkBox3.AutoSize = true;
-            checkBox3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBox3.Location = new Point(392, 9);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(189, 25);
-            checkBox3.TabIndex = 2;
-            checkBox3.Text = "Property Information";
-            checkBox3.UseVisualStyleBackColor = true;
+            cbxPropertyInformation.AutoCheck = false;
+            cbxPropertyInformation.AutoSize = true;
+            cbxPropertyInformation.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxPropertyInformation.Location = new Point(392, 9);
+            cbxPropertyInformation.Name = "cbxPropertyInformation";
+            cbxPropertyInformation.Size = new Size(189, 25);
+            cbxPropertyInformation.TabIndex = 2;
+            cbxPropertyInformation.Text = "Property Information";
+            cbxPropertyInformation.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cbxMemberInformation
             // 
-            checkBox2.AutoCheck = false;
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBox2.Location = new Point(196, 9);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(190, 25);
-            checkBox2.TabIndex = 1;
-            checkBox2.Text = "Member Information";
-            checkBox2.UseVisualStyleBackColor = true;
+            cbxMemberInformation.AutoCheck = false;
+            cbxMemberInformation.AutoSize = true;
+            cbxMemberInformation.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxMemberInformation.Location = new Point(196, 9);
+            cbxMemberInformation.Name = "cbxMemberInformation";
+            cbxMemberInformation.Size = new Size(190, 25);
+            cbxMemberInformation.TabIndex = 1;
+            cbxMemberInformation.Text = "Member Information";
+            cbxMemberInformation.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cbxAccountAccess
             // 
-            checkBox1.AutoCheck = false;
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(32, 9);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(158, 25);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "Account Access";
-            checkBox1.UseVisualStyleBackColor = true;
+            cbxAccountAccess.AutoCheck = false;
+            cbxAccountAccess.AutoSize = true;
+            cbxAccountAccess.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxAccountAccess.Location = new Point(32, 9);
+            cbxAccountAccess.Name = "cbxAccountAccess";
+            cbxAccountAccess.Size = new Size(158, 25);
+            cbxAccountAccess.TabIndex = 0;
+            cbxAccountAccess.Text = "Account Access";
+            cbxAccountAccess.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             panel2.Location = new Point(0, 130);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 344);
+            panel2.Size = new Size(800, 369);
             panel2.TabIndex = 3;
+            panel2.Paint += panel2_Paint;
             // 
             // pictureBox2
             // 
@@ -148,7 +149,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.White;
-            ClientSize = new Size(802, 473);
+            ClientSize = new Size(802, 500);
             Controls.Add(pictureBox2);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -171,10 +172,10 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Panel panel1;
-        private CheckBox checkBox4;
-        private CheckBox checkBox3;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
+        private CheckBox cbxVehicleInformation;
+        private CheckBox cbxPropertyInformation;
+        private CheckBox cbxMemberInformation;
+        private CheckBox cbxAccountAccess;
         private Panel panel2;
         private PictureBox pictureBox2;
     }

@@ -16,12 +16,16 @@ public class Shared : Form
         this.MaximizeBox = false;
     }
 
-    public void ShowUserControl(UserControl userControl, Panel panel)
+    public static void ShowUserControl(UserControl userControl, Control parent)
     {
-        panel.Controls.Clear();
-        userControl.Dock = DockStyle.Fill;
-        panel.Controls.Add(userControl);
+        if (parent is Panel panel2)
+        {
+            panel2.Controls.Clear();
+            userControl.Dock = DockStyle.Fill;
+            panel2.Controls.Add(userControl);
+        }
     }
+
     protected void ShowMessage(string message, string title = "Information")
     {
         MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
