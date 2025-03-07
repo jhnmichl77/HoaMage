@@ -1,8 +1,13 @@
+using System.Data.OleDb;
+
 namespace HoaMage
 
     {
     public partial class Login : Shared
     {
+        OleDbConnection? myConn;
+        OleDbDataAdapter? da;
+        OleDbCommand? cmd;
         public Login()
         {
             InitializeComponent();
@@ -12,9 +17,9 @@ namespace HoaMage
         private void lblRegister_Click(object sender, EventArgs e)
         {
             Registration reg = new Registration();
-            this.Hide(); 
+            this.Hide();
             reg.Show();
-         
+
         }
 
 
@@ -46,6 +51,21 @@ namespace HoaMage
 
         private void label2_Click(object sender, EventArgs e)
         {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\johnm\\source\\repos\\HoaMage\\HoaMageDB.accdb;");
+                myConn.Open();
+                MessageBox.Show("Connection Successful!");
+                myConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }

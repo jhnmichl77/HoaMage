@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace HoaMage
 {
     public partial class Registration : Shared
     {
+        OleDbConnection? myConn;
+        OleDbDataAdapter? da;
+        OleDbCommand? cmd;
         public Registration()
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace HoaMage
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
         public void MarkCheckbox(string section)
         {
@@ -47,6 +50,11 @@ namespace HoaMage
             {
                 cbxVehicleInformation.Checked = true;
             }
-            }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+    }
 }
