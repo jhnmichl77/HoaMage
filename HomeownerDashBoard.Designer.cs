@@ -91,7 +91,6 @@
             Controls.Add(label1);
             Name = "HomeownerDashBoard";
             Text = "Dashboard";
-            Load += HomeownerDashBoard_Load;
             ResumeLayout(false);
             PerformLayout();
         }

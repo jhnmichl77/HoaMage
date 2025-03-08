@@ -28,209 +28,210 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
-            materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
-            materialTextBox23 = new MaterialSkin.Controls.MaterialTextBox2();
-            materialTextBox25 = new MaterialSkin.Controls.MaterialTextBox2();
-            groupBox1 = new GroupBox();
-            materialRadioButton3 = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButton2 = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButton1 = new MaterialSkin.Controls.MaterialRadioButton();
+            pbxProfile = new PictureBox();
+            tbxFirstname = new MaterialSkin.Controls.MaterialTextBox2();
+            tbxLastname = new MaterialSkin.Controls.MaterialTextBox2();
+            tbxMI = new MaterialSkin.Controls.MaterialTextBox2();
+            tbxContact = new MaterialSkin.Controls.MaterialTextBox2();
+            gbxGender = new GroupBox();
+            rbtOthers = new MaterialSkin.Controls.MaterialRadioButton();
+            rbtFemale = new MaterialSkin.Controls.MaterialRadioButton();
+            rbtMale = new MaterialSkin.Controls.MaterialRadioButton();
             dtpBirthday = new DateTimePicker();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             btnNext = new MaterialSkin.Controls.MaterialButton();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            groupBox1.SuspendLayout();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pbxProfile).BeginInit();
+            gbxGender.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // pbxProfile
             // 
-            pictureBox1.Location = new Point(87, 98);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(121, 131);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pbxProfile.Location = new Point(87, 98);
+            pbxProfile.Name = "pbxProfile";
+            pbxProfile.Size = new Size(121, 131);
+            pbxProfile.TabIndex = 0;
+            pbxProfile.TabStop = false;
             // 
-            // materialTextBox21
+            // tbxFirstname
             // 
-            materialTextBox21.AnimateReadOnly = false;
-            materialTextBox21.BackgroundImageLayout = ImageLayout.None;
-            materialTextBox21.CharacterCasing = CharacterCasing.Normal;
-            materialTextBox21.Depth = 0;
-            materialTextBox21.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox21.HideSelection = true;
-            materialTextBox21.Hint = "Firstname";
-            materialTextBox21.LeadingIcon = null;
-            materialTextBox21.Location = new Point(243, 44);
-            materialTextBox21.MaxLength = 32767;
-            materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox21.Name = "materialTextBox21";
-            materialTextBox21.PasswordChar = '\0';
-            materialTextBox21.PrefixSuffixText = null;
-            materialTextBox21.ReadOnly = false;
-            materialTextBox21.RightToLeft = RightToLeft.No;
-            materialTextBox21.SelectedText = "";
-            materialTextBox21.SelectionLength = 0;
-            materialTextBox21.SelectionStart = 0;
-            materialTextBox21.ShortcutsEnabled = true;
-            materialTextBox21.Size = new Size(372, 48);
-            materialTextBox21.TabIndex = 1;
-            materialTextBox21.TabStop = false;
-            materialTextBox21.TextAlign = HorizontalAlignment.Left;
-            materialTextBox21.TrailingIcon = null;
-            materialTextBox21.UseSystemPasswordChar = false;
+            tbxFirstname.AnimateReadOnly = false;
+            tbxFirstname.BackgroundImageLayout = ImageLayout.None;
+            tbxFirstname.CharacterCasing = CharacterCasing.Normal;
+            tbxFirstname.Depth = 0;
+            tbxFirstname.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxFirstname.HideSelection = true;
+            tbxFirstname.Hint = "Firstname";
+            tbxFirstname.LeadingIcon = null;
+            tbxFirstname.Location = new Point(243, 44);
+            tbxFirstname.MaxLength = 32767;
+            tbxFirstname.MouseState = MaterialSkin.MouseState.OUT;
+            tbxFirstname.Name = "tbxFirstname";
+            tbxFirstname.PasswordChar = '\0';
+            tbxFirstname.PrefixSuffixText = null;
+            tbxFirstname.ReadOnly = false;
+            tbxFirstname.RightToLeft = RightToLeft.No;
+            tbxFirstname.SelectedText = "";
+            tbxFirstname.SelectionLength = 0;
+            tbxFirstname.SelectionStart = 0;
+            tbxFirstname.ShortcutsEnabled = true;
+            tbxFirstname.Size = new Size(372, 48);
+            tbxFirstname.TabIndex = 1;
+            tbxFirstname.TabStop = false;
+            tbxFirstname.TextAlign = HorizontalAlignment.Left;
+            tbxFirstname.TrailingIcon = null;
+            tbxFirstname.UseSystemPasswordChar = false;
             // 
-            // materialTextBox22
+            // tbxLastname
             // 
-            materialTextBox22.AnimateReadOnly = false;
-            materialTextBox22.BackgroundImageLayout = ImageLayout.None;
-            materialTextBox22.CharacterCasing = CharacterCasing.Normal;
-            materialTextBox22.Depth = 0;
-            materialTextBox22.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox22.HideSelection = true;
-            materialTextBox22.Hint = "Lastname";
-            materialTextBox22.LeadingIcon = null;
-            materialTextBox22.Location = new Point(243, 98);
-            materialTextBox22.MaxLength = 32767;
-            materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox22.Name = "materialTextBox22";
-            materialTextBox22.PasswordChar = '\0';
-            materialTextBox22.PrefixSuffixText = null;
-            materialTextBox22.ReadOnly = false;
-            materialTextBox22.RightToLeft = RightToLeft.No;
-            materialTextBox22.SelectedText = "";
-            materialTextBox22.SelectionLength = 0;
-            materialTextBox22.SelectionStart = 0;
-            materialTextBox22.ShortcutsEnabled = true;
-            materialTextBox22.Size = new Size(310, 48);
-            materialTextBox22.TabIndex = 2;
-            materialTextBox22.TabStop = false;
-            materialTextBox22.TextAlign = HorizontalAlignment.Left;
-            materialTextBox22.TrailingIcon = null;
-            materialTextBox22.UseSystemPasswordChar = false;
+            tbxLastname.AnimateReadOnly = false;
+            tbxLastname.BackgroundImageLayout = ImageLayout.None;
+            tbxLastname.CharacterCasing = CharacterCasing.Normal;
+            tbxLastname.Depth = 0;
+            tbxLastname.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxLastname.HideSelection = true;
+            tbxLastname.Hint = "Lastname";
+            tbxLastname.LeadingIcon = null;
+            tbxLastname.Location = new Point(243, 98);
+            tbxLastname.MaxLength = 32767;
+            tbxLastname.MouseState = MaterialSkin.MouseState.OUT;
+            tbxLastname.Name = "tbxLastname";
+            tbxLastname.PasswordChar = '\0';
+            tbxLastname.PrefixSuffixText = null;
+            tbxLastname.ReadOnly = false;
+            tbxLastname.RightToLeft = RightToLeft.No;
+            tbxLastname.SelectedText = "";
+            tbxLastname.SelectionLength = 0;
+            tbxLastname.SelectionStart = 0;
+            tbxLastname.ShortcutsEnabled = true;
+            tbxLastname.Size = new Size(310, 48);
+            tbxLastname.TabIndex = 2;
+            tbxLastname.TabStop = false;
+            tbxLastname.TextAlign = HorizontalAlignment.Left;
+            tbxLastname.TrailingIcon = null;
+            tbxLastname.UseSystemPasswordChar = false;
             // 
-            // materialTextBox23
+            // tbxMI
             // 
-            materialTextBox23.AnimateReadOnly = false;
-            materialTextBox23.BackgroundImageLayout = ImageLayout.None;
-            materialTextBox23.CharacterCasing = CharacterCasing.Normal;
-            materialTextBox23.Depth = 0;
-            materialTextBox23.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox23.HideSelection = true;
-            materialTextBox23.Hint = "M.I";
-            materialTextBox23.LeadingIcon = null;
-            materialTextBox23.Location = new Point(559, 98);
-            materialTextBox23.MaxLength = 32767;
-            materialTextBox23.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox23.Name = "materialTextBox23";
-            materialTextBox23.PasswordChar = '\0';
-            materialTextBox23.PrefixSuffixText = null;
-            materialTextBox23.ReadOnly = false;
-            materialTextBox23.RightToLeft = RightToLeft.No;
-            materialTextBox23.SelectedText = "";
-            materialTextBox23.SelectionLength = 0;
-            materialTextBox23.SelectionStart = 0;
-            materialTextBox23.ShortcutsEnabled = true;
-            materialTextBox23.Size = new Size(56, 48);
-            materialTextBox23.TabIndex = 3;
-            materialTextBox23.TabStop = false;
-            materialTextBox23.TextAlign = HorizontalAlignment.Left;
-            materialTextBox23.TrailingIcon = null;
-            materialTextBox23.UseSystemPasswordChar = false;
+            tbxMI.AnimateReadOnly = false;
+            tbxMI.BackgroundImageLayout = ImageLayout.None;
+            tbxMI.CharacterCasing = CharacterCasing.Normal;
+            tbxMI.Depth = 0;
+            tbxMI.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxMI.HideSelection = true;
+            tbxMI.Hint = "M.I";
+            tbxMI.LeadingIcon = null;
+            tbxMI.Location = new Point(559, 98);
+            tbxMI.MaxLength = 32767;
+            tbxMI.MouseState = MaterialSkin.MouseState.OUT;
+            tbxMI.Name = "tbxMI";
+            tbxMI.PasswordChar = '\0';
+            tbxMI.PrefixSuffixText = null;
+            tbxMI.ReadOnly = false;
+            tbxMI.RightToLeft = RightToLeft.No;
+            tbxMI.SelectedText = "";
+            tbxMI.SelectionLength = 0;
+            tbxMI.SelectionStart = 0;
+            tbxMI.ShortcutsEnabled = true;
+            tbxMI.Size = new Size(56, 48);
+            tbxMI.TabIndex = 3;
+            tbxMI.TabStop = false;
+            tbxMI.TextAlign = HorizontalAlignment.Left;
+            tbxMI.TrailingIcon = null;
+            tbxMI.UseSystemPasswordChar = false;
             // 
-            // materialTextBox25
+            // tbxContact
             // 
-            materialTextBox25.AnimateReadOnly = false;
-            materialTextBox25.BackgroundImageLayout = ImageLayout.None;
-            materialTextBox25.CharacterCasing = CharacterCasing.Normal;
-            materialTextBox25.Depth = 0;
-            materialTextBox25.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox25.HideSelection = true;
-            materialTextBox25.Hint = "Contact Number";
-            materialTextBox25.LeadingIcon = null;
-            materialTextBox25.Location = new Point(243, 262);
-            materialTextBox25.MaxLength = 32767;
-            materialTextBox25.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox25.Name = "materialTextBox25";
-            materialTextBox25.PasswordChar = '\0';
-            materialTextBox25.PrefixSuffixText = null;
-            materialTextBox25.ReadOnly = false;
-            materialTextBox25.RightToLeft = RightToLeft.No;
-            materialTextBox25.SelectedText = "";
-            materialTextBox25.SelectionLength = 0;
-            materialTextBox25.SelectionStart = 0;
-            materialTextBox25.ShortcutsEnabled = true;
-            materialTextBox25.Size = new Size(310, 48);
-            materialTextBox25.TabIndex = 5;
-            materialTextBox25.TabStop = false;
-            materialTextBox25.TextAlign = HorizontalAlignment.Left;
-            materialTextBox25.TrailingIcon = null;
-            materialTextBox25.UseSystemPasswordChar = false;
+            tbxContact.AnimateReadOnly = false;
+            tbxContact.BackgroundImageLayout = ImageLayout.None;
+            tbxContact.CharacterCasing = CharacterCasing.Normal;
+            tbxContact.Depth = 0;
+            tbxContact.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxContact.HideSelection = true;
+            tbxContact.Hint = "Contact Number";
+            tbxContact.LeadingIcon = null;
+            tbxContact.Location = new Point(243, 262);
+            tbxContact.MaxLength = 32767;
+            tbxContact.MouseState = MaterialSkin.MouseState.OUT;
+            tbxContact.Name = "tbxContact";
+            tbxContact.PasswordChar = '\0';
+            tbxContact.PrefixSuffixText = null;
+            tbxContact.ReadOnly = false;
+            tbxContact.RightToLeft = RightToLeft.No;
+            tbxContact.SelectedText = "";
+            tbxContact.SelectionLength = 0;
+            tbxContact.SelectionStart = 0;
+            tbxContact.ShortcutsEnabled = true;
+            tbxContact.Size = new Size(310, 48);
+            tbxContact.TabIndex = 5;
+            tbxContact.TabStop = false;
+            tbxContact.TextAlign = HorizontalAlignment.Left;
+            tbxContact.TrailingIcon = null;
+            tbxContact.UseSystemPasswordChar = false;
             // 
-            // groupBox1
+            // gbxGender
             // 
-            groupBox1.Controls.Add(materialRadioButton3);
-            groupBox1.Controls.Add(materialRadioButton2);
-            groupBox1.Controls.Add(materialRadioButton1);
-            groupBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(243, 187);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(289, 69);
-            groupBox1.TabIndex = 6;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Gender";
+            gbxGender.Controls.Add(rbtOthers);
+            gbxGender.Controls.Add(rbtFemale);
+            gbxGender.Controls.Add(rbtMale);
+            gbxGender.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            gbxGender.Location = new Point(243, 187);
+            gbxGender.Name = "gbxGender";
+            gbxGender.Size = new Size(289, 69);
+            gbxGender.TabIndex = 6;
+            gbxGender.TabStop = false;
+            gbxGender.Text = "Gender";
             // 
-            // materialRadioButton3
+            // rbtOthers
             // 
-            materialRadioButton3.AutoSize = true;
-            materialRadioButton3.Depth = 0;
-            materialRadioButton3.Font = new Font("Microsoft Sans Serif", 9.75F);
-            materialRadioButton3.Location = new Point(195, 22);
-            materialRadioButton3.Margin = new Padding(0);
-            materialRadioButton3.MouseLocation = new Point(-1, -1);
-            materialRadioButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButton3.Name = "materialRadioButton3";
-            materialRadioButton3.Ripple = true;
-            materialRadioButton3.Size = new Size(81, 37);
-            materialRadioButton3.TabIndex = 2;
-            materialRadioButton3.TabStop = true;
-            materialRadioButton3.Text = "Others";
-            materialRadioButton3.UseVisualStyleBackColor = true;
+            rbtOthers.AutoSize = true;
+            rbtOthers.Depth = 0;
+            rbtOthers.Font = new Font("Microsoft Sans Serif", 9.75F);
+            rbtOthers.Location = new Point(195, 22);
+            rbtOthers.Margin = new Padding(0);
+            rbtOthers.MouseLocation = new Point(-1, -1);
+            rbtOthers.MouseState = MaterialSkin.MouseState.HOVER;
+            rbtOthers.Name = "rbtOthers";
+            rbtOthers.Ripple = true;
+            rbtOthers.Size = new Size(81, 37);
+            rbtOthers.TabIndex = 2;
+            rbtOthers.TabStop = true;
+            rbtOthers.Text = "Others";
+            rbtOthers.UseVisualStyleBackColor = true;
             // 
-            // materialRadioButton2
+            // rbtFemale
             // 
-            materialRadioButton2.AutoSize = true;
-            materialRadioButton2.Depth = 0;
-            materialRadioButton2.Font = new Font("Microsoft Sans Serif", 9.75F);
-            materialRadioButton2.Location = new Point(93, 22);
-            materialRadioButton2.Margin = new Padding(0);
-            materialRadioButton2.MouseLocation = new Point(-1, -1);
-            materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButton2.Name = "materialRadioButton2";
-            materialRadioButton2.Ripple = true;
-            materialRadioButton2.Size = new Size(87, 37);
-            materialRadioButton2.TabIndex = 1;
-            materialRadioButton2.TabStop = true;
-            materialRadioButton2.Text = "Female";
-            materialRadioButton2.UseVisualStyleBackColor = true;
+            rbtFemale.AutoSize = true;
+            rbtFemale.Depth = 0;
+            rbtFemale.Font = new Font("Microsoft Sans Serif", 9.75F);
+            rbtFemale.Location = new Point(93, 22);
+            rbtFemale.Margin = new Padding(0);
+            rbtFemale.MouseLocation = new Point(-1, -1);
+            rbtFemale.MouseState = MaterialSkin.MouseState.HOVER;
+            rbtFemale.Name = "rbtFemale";
+            rbtFemale.Ripple = true;
+            rbtFemale.Size = new Size(87, 37);
+            rbtFemale.TabIndex = 1;
+            rbtFemale.TabStop = true;
+            rbtFemale.Text = "Female";
+            rbtFemale.UseVisualStyleBackColor = true;
             // 
-            // materialRadioButton1
+            // rbtMale
             // 
-            materialRadioButton1.AutoSize = true;
-            materialRadioButton1.Depth = 0;
-            materialRadioButton1.Font = new Font("Microsoft Sans Serif", 9.75F);
-            materialRadioButton1.Location = new Point(3, 22);
-            materialRadioButton1.Margin = new Padding(0);
-            materialRadioButton1.MouseLocation = new Point(-1, -1);
-            materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButton1.Name = "materialRadioButton1";
-            materialRadioButton1.Ripple = true;
-            materialRadioButton1.Size = new Size(70, 37);
-            materialRadioButton1.TabIndex = 0;
-            materialRadioButton1.TabStop = true;
-            materialRadioButton1.Text = "Male";
-            materialRadioButton1.UseVisualStyleBackColor = true;
+            rbtMale.AutoSize = true;
+            rbtMale.Depth = 0;
+            rbtMale.Font = new Font("Microsoft Sans Serif", 9.75F);
+            rbtMale.Location = new Point(3, 22);
+            rbtMale.Margin = new Padding(0);
+            rbtMale.MouseLocation = new Point(-1, -1);
+            rbtMale.MouseState = MaterialSkin.MouseState.HOVER;
+            rbtMale.Name = "rbtMale";
+            rbtMale.Ripple = true;
+            rbtMale.Size = new Size(70, 37);
+            rbtMale.TabIndex = 0;
+            rbtMale.TabStop = true;
+            rbtMale.Text = "Male";
+            rbtMale.UseVisualStyleBackColor = true;
             // 
             // dtpBirthday
             // 
@@ -264,7 +265,7 @@
             btnNext.MouseState = MaterialSkin.MouseState.HOVER;
             btnNext.Name = "btnNext";
             btnNext.NoAccentTextColor = Color.Empty;
-            btnNext.Size = new Size(64, 36);
+            btnNext.Size = new Size(75, 36);
             btnNext.TabIndex = 20;
             btnNext.Text = "Submit";
             btnNext.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -272,42 +273,52 @@
             btnNext.UseVisualStyleBackColor = false;
             btnNext.Click += btnNext_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(163, 232);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 15);
+            label1.TabIndex = 21;
+            label1.Text = "Upload";
+            // 
             // MemberInformation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(btnNext);
             Controls.Add(materialLabel1);
             Controls.Add(dtpBirthday);
-            Controls.Add(groupBox1);
-            Controls.Add(materialTextBox25);
-            Controls.Add(materialTextBox23);
-            Controls.Add(materialTextBox22);
-            Controls.Add(materialTextBox21);
-            Controls.Add(pictureBox1);
+            Controls.Add(gbxGender);
+            Controls.Add(tbxContact);
+            Controls.Add(tbxMI);
+            Controls.Add(tbxLastname);
+            Controls.Add(tbxFirstname);
+            Controls.Add(pbxProfile);
             Name = "MemberInformation";
             Size = new Size(800, 369);
-            Load += MemberInformation_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbxProfile).EndInit();
+            gbxGender.ResumeLayout(false);
+            gbxGender.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox22;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox23;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox25;
-        private GroupBox groupBox1;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton2;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton1;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton3;
+        private PictureBox pbxProfile;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxFirstname;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxLastname;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxMI;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxContact;
+        private GroupBox gbxGender;
+        private MaterialSkin.Controls.MaterialRadioButton rbtFemale;
+        private MaterialSkin.Controls.MaterialRadioButton rbtMale;
+        private MaterialSkin.Controls.MaterialRadioButton rbtOthers;
         private DateTimePicker dtpBirthday;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton btnNext;
+        private Label label1;
     }
 }

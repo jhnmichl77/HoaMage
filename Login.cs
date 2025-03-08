@@ -1,3 +1,4 @@
+using System.Data;
 using System.Data.OleDb;
 
 namespace HoaMage
@@ -5,9 +6,7 @@ namespace HoaMage
     {
     public partial class Login : Shared
     {
-        OleDbConnection? myConn;
-        OleDbDataAdapter? da;
-        OleDbCommand? cmd;
+
         public Login()
         {
             InitializeComponent();
@@ -19,10 +18,7 @@ namespace HoaMage
             Registration reg = new Registration();
             this.Hide();
             reg.Show();
-
         }
-
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string UserCheck = "Admin001";
@@ -43,28 +39,20 @@ namespace HoaMage
             }
 
         }
-
         private void materialLabel2_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            if (DatabaseHelper.TestConnection())
             {
-                myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\johnm\\source\\repos\\HoaMage\\HoaMageDB.accdb;");
-                myConn.Open();
-                MessageBox.Show("Connection Successful!");
-                myConn.Close();
+                MessageBox.Show("Database connection successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Database connection failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -180,7 +180,7 @@
             btnNext.MouseState = MaterialSkin.MouseState.HOVER;
             btnNext.Name = "btnNext";
             btnNext.NoAccentTextColor = Color.Empty;
-            btnNext.Size = new Size(64, 36);
+            btnNext.Size = new Size(75, 36);
             btnNext.TabIndex = 19;
             btnNext.Text = "Submit";
             btnNext.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -234,7 +234,6 @@
             Controls.Add(tbxUsername);
             Name = "AccountAccess";
             Size = new Size(800, 369);
-            Load += AccountAccess_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

@@ -34,6 +34,8 @@
             tbxColor = new MaterialSkin.Controls.MaterialTextBox2();
             tbxLicencePlate = new MaterialSkin.Controls.MaterialTextBox2();
             btnFinish = new MaterialSkin.Controls.MaterialButton();
+            lblUpload = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pbxCarImage).BeginInit();
             SuspendLayout();
             // 
@@ -181,10 +183,32 @@
             btnFinish.UseVisualStyleBackColor = true;
             btnFinish.Click += btnFinish_Click;
             // 
+            // lblUpload
+            // 
+            lblUpload.AutoSize = true;
+            lblUpload.Location = new Point(414, 322);
+            lblUpload.Name = "lblUpload";
+            lblUpload.Size = new Size(45, 15);
+            lblUpload.TabIndex = 6;
+            lblUpload.Text = "Upload";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 7F);
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(35, 317);
+            label1.Name = "label1";
+            label1.Size = new Size(155, 12);
+            label1.TabIndex = 7;
+            label1.Text = "*Make sure plate number is Visible";
+            // 
             // VehicleInformation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
+            Controls.Add(lblUpload);
             Controls.Add(btnFinish);
             Controls.Add(tbxLicencePlate);
             Controls.Add(tbxColor);
@@ -206,5 +230,7 @@
         private MaterialSkin.Controls.MaterialTextBox2 tbxColor;
         private MaterialSkin.Controls.MaterialTextBox2 tbxLicencePlate;
         private MaterialSkin.Controls.MaterialButton btnFinish;
+        private Label lblUpload;
+        private Label label1;
     }
 }
