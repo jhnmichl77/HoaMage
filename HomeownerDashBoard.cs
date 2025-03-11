@@ -17,9 +17,11 @@ namespace HoaMage
         public HomeownerDashBoard()
         {
             InitializeComponent();
+            int AID = Identification.AccountID;
+            tbxID.Text = AID.ToString();
         }
 
 
-        
+
     }
 }

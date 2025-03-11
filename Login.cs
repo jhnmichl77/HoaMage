@@ -21,24 +21,67 @@ namespace HoaMage
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string UserCheck = "Admin001";
-            string PassCheck = "Admin123";
+            string username = tbxUsername.Text.Trim();
+            string password = tbxPassword.Text.Trim();
 
-            if (tbxUsername.Text == UserCheck)
+            if (string.IsNullOrWhiteSpace(username))
             {
-                if (tbxPassword.Text == PassCheck)
-                {
-                    AdminDashboard adminDashboard = new AdminDashboard();
-                    adminDashboard.Show();
-                    this.Hide();
-                }
+                MessageBox.Show("Please enter a username.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Invalid Username or Password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter a password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string query = "Select AccountID, Role FROM Accounts WHERE Username=@Username AND Password = @Password";
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                try
+                {
+                    connection.Open();
+                    using(OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Username", username);
+                        command.Parameters.AddWithValue("@Password", password);
+                        using (OleDbDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int AccountID = reader.GetInt32(0);
+                                string UserRole = reader.GetString(1);
+
+                                Identification.AccountID = AccountID;
+                                Identification.Role = UserRole;
+
+                                if(Identification.Role == "Admin")
+                                {
+                                    AdminDashboard admin = new AdminDashboard();
+                                    admin.Show();
+                                    this.Hide();
+                                }else if(Identification.Role == "Homeowner")
+                                {
+                                    HomeownerDashBoard homeowner = new HomeownerDashBoard();
+                                    homeowner.Show();
+                                    this.Hide();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid Credentials", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
         }
+        
         private void materialLabel2_Click(object sender, EventArgs e)
         {
             Application.Exit();

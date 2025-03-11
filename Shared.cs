@@ -15,7 +15,11 @@ public class Shared : Form
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
         this.MaximizeBox = false;
     }
-
+    public static class Identification
+    {
+        public static int AccountID { get; set; }
+        public static string Role { get; set; }
+    }
     public static void ShowUserControl(UserControl userControl, Control parent)
     {
         if (parent is Panel panel2)

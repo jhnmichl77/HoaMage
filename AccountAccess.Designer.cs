@@ -132,7 +132,7 @@
             // cbxRole
             // 
             cbxRole.FormattingEnabled = true;
-            cbxRole.Items.AddRange(new object[] { "Board Member", "Homeowner" });
+            cbxRole.Items.AddRange(new object[] { "Admin", "Homeowner" });
             cbxRole.Location = new Point(63, 305);
             cbxRole.Name = "cbxRole";
             cbxRole.Size = new Size(121, 23);

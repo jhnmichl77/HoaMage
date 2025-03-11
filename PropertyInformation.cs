@@ -13,8 +13,6 @@ namespace HoaMage
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            int numOfOccupants;
-
             if (string.IsNullOrWhiteSpace(tbxResidenceName.Text))
             {
                 MessageBox.Show("Please enter a residence name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -30,7 +28,7 @@ namespace HoaMage
                 MessageBox.Show("Please enter a unit number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!int.TryParse(tbxNumOfOccupants.Text, out numOfOccupants))
+            if (!int.TryParse(tbxNumOfOccupants.Text, out int numOfOccupants))
             {
                 MessageBox.Show("Please enter a valid number of occupants.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -41,44 +39,48 @@ namespace HoaMage
                 return;
             }
 
-            string query = "Insert Into PropertyInformation (ResidenceName, HomeAddress, UnitNumber, NumOfOccupants, OwnershipType) values (@ResidenceName, @HomeAddress, @UnitNumber, @NumOfOccupants, @OwnershipType)";
             using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
             try
             {
-                
-                connection.Open();
-                using (OleDbCommand command = new OleDbCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ResidenceName", tbxResidenceName.Text);
-                    command.Parameters.AddWithValue("@HomeAddress", tbxHomeAddress.Text);
-                    command.Parameters.AddWithValue("@UnitNumber", tbxUnitNumber.Text);
-
-                    command.Parameters.AddWithValue("@NumOfOccupants", Convert.ToInt32(tbxNumOfOccupants.Text));
-                    command.Parameters.AddWithValue("@OwnershipType", cbxType.Text);
-
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
+                    connection.Open();
+                    int AccountID;
+                    using (OleDbCommand cmd = new OleDbCommand("SELECT MAX(AccountID) FROM Accounts", connection))
                     {
-                        MessageBox.Show("Property Information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        object result = cmd.ExecuteScalar();
+                        AccountID = result != DBNull.Value ? Convert.ToInt32(result) : 0;
                     }
-                    else
+                    if (AccountID == 0)
                     {
-                        MessageBox.Show("Failed to save Proper Information.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No valid AccountID found. Please register an account first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                }
+                    
+                    string query = "Insert Into PropertyInformation (AccountID, ResidenceName, HomeAddress, UnitNumber, NumOfOccupants, OwnershipType) values (@AccountID, @ResidenceName, @HomeAddress, @UnitNumber, @NumOfOccupants, @OwnershipType)";
+
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("AccountID", AccountID);
+                        command.Parameters.AddWithValue("@ResidenceName", tbxResidenceName.Text);
+                        command.Parameters.AddWithValue("@HomeAddress", tbxHomeAddress.Text);
+                        command.Parameters.AddWithValue("@UnitNumber", tbxUnitNumber.Text);
+                        command.Parameters.AddWithValue("@NumOfOccupants", Convert.ToInt32(tbxNumOfOccupants.Text));
+                        command.Parameters.AddWithValue("@OwnershipType", cbxType.Text);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Property Information successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Registration parentForm = (Registration)this.FindForm();
+                        if (parentForm != null)
+                        {
+                            parentForm.MarkCheckbox("PropertyInformation");
+                            Shared.ShowUserControl(new VehicleInformation(), this.Parent);
+                        }
+                    }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
             }
-            Registration parentForm = (Registration)this.FindForm();
-            if (parentForm != null)
-            {
-                parentForm.MarkCheckbox("PropertyInformation");
-                Shared.ShowUserControl(new VehicleInformation(), this.Parent);
-            }
+            
         }
     }
 }

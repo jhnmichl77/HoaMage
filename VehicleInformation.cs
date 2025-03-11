@@ -43,35 +43,41 @@ namespace HoaMage
                 MessageBox.Show("Please enter LicensePlate.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            string query = "Insert Into VehicleInformation (PlateNumber, Make, Model, Color) values (@PlateNumber, @Make, @Model, @Color)";
+
             using(OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
                 try
                 {
                     connection.Open();
+                    int AccountID;
+                    using (OleDbCommand cmd = new OleDbCommand("SELECT MAX(AccountID) FROM Accounts", connection))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        AccountID = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                    }
+                    if (AccountID == 0)
+                    {
+                        MessageBox.Show("No valid AccountID found. Please register an account first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    string query = "Insert Into VehicleInformation (AccountID, PlateNumber, Make, Model, Color) values (@AccountID, @PlateNumber, @Make, @Model, @Color)";
+
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("AccountID", AccountID);
                         command.Parameters.AddWithValue("@PlateNumber", tbxLicencePlate.Text);
                         command.Parameters.AddWithValue("@Make", tbxMake.Text);
-                        command.Parameters.AddWithValue("@Modle", tbxModel.Text);
+                        command.Parameters.AddWithValue("@Model", tbxModel.Text);
                         command.Parameters.AddWithValue("@Color", tbxColor.Text);
-
-                        int rowsAffected = command.ExecuteNonQuery();
-                        if (rowsAffected>0)
-                        {
+                        command.ExecuteNonQuery();
                             MessageBox.Show("Vehicle Information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Registration parentForm = (Registration)this.FindForm();
                             if (parentForm != null)
                             {
                                 parentForm.MarkCheckbox("VehicleInfo");
-                                HomeownerDashBoard dashboard = new HomeownerDashBoard();
-                                dashboard.Show();
+                                Login login = new Login();
+                                login.Show();
                                 parentForm.Close();
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to save Vehicle Information!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
                     }
                 }
                 catch (Exception ex)

@@ -28,24 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pbxCarImage = new PictureBox();
             tbxMake = new MaterialSkin.Controls.MaterialTextBox2();
             tbxModel = new MaterialSkin.Controls.MaterialTextBox2();
             tbxColor = new MaterialSkin.Controls.MaterialTextBox2();
             tbxLicencePlate = new MaterialSkin.Controls.MaterialTextBox2();
             btnFinish = new MaterialSkin.Controls.MaterialButton();
-            lblUpload = new Label();
-            label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pbxCarImage).BeginInit();
             SuspendLayout();
-            // 
-            // pbxCarImage
-            // 
-            pbxCarImage.Location = new Point(35, 20);
-            pbxCarImage.Name = "pbxCarImage";
-            pbxCarImage.Size = new Size(417, 294);
-            pbxCarImage.TabIndex = 0;
-            pbxCarImage.TabStop = false;
             // 
             // tbxMake
             // 
@@ -57,7 +45,7 @@
             tbxMake.HideSelection = true;
             tbxMake.Hint = "Make";
             tbxMake.LeadingIcon = null;
-            tbxMake.Location = new Point(494, 20);
+            tbxMake.Location = new Point(35, 46);
             tbxMake.MaxLength = 32767;
             tbxMake.MouseState = MaterialSkin.MouseState.OUT;
             tbxMake.Name = "tbxMake";
@@ -86,7 +74,7 @@
             tbxModel.HideSelection = true;
             tbxModel.Hint = "Model";
             tbxModel.LeadingIcon = null;
-            tbxModel.Location = new Point(494, 90);
+            tbxModel.Location = new Point(35, 116);
             tbxModel.MaxLength = 32767;
             tbxModel.MouseState = MaterialSkin.MouseState.OUT;
             tbxModel.Name = "tbxModel";
@@ -115,7 +103,7 @@
             tbxColor.HideSelection = true;
             tbxColor.Hint = "Color";
             tbxColor.LeadingIcon = null;
-            tbxColor.Location = new Point(494, 162);
+            tbxColor.Location = new Point(35, 188);
             tbxColor.MaxLength = 32767;
             tbxColor.MouseState = MaterialSkin.MouseState.OUT;
             tbxColor.Name = "tbxColor";
@@ -144,7 +132,7 @@
             tbxLicencePlate.HideSelection = true;
             tbxLicencePlate.Hint = "License Plate";
             tbxLicencePlate.LeadingIcon = null;
-            tbxLicencePlate.Location = new Point(494, 230);
+            tbxLicencePlate.Location = new Point(35, 256);
             tbxLicencePlate.MaxLength = 32767;
             tbxLicencePlate.MouseState = MaterialSkin.MouseState.OUT;
             tbxLicencePlate.Name = "tbxLicencePlate";
@@ -183,54 +171,26 @@
             btnFinish.UseVisualStyleBackColor = true;
             btnFinish.Click += btnFinish_Click;
             // 
-            // lblUpload
-            // 
-            lblUpload.AutoSize = true;
-            lblUpload.Location = new Point(414, 322);
-            lblUpload.Name = "lblUpload";
-            lblUpload.Size = new Size(45, 15);
-            lblUpload.TabIndex = 6;
-            lblUpload.Text = "Upload";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 7F);
-            label1.ForeColor = Color.Red;
-            label1.Location = new Point(35, 317);
-            label1.Name = "label1";
-            label1.Size = new Size(155, 12);
-            label1.TabIndex = 7;
-            label1.Text = "*Make sure plate number is Visible";
-            // 
             // VehicleInformation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label1);
-            Controls.Add(lblUpload);
             Controls.Add(btnFinish);
             Controls.Add(tbxLicencePlate);
             Controls.Add(tbxColor);
             Controls.Add(tbxModel);
             Controls.Add(tbxMake);
-            Controls.Add(pbxCarImage);
             Name = "VehicleInformation";
             Size = new Size(800, 369);
-            ((System.ComponentModel.ISupportInitialize)pbxCarImage).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pbxCarImage;
         private MaterialSkin.Controls.MaterialTextBox2 tbxMake;
         private MaterialSkin.Controls.MaterialTextBox2 tbxModel;
         private MaterialSkin.Controls.MaterialTextBox2 tbxColor;
         private MaterialSkin.Controls.MaterialTextBox2 tbxLicencePlate;
         private MaterialSkin.Controls.MaterialButton btnFinish;
-        private Label lblUpload;
-        private Label label1;
     }
 }

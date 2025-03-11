@@ -33,6 +33,7 @@
             btnPayment = new Button();
             btnReport = new Button();
             panel1 = new Panel();
+            tbxID = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -79,11 +80,19 @@
             panel1.Size = new Size(676, 358);
             panel1.TabIndex = 4;
             // 
+            // tbxID
+            // 
+            tbxID.Location = new Point(328, 51);
+            tbxID.Name = "tbxID";
+            tbxID.Size = new Size(192, 23);
+            tbxID.TabIndex = 5;
+            // 
             // HomeownerDashBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(tbxID);
             Controls.Add(panel1);
             Controls.Add(btnReport);
             Controls.Add(btnPayment);
@@ -102,5 +111,6 @@
         private Button btnPayment;
         private Button btnReport;
         private Panel panel1;
+        private TextBox tbxID;
     }
 }

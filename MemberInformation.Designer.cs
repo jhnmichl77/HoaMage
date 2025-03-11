@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pbxProfile = new PictureBox();
             tbxFirstname = new MaterialSkin.Controls.MaterialTextBox2();
             tbxLastname = new MaterialSkin.Controls.MaterialTextBox2();
             tbxMI = new MaterialSkin.Controls.MaterialTextBox2();
@@ -40,18 +39,8 @@
             dtpBirthday = new DateTimePicker();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             btnNext = new MaterialSkin.Controls.MaterialButton();
-            label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pbxProfile).BeginInit();
             gbxGender.SuspendLayout();
             SuspendLayout();
-            // 
-            // pbxProfile
-            // 
-            pbxProfile.Location = new Point(87, 98);
-            pbxProfile.Name = "pbxProfile";
-            pbxProfile.Size = new Size(121, 131);
-            pbxProfile.TabIndex = 0;
-            pbxProfile.TabStop = false;
             // 
             // tbxFirstname
             // 
@@ -63,7 +52,7 @@
             tbxFirstname.HideSelection = true;
             tbxFirstname.Hint = "Firstname";
             tbxFirstname.LeadingIcon = null;
-            tbxFirstname.Location = new Point(243, 44);
+            tbxFirstname.Location = new Point(21, 41);
             tbxFirstname.MaxLength = 32767;
             tbxFirstname.MouseState = MaterialSkin.MouseState.OUT;
             tbxFirstname.Name = "tbxFirstname";
@@ -92,7 +81,7 @@
             tbxLastname.HideSelection = true;
             tbxLastname.Hint = "Lastname";
             tbxLastname.LeadingIcon = null;
-            tbxLastname.Location = new Point(243, 98);
+            tbxLastname.Location = new Point(21, 95);
             tbxLastname.MaxLength = 32767;
             tbxLastname.MouseState = MaterialSkin.MouseState.OUT;
             tbxLastname.Name = "tbxLastname";
@@ -121,7 +110,7 @@
             tbxMI.HideSelection = true;
             tbxMI.Hint = "M.I";
             tbxMI.LeadingIcon = null;
-            tbxMI.Location = new Point(559, 98);
+            tbxMI.Location = new Point(337, 95);
             tbxMI.MaxLength = 32767;
             tbxMI.MouseState = MaterialSkin.MouseState.OUT;
             tbxMI.Name = "tbxMI";
@@ -150,7 +139,7 @@
             tbxContact.HideSelection = true;
             tbxContact.Hint = "Contact Number";
             tbxContact.LeadingIcon = null;
-            tbxContact.Location = new Point(243, 262);
+            tbxContact.Location = new Point(21, 259);
             tbxContact.MaxLength = 32767;
             tbxContact.MouseState = MaterialSkin.MouseState.OUT;
             tbxContact.Name = "tbxContact";
@@ -175,7 +164,7 @@
             gbxGender.Controls.Add(rbtFemale);
             gbxGender.Controls.Add(rbtMale);
             gbxGender.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            gbxGender.Location = new Point(243, 187);
+            gbxGender.Location = new Point(21, 184);
             gbxGender.Name = "gbxGender";
             gbxGender.Size = new Size(289, 69);
             gbxGender.TabIndex = 6;
@@ -235,7 +224,7 @@
             // 
             // dtpBirthday
             // 
-            dtpBirthday.Location = new Point(313, 158);
+            dtpBirthday.Location = new Point(91, 155);
             dtpBirthday.Name = "dtpBirthday";
             dtpBirthday.Size = new Size(191, 23);
             dtpBirthday.TabIndex = 7;
@@ -245,7 +234,7 @@
             materialLabel1.AutoSize = true;
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(243, 158);
+            materialLabel1.Location = new Point(21, 155);
             materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(64, 19);
@@ -273,20 +262,10 @@
             btnNext.UseVisualStyleBackColor = false;
             btnNext.Click += btnNext_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(163, 232);
-            label1.Name = "label1";
-            label1.Size = new Size(45, 15);
-            label1.TabIndex = 21;
-            label1.Text = "Upload";
-            // 
             // MemberInformation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label1);
             Controls.Add(btnNext);
             Controls.Add(materialLabel1);
             Controls.Add(dtpBirthday);
@@ -295,10 +274,8 @@
             Controls.Add(tbxMI);
             Controls.Add(tbxLastname);
             Controls.Add(tbxFirstname);
-            Controls.Add(pbxProfile);
             Name = "MemberInformation";
             Size = new Size(800, 369);
-            ((System.ComponentModel.ISupportInitialize)pbxProfile).EndInit();
             gbxGender.ResumeLayout(false);
             gbxGender.PerformLayout();
             ResumeLayout(false);
@@ -306,8 +283,6 @@
         }
 
         #endregion
-
-        private PictureBox pbxProfile;
         private MaterialSkin.Controls.MaterialTextBox2 tbxFirstname;
         private MaterialSkin.Controls.MaterialTextBox2 tbxLastname;
         private MaterialSkin.Controls.MaterialTextBox2 tbxMI;
@@ -319,6 +294,5 @@
         private DateTimePicker dtpBirthday;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton btnNext;
-        private Label label1;
     }
 }

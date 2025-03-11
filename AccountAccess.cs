@@ -71,18 +71,13 @@ namespace HoaMage
                         command.Parameters.AddWithValue("@Email", tbxEmailAddress.Text);
                         command.Parameters.AddWithValue("@Role", cbxRole.Text);
 
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Account successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Registration parentForm = (Registration)this.FindForm();
+                        if (parentForm != null)
                         {
-                            MessageBox.Show("Account successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            Registration parentForm = (Registration)this.FindForm();
-                            if (parentForm != null)
-                            {
-                                parentForm.MarkCheckbox("AccountAccess");
-                                Shared.ShowUserControl(new MemberInformation(), this.Parent);
-                            }
+                            parentForm.MarkCheckbox("AccountAccess");
+                            Shared.ShowUserControl(new MemberInformation(), this.Parent);
                         }
                         else
                         {
