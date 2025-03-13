@@ -83,9 +83,59 @@ namespace HoaMage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3c7a66b1_ecd0_4ba6_b17c_6698159ea704_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("3c7a66b1-ecd0-4ba6-b17c-6698159ea704_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _85d55f04_b184_4c4d_b8af_b0aa7631c8bb_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("85d55f04-b184-4c4d-b8af-b0aa7631c8bb_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9f9c30b3_fafd_460c_b5cb_f5a787db96d8_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("9f9c30b3-fafd-460c-b5cb-f5a787db96d8_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap c52ecfb6_cbc4_4ef2_b554_ebd49559bb66_removalai_preview {
             get {
                 object obj = ResourceManager.GetObject("c52ecfb6-cbc4-4ef2-b554-ebd49559bb66_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap c85dd3b6_f579_4c5c_8545_dfe8e26f7060_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap c85dd3b6_f579_4c5c_8545_dfe8e26f7060_removalai_preview1 {
+            get {
+                object obj = ResourceManager.GetObject("c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

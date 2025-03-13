@@ -2,8 +2,7 @@ using System.Data;
 using System.Data.OleDb;
 
 namespace HoaMage
-
-    {
+{
     public partial class Login : Shared
     {
 
@@ -55,17 +54,9 @@ namespace HoaMage
                                 Identification.AccountID = AccountID;
                                 Identification.Role = UserRole;
 
-                                if(Identification.Role == "Admin")
-                                {
-                                    AdminDashboard admin = new AdminDashboard();
-                                    admin.Show();
-                                    this.Hide();
-                                }else if(Identification.Role == "Homeowner")
-                                {
-                                    HomeownerDashBoard homeowner = new HomeownerDashBoard();
+                                    Dashboard homeowner = new Dashboard();
                                     homeowner.Show();
                                     this.Hide();
-                                }
                             }
                             else
                             {
@@ -81,12 +72,10 @@ namespace HoaMage
             }
 
         }
-        
         private void materialLabel2_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (DatabaseHelper.TestConnection())

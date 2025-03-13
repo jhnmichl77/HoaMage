@@ -75,7 +75,7 @@
             materialButton1.Name = "materialButton1";
             materialButton1.NoAccentTextColor = Color.Empty;
             materialButton1.Size = new Size(74, 36);
-            materialButton1.TabIndex = 10;
+            materialButton1.TabIndex = 14;
             materialButton1.Text = "Sign-in";
             materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButton1.UseAccentColor = false;

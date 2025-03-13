@@ -123,7 +123,7 @@
             tbxEmailAddress.SelectionStart = 0;
             tbxEmailAddress.ShortcutsEnabled = true;
             tbxEmailAddress.Size = new Size(275, 48);
-            tbxEmailAddress.TabIndex = 15;
+            tbxEmailAddress.TabIndex = 16;
             tbxEmailAddress.TabStop = false;
             tbxEmailAddress.TextAlign = HorizontalAlignment.Left;
             tbxEmailAddress.TrailingIcon = null;
@@ -131,12 +131,13 @@
             // 
             // cbxRole
             // 
+            cbxRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxRole.FormattingEnabled = true;
             cbxRole.Items.AddRange(new object[] { "Admin", "Homeowner" });
             cbxRole.Location = new Point(63, 305);
             cbxRole.Name = "cbxRole";
             cbxRole.Size = new Size(121, 23);
-            cbxRole.TabIndex = 16;
+            cbxRole.TabIndex = 17;
             // 
             // tbxConfirmPassword
             // 
@@ -161,7 +162,7 @@
             tbxConfirmPassword.SelectionStart = 0;
             tbxConfirmPassword.ShortcutsEnabled = true;
             tbxConfirmPassword.Size = new Size(275, 48);
-            tbxConfirmPassword.TabIndex = 17;
+            tbxConfirmPassword.TabIndex = 15;
             tbxConfirmPassword.TabStop = false;
             tbxConfirmPassword.TextAlign = HorizontalAlignment.Left;
             tbxConfirmPassword.TrailingIcon = null;
@@ -181,7 +182,7 @@
             btnNext.Name = "btnNext";
             btnNext.NoAccentTextColor = Color.Empty;
             btnNext.Size = new Size(75, 36);
-            btnNext.TabIndex = 19;
+            btnNext.TabIndex = 18;
             btnNext.Text = "Submit";
             btnNext.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnNext.UseAccentColor = false;
