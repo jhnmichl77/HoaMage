@@ -195,7 +195,7 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPayments.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADkAAAAsCAYAAADfAxCtAAAABGdBTUEAALGPC/xhBQAAEK1JREFUaEOt
         mglwVeUVx999Sci+vWyEGBaDWqqtrUqnLSpaQayotUqrYJkqzlhUtFQBldZx2mnrtE5nnKl2OraCsgkI

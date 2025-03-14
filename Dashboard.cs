@@ -19,18 +19,32 @@ namespace HoaMage
         {
             InitializeComponent();
             int AID = Identification.AccountID;
-            tbxID.Text = AID.ToString();
+            string Role = Identification.Role;
+            tbxID.Text = AID + " " + Role.ToString();
             sidebarExpand = false;
         }
-
-        private void HomeownerDashBoard_Load(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
+
+        }
+        private void btnManage_Click(object sender, EventArgs e)
+        {
+            if (Identification.Role == "Admin")
+            {
+                ShowUserControl(new AdminManage(), pnlDisplay);
+                //working
+            }
+            else
+            {
+                ShowUserControl(new HomeownerManage(), pnlDisplay);
+                //working
+            }
 
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            sidebarTimer.Start();        
+            sidebarTimer.Start();
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -38,20 +52,52 @@ namespace HoaMage
             if (sidebarExpand)
             {
                 sidebarContainer.Width -= 30;
-                if(sidebarContainer.Width == sidebarContainer.MinimumSize.Width)
+                if (sidebarContainer.Width == sidebarContainer.MinimumSize.Width)
                 {
                     sidebarExpand = false;
                     sidebarTimer.Stop();
-
                 }
             }
             else
             {
                 sidebarContainer.Width += 30;
-                if(sidebarContainer.Width == sidebarContainer.MaximumSize.Width){
+                if (sidebarContainer.Width == sidebarContainer.MaximumSize.Width)
+                {
                     sidebarExpand = true;
                     sidebarTimer.Stop();
                 }
+            }
+        }
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnPayments_Click(object sender, EventArgs e)
+        {
+            if (Identification.Role == "Admin")
+            {
+                ShowUserControl(new AdminPayments(), pnlDisplay);
+                //working
+            }
+            else
+            {
+                ShowUserControl(new HomeownerPayments(), pnlDisplay);
+                //working
+            }
+        }
+
+        private void btnRequest_Click(object sender, EventArgs e)
+        {
+            if (Identification.Role == "Admin")
+            {
+                ShowUserControl(new AdminRequest(), pnlDisplay);
+                //working
+            }
+            else
+            {
+                ShowUserControl(new HomeownerRequest(), pnlDisplay);
+                //working
             }
         }
     }

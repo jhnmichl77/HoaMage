@@ -93,6 +93,16 @@ namespace HoaMage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5b3376c4_b705_4da0_b92e_eea6c7a0561a_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("5b3376c4-b705-4da0-b92e-eea6c7a0561a_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _85d55f04_b184_4c4d_b8af_b0aa7631c8bb_removalai_preview {
             get {
                 object obj = ResourceManager.GetObject("85d55f04-b184-4c4d-b8af-b0aa7631c8bb_removalai_preview", resourceCulture);

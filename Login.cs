@@ -9,7 +9,6 @@ namespace HoaMage
         public Login()
         {
             InitializeComponent();
-
         }
 
         private void lblRegister_Click(object sender, EventArgs e)
@@ -51,12 +50,12 @@ namespace HoaMage
                                 int AccountID = reader.GetInt32(0);
                                 string UserRole = reader.GetString(1);
 
-                                Identification.AccountID = AccountID;
-                                Identification.Role = UserRole;
+                                    Identification.AccountID = AccountID;
+                                    Identification.Role = UserRole;
 
-                                    Dashboard homeowner = new Dashboard();
-                                    homeowner.Show();
-                                    this.Hide();
+                                        Dashboard homeowner = new Dashboard();
+                                        homeowner.Show();
+                                        this.Hide();
                             }
                             else
                             {
@@ -70,7 +69,6 @@ namespace HoaMage
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
         private void materialLabel2_Click(object sender, EventArgs e)
         {

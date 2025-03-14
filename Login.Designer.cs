@@ -91,7 +91,7 @@
             tbxUsername.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             tbxUsername.HideSelection = true;
             tbxUsername.Hint = "Username";
-            tbxUsername.LeadingIcon = null;
+            tbxUsername.LeadingIcon = Properties.Resources._274c61d5_e0b8_4c7a_bd67_f6adf21e17fa_removalai_preview;
             tbxUsername.Location = new Point(487, 156);
             tbxUsername.MaxLength = 32767;
             tbxUsername.MouseState = MaterialSkin.MouseState.OUT;
@@ -120,7 +120,7 @@
             tbxPassword.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             tbxPassword.HideSelection = true;
             tbxPassword.Hint = "Password";
-            tbxPassword.LeadingIcon = null;
+            tbxPassword.LeadingIcon = Properties.Resources._0ac81286_c507_4f48_9480_59c2934c1aa3_removalai_preview;
             tbxPassword.Location = new Point(487, 210);
             tbxPassword.MaxLength = 32767;
             tbxPassword.MouseState = MaterialSkin.MouseState.OUT;

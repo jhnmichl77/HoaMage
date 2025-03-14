@@ -124,11 +124,11 @@
   <data name="0ac81286-c507-4f48-9480-59c2934c1aa3_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\0ac81286-c507-4f48-9480-59c2934c1aa3_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="9f9c30b3-fafd-460c-b5cb-f5a787db96d8_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\9f9c30b3-fafd-460c-b5cb-f5a787db96d8_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ddada8a9-6050-435f-ad92-a666724f9114_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ddada8a9-6050-435f-ad92-a666724f9114_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Untitled design" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Untitled design.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,16 +139,19 @@
   <data name="274c61d5-e0b8-4c7a-bd67-f6adf21e17fa_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\274c61d5-e0b8-4c7a-bd67-f6adf21e17fa_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="9f9c30b3-fafd-460c-b5cb-f5a787db96d8_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9f9c30b3-fafd-460c-b5cb-f5a787db96d8_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="c52ecfb6-cbc4-4ef2-b554-ebd49559bb66_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\c52ecfb6-cbc4-4ef2-b554-ebd49559bb66_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\c85dd3b6-f579-4c5c-8545-dfe8e26f7060_removalai_preview1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="3c7a66b1-ecd0-4ba6-b17c-6698159ea704_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\3c7a66b1-ecd0-4ba6-b17c-6698159ea704_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ddada8a9-6050-435f-ad92-a666724f9114_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ddada8a9-6050-435f-ad92-a666724f9114_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="5b3376c4-b705-4da0-b92e-eea6c7a0561a_removalai_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5b3376c4-b705-4da0-b92e-eea6c7a0561a_removalai_preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

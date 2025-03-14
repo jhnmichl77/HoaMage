@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            pictureBox1 = new PictureBox();
+            pbxLogo = new PictureBox();
             sidebarContainer = new FlowLayoutPanel();
             panel1 = new Panel();
             btnMenu = new Button();
@@ -41,7 +41,7 @@
             panel4 = new Panel();
             btnManage = new Button();
             panel5 = new Panel();
-            button1 = new Button();
+            btnPayments = new Button();
             panel6 = new Panel();
             btnRequest = new Button();
             panel7 = new Panel();
@@ -50,7 +50,7 @@
             pnlTitlebar = new Panel();
             sidebarTimer = new System.Windows.Forms.Timer(components);
             pnlDisplay = new Panel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxLogo).BeginInit();
             sidebarContainer.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -61,19 +61,20 @@
             panel8.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // pbxLogo
             // 
-            pictureBox1.Image = Properties.Resources._85d55f04_b184_4c4d_b8af_b0aa7631c8bb_removalai_preview;
-            pictureBox1.Location = new Point(212, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(270, 58);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
+            pbxLogo.Image = Properties.Resources._85d55f04_b184_4c4d_b8af_b0aa7631c8bb_removalai_preview;
+            pbxLogo.Location = new Point(212, 3);
+            pbxLogo.Name = "pbxLogo";
+            pbxLogo.Size = new Size(309, 63);
+            pbxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pbxLogo.TabIndex = 6;
+            pbxLogo.TabStop = false;
             // 
             // sidebarContainer
             // 
             sidebarContainer.BackColor = Color.FromArgb(0, 119, 182);
+            sidebarContainer.BorderStyle = BorderStyle.Fixed3D;
             sidebarContainer.Controls.Add(panel1);
             sidebarContainer.Controls.Add(panel2);
             sidebarContainer.Controls.Add(panel3);
@@ -149,6 +150,7 @@
             btnHome.TabIndex = 9;
             btnHome.Text = "Home";
             btnHome.UseVisualStyleBackColor = true;
+            btnHome.Click += btnHome_Click;
             // 
             // panel4
             // 
@@ -170,27 +172,29 @@
             btnManage.TabIndex = 9;
             btnManage.Text = "Manage";
             btnManage.UseVisualStyleBackColor = true;
+            btnManage.Click += btnManage_Click;
             // 
             // panel5
             // 
-            panel5.Controls.Add(button1);
+            panel5.Controls.Add(btnPayments);
             panel5.Location = new Point(3, 263);
             panel5.Name = "panel5";
             panel5.Size = new Size(208, 67);
             panel5.TabIndex = 12;
             // 
-            // button1
+            // btnPayments
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(200, 60);
-            button1.TabIndex = 9;
-            button1.Text = "Payments";
-            button1.UseVisualStyleBackColor = true;
+            btnPayments.Cursor = Cursors.Hand;
+            btnPayments.FlatStyle = FlatStyle.Flat;
+            btnPayments.Image = (Image)resources.GetObject("btnPayments.Image");
+            btnPayments.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPayments.Location = new Point(3, 3);
+            btnPayments.Name = "btnPayments";
+            btnPayments.Size = new Size(200, 60);
+            btnPayments.TabIndex = 9;
+            btnPayments.Text = "Payments";
+            btnPayments.UseVisualStyleBackColor = true;
+            btnPayments.Click += btnPayments_Click;
             // 
             // panel6
             // 
@@ -212,6 +216,7 @@
             btnRequest.TabIndex = 9;
             btnRequest.Text = "Request";
             btnRequest.UseVisualStyleBackColor = true;
+            btnRequest.Click += btnRequest_Click;
             // 
             // panel7
             // 
@@ -240,9 +245,11 @@
             btnLogout.TabIndex = 9;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // pnlTitlebar
             // 
+            pnlTitlebar.BackColor = Color.FromArgb(0, 119, 182);
             pnlTitlebar.Dock = DockStyle.Top;
             pnlTitlebar.Location = new Point(210, 0);
             pnlTitlebar.Name = "pnlTitlebar";
@@ -260,19 +267,19 @@
             pnlDisplay.Size = new Size(727, 445);
             pnlDisplay.TabIndex = 9;
             // 
-            // HomeownerDashBoard
+            // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(944, 521);
             Controls.Add(pnlDisplay);
-            Controls.Add(pictureBox1);
+            Controls.Add(pbxLogo);
             Controls.Add(pnlTitlebar);
             Controls.Add(sidebarContainer);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "HomeownerDashBoard";
-            Text = "Dashboard";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Name = "Dashboard";
+            Text = " ";
+            ((System.ComponentModel.ISupportInitialize)pbxLogo).EndInit();
             sidebarContainer.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -287,7 +294,7 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox pbxLogo;
         private FlowLayoutPanel sidebarContainer;
         private Panel panel1;
         private Button btnMenu;
@@ -297,7 +304,7 @@
         private Panel panel4;
         private Button btnManage;
         private Panel panel5;
-        private Button button1;
+        private Button btnPayments;
         private Panel panel6;
         private Button btnRequest;
         private Panel panel7;
