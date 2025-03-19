@@ -13,6 +13,7 @@ namespace HoaMage
 {
     public partial class VehicleInformation : UserControl
     {
+
         public VehicleInformation()
         {
             InitializeComponent();
@@ -44,7 +45,8 @@ namespace HoaMage
                 return;
             }
 
-            using(OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
                 try
                 {
                     connection.Open();
@@ -69,22 +71,27 @@ namespace HoaMage
                         command.Parameters.AddWithValue("@Model", tbxModel.Text);
                         command.Parameters.AddWithValue("@Color", tbxColor.Text);
                         command.ExecuteNonQuery();
-                            MessageBox.Show("Vehicle Information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Registration parentForm = (Registration)this.FindForm();
-                            if (parentForm != null)
+                        MessageBox.Show("Vehicle Information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        Registration parentForm = (Registration)this.FindForm();
+                        if (parentForm != null)
+                        {
+                            parentForm.MarkCheckbox("VehicleInfo");
+
+                            if (!parentForm.IsFromDashboard)
                             {
-                                parentForm.MarkCheckbox("VehicleInfo");
                                 Login login = new Login();
                                 login.Show();
-                                parentForm.Close();
                             }
+                            parentForm.Close();
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+            }
         }
     }
 }

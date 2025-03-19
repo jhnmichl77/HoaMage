@@ -30,289 +30,379 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            pbxLogo = new PictureBox();
-            sidebarContainer = new FlowLayoutPanel();
+            materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            tbpHome = new TabPage();
+            tbpProfile = new TabPage();
             panel1 = new Panel();
-            btnMenu = new Button();
-            panel2 = new Panel();
-            tbxID = new TextBox();
-            panel3 = new Panel();
-            btnHome = new Button();
-            panel4 = new Panel();
-            btnManage = new Button();
-            panel5 = new Panel();
-            btnPayments = new Button();
-            panel6 = new Panel();
-            btnRequest = new Button();
-            panel7 = new Panel();
-            panel8 = new Panel();
-            btnLogout = new Button();
-            pnlTitlebar = new Panel();
-            sidebarTimer = new System.Windows.Forms.Timer(components);
-            pnlDisplay = new Panel();
-            ((System.ComponentModel.ISupportInitialize)pbxLogo).BeginInit();
-            sidebarContainer.SuspendLayout();
+            btnSearch = new MaterialSkin.Controls.MaterialButton();
+            tbxSearch = new TextBox();
+            label1 = new Label();
+            btnDelete = new MaterialSkin.Controls.MaterialButton();
+            btnAdd = new MaterialSkin.Controls.MaterialButton();
+            dgvDisplay = new DataGridView();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            btnAccounts = new MaterialSkin.Controls.MaterialButton();
+            btnMembers = new MaterialSkin.Controls.MaterialButton();
+            btnProperties = new MaterialSkin.Controls.MaterialButton();
+            btnVehicles = new MaterialSkin.Controls.MaterialButton();
+            btnOccupants = new MaterialSkin.Controls.MaterialButton();
+            tbpRequest = new TabPage();
+            tbpPayment = new TabPage();
+            imageList1 = new ImageList(components);
+            materialTabControl1.SuspendLayout();
+            tbpProfile.SuspendLayout();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            panel4.SuspendLayout();
-            panel5.SuspendLayout();
-            panel6.SuspendLayout();
-            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDisplay).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
-            // pbxLogo
+            // materialTabControl1
             // 
-            pbxLogo.Image = Properties.Resources._85d55f04_b184_4c4d_b8af_b0aa7631c8bb_removalai_preview;
-            pbxLogo.Location = new Point(212, 3);
-            pbxLogo.Name = "pbxLogo";
-            pbxLogo.Size = new Size(309, 63);
-            pbxLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pbxLogo.TabIndex = 6;
-            pbxLogo.TabStop = false;
+            materialTabControl1.Controls.Add(tbpHome);
+            materialTabControl1.Controls.Add(tbpProfile);
+            materialTabControl1.Controls.Add(tbpRequest);
+            materialTabControl1.Controls.Add(tbpPayment);
+            materialTabControl1.Depth = 0;
+            materialTabControl1.Dock = DockStyle.Fill;
+            materialTabControl1.ImageList = imageList1;
+            materialTabControl1.Location = new Point(3, 64);
+            materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialTabControl1.Multiline = true;
+            materialTabControl1.Name = "materialTabControl1";
+            materialTabControl1.SelectedIndex = 0;
+            materialTabControl1.Size = new Size(871, 532);
+            materialTabControl1.TabIndex = 0;
             // 
-            // sidebarContainer
+            // tbpHome
             // 
-            sidebarContainer.BackColor = Color.FromArgb(0, 119, 182);
-            sidebarContainer.BorderStyle = BorderStyle.Fixed3D;
-            sidebarContainer.Controls.Add(panel1);
-            sidebarContainer.Controls.Add(panel2);
-            sidebarContainer.Controls.Add(panel3);
-            sidebarContainer.Controls.Add(panel4);
-            sidebarContainer.Controls.Add(panel5);
-            sidebarContainer.Controls.Add(panel6);
-            sidebarContainer.Controls.Add(panel7);
-            sidebarContainer.Controls.Add(panel8);
-            sidebarContainer.Dock = DockStyle.Left;
-            sidebarContainer.Location = new Point(0, 0);
-            sidebarContainer.MaximumSize = new Size(210, 521);
-            sidebarContainer.MinimumSize = new Size(70, 521);
-            sidebarContainer.Name = "sidebarContainer";
-            sidebarContainer.Size = new Size(210, 521);
-            sidebarContainer.TabIndex = 7;
+            tbpHome.ImageKey = "Home.png";
+            tbpHome.Location = new Point(4, 39);
+            tbpHome.Name = "tbpHome";
+            tbpHome.Padding = new Padding(3);
+            tbpHome.Size = new Size(863, 489);
+            tbpHome.TabIndex = 1;
+            tbpHome.Text = "Home";
+            tbpHome.UseVisualStyleBackColor = true;
+            // 
+            // tbpProfile
+            // 
+            tbpProfile.Controls.Add(panel1);
+            tbpProfile.Controls.Add(flowLayoutPanel1);
+            tbpProfile.ImageKey = "Manage.png";
+            tbpProfile.Location = new Point(4, 39);
+            tbpProfile.Name = "tbpProfile";
+            tbpProfile.Padding = new Padding(3);
+            tbpProfile.Size = new Size(863, 489);
+            tbpProfile.TabIndex = 0;
+            tbpProfile.Text = "Profile";
+            tbpProfile.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnMenu);
-            panel1.Location = new Point(3, 3);
+            panel1.Controls.Add(btnSearch);
+            panel1.Controls.Add(tbxSearch);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(btnDelete);
+            panel1.Controls.Add(btnAdd);
+            panel1.Controls.Add(dgvDisplay);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 45);
             panel1.Name = "panel1";
-            panel1.Size = new Size(208, 67);
-            panel1.TabIndex = 8;
+            panel1.Size = new Size(857, 441);
+            panel1.TabIndex = 4;
             // 
-            // btnMenu
+            // btnSearch
             // 
-            btnMenu.Cursor = Cursors.Hand;
-            btnMenu.FlatStyle = FlatStyle.Flat;
-            btnMenu.Image = Properties.Resources._9f9c30b3_fafd_460c_b5cb_f5a787db96d8_removalai_preview;
-            btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMenu.Location = new Point(3, 3);
-            btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(200, 60);
-            btnMenu.TabIndex = 9;
-            btnMenu.Text = "Menu";
-            btnMenu.UseVisualStyleBackColor = true;
-            btnMenu.Click += btnMenu_Click;
+            btnSearch.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnSearch.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSearch.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSearch.Depth = 0;
+            btnSearch.HighEmphasis = true;
+            btnSearch.Icon = null;
+            btnSearch.Location = new Point(536, 405);
+            btnSearch.Margin = new Padding(4, 6, 4, 6);
+            btnSearch.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSearch.Name = "btnSearch";
+            btnSearch.NoAccentTextColor = Color.Empty;
+            btnSearch.Size = new Size(78, 36);
+            btnSearch.TabIndex = 5;
+            btnSearch.Text = "Search";
+            btnSearch.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSearch.UseAccentColor = false;
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // panel2
+            // tbxSearch
             // 
-            panel2.Controls.Add(tbxID);
-            panel2.Location = new Point(3, 76);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(203, 35);
-            panel2.TabIndex = 8;
+            tbxSearch.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            tbxSearch.BorderStyle = BorderStyle.FixedSingle;
+            tbxSearch.Location = new Point(74, 410);
+            tbxSearch.Name = "tbxSearch";
+            tbxSearch.Size = new Size(446, 23);
+            tbxSearch.TabIndex = 4;
             // 
-            // tbxID
+            // label1
             // 
-            tbxID.Enabled = false;
-            tbxID.Location = new Point(0, 3);
-            tbxID.Name = "tbxID";
-            tbxID.ReadOnly = true;
-            tbxID.Size = new Size(203, 23);
-            tbxID.TabIndex = 5;
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 14F);
+            label1.Location = new Point(3, 412);
+            label1.Name = "label1";
+            label1.Size = new Size(75, 24);
+            label1.TabIndex = 3;
+            label1.Text = "Search:";
             // 
-            // panel3
+            // btnDelete
             // 
-            panel3.Controls.Add(btnHome);
-            panel3.Location = new Point(3, 117);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(208, 67);
-            panel3.TabIndex = 10;
+            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnDelete.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDelete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDelete.Depth = 0;
+            btnDelete.HighEmphasis = true;
+            btnDelete.Icon = null;
+            btnDelete.Location = new Point(780, 405);
+            btnDelete.Margin = new Padding(4, 6, 4, 6);
+            btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDelete.Name = "btnDelete";
+            btnDelete.NoAccentTextColor = Color.Empty;
+            btnDelete.Size = new Size(73, 36);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "Delete";
+            btnDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDelete.UseAccentColor = false;
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
-            // btnHome
+            // btnAdd
             // 
-            btnHome.Cursor = Cursors.Hand;
-            btnHome.FlatStyle = FlatStyle.Popup;
-            btnHome.Image = Properties.Resources._3c7a66b1_ecd0_4ba6_b17c_6698159ea704_removalai_preview;
-            btnHome.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHome.Location = new Point(3, 4);
-            btnHome.Name = "btnHome";
-            btnHome.Size = new Size(200, 60);
-            btnHome.TabIndex = 9;
-            btnHome.Text = "Home";
-            btnHome.UseVisualStyleBackColor = true;
-            btnHome.Click += btnHome_Click;
+            btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAdd.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAdd.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAdd.Depth = 0;
+            btnAdd.HighEmphasis = true;
+            btnAdd.Icon = null;
+            btnAdd.Location = new Point(708, 405);
+            btnAdd.Margin = new Padding(4, 6, 4, 6);
+            btnAdd.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAdd.Name = "btnAdd";
+            btnAdd.NoAccentTextColor = Color.Empty;
+            btnAdd.Size = new Size(64, 36);
+            btnAdd.TabIndex = 1;
+            btnAdd.Text = "Add";
+            btnAdd.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAdd.UseAccentColor = false;
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // panel4
+            // dgvDisplay
             // 
-            panel4.Controls.Add(btnManage);
-            panel4.Location = new Point(3, 190);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(208, 67);
-            panel4.TabIndex = 11;
+            dgvDisplay.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvDisplay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDisplay.Location = new Point(0, 0);
+            dgvDisplay.Name = "dgvDisplay";
+            dgvDisplay.ReadOnly = true;
+            dgvDisplay.Size = new Size(857, 403);
+            dgvDisplay.TabIndex = 0;
+            dgvDisplay.CellEndEdit += dgvDisplay_CellEndEdit;
             // 
-            // btnManage
+            // flowLayoutPanel1
             // 
-            btnManage.Cursor = Cursors.Hand;
-            btnManage.FlatStyle = FlatStyle.Popup;
-            btnManage.Image = (Image)resources.GetObject("btnManage.Image");
-            btnManage.ImageAlign = ContentAlignment.MiddleLeft;
-            btnManage.Location = new Point(3, 4);
-            btnManage.Name = "btnManage";
-            btnManage.Size = new Size(200, 60);
-            btnManage.TabIndex = 9;
-            btnManage.Text = "Manage";
-            btnManage.UseVisualStyleBackColor = true;
-            btnManage.Click += btnManage_Click;
+            flowLayoutPanel1.BackColor = Color.FromArgb(36, 52, 60);
+            flowLayoutPanel1.Controls.Add(btnAccounts);
+            flowLayoutPanel1.Controls.Add(btnMembers);
+            flowLayoutPanel1.Controls.Add(btnProperties);
+            flowLayoutPanel1.Controls.Add(btnVehicles);
+            flowLayoutPanel1.Controls.Add(btnOccupants);
+            flowLayoutPanel1.Dock = DockStyle.Top;
+            flowLayoutPanel1.Location = new Point(3, 3);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(857, 42);
+            flowLayoutPanel1.TabIndex = 3;
             // 
-            // panel5
+            // btnAccounts
             // 
-            panel5.Controls.Add(btnPayments);
-            panel5.Location = new Point(3, 263);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(208, 67);
-            panel5.TabIndex = 12;
+            btnAccounts.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAccounts.AutoSize = false;
+            btnAccounts.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAccounts.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAccounts.Depth = 0;
+            btnAccounts.HighEmphasis = true;
+            btnAccounts.Icon = null;
+            btnAccounts.Location = new Point(4, 6);
+            btnAccounts.Margin = new Padding(4, 6, 4, 6);
+            btnAccounts.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAccounts.Name = "btnAccounts";
+            btnAccounts.NoAccentTextColor = Color.Empty;
+            btnAccounts.Size = new Size(163, 36);
+            btnAccounts.TabIndex = 4;
+            btnAccounts.Text = "Accounts";
+            btnAccounts.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAccounts.UseAccentColor = false;
+            btnAccounts.UseVisualStyleBackColor = true;
+            btnAccounts.Click += btnAccounts_Click;
             // 
-            // btnPayments
+            // btnMembers
             // 
-            btnPayments.Cursor = Cursors.Hand;
-            btnPayments.FlatStyle = FlatStyle.Flat;
-            btnPayments.Image = (Image)resources.GetObject("btnPayments.Image");
-            btnPayments.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPayments.Location = new Point(3, 3);
-            btnPayments.Name = "btnPayments";
-            btnPayments.Size = new Size(200, 60);
-            btnPayments.TabIndex = 9;
-            btnPayments.Text = "Payments";
-            btnPayments.UseVisualStyleBackColor = true;
-            btnPayments.Click += btnPayments_Click;
+            btnMembers.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMembers.AutoSize = false;
+            btnMembers.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnMembers.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnMembers.Depth = 0;
+            btnMembers.HighEmphasis = true;
+            btnMembers.Icon = null;
+            btnMembers.Location = new Point(175, 6);
+            btnMembers.Margin = new Padding(4, 6, 4, 6);
+            btnMembers.MouseState = MaterialSkin.MouseState.HOVER;
+            btnMembers.Name = "btnMembers";
+            btnMembers.NoAccentTextColor = Color.Empty;
+            btnMembers.Size = new Size(163, 36);
+            btnMembers.TabIndex = 0;
+            btnMembers.Text = "Members";
+            btnMembers.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnMembers.UseAccentColor = false;
+            btnMembers.UseVisualStyleBackColor = true;
+            btnMembers.Click += btnMembers_Click;
             // 
-            // panel6
+            // btnProperties
             // 
-            panel6.Controls.Add(btnRequest);
-            panel6.Location = new Point(3, 336);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(208, 67);
-            panel6.TabIndex = 13;
+            btnProperties.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnProperties.AutoSize = false;
+            btnProperties.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnProperties.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnProperties.Depth = 0;
+            btnProperties.HighEmphasis = true;
+            btnProperties.Icon = null;
+            btnProperties.Location = new Point(346, 6);
+            btnProperties.Margin = new Padding(4, 6, 4, 6);
+            btnProperties.MouseState = MaterialSkin.MouseState.HOVER;
+            btnProperties.Name = "btnProperties";
+            btnProperties.NoAccentTextColor = Color.Empty;
+            btnProperties.Size = new Size(163, 36);
+            btnProperties.TabIndex = 1;
+            btnProperties.Text = "Properties";
+            btnProperties.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnProperties.UseAccentColor = false;
+            btnProperties.UseVisualStyleBackColor = true;
+            btnProperties.Click += btnProperties_Click;
             // 
-            // btnRequest
+            // btnVehicles
             // 
-            btnRequest.Cursor = Cursors.Hand;
-            btnRequest.FlatStyle = FlatStyle.Flat;
-            btnRequest.Image = (Image)resources.GetObject("btnRequest.Image");
-            btnRequest.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRequest.Location = new Point(3, 4);
-            btnRequest.Name = "btnRequest";
-            btnRequest.Size = new Size(200, 60);
-            btnRequest.TabIndex = 9;
-            btnRequest.Text = "Request";
-            btnRequest.UseVisualStyleBackColor = true;
-            btnRequest.Click += btnRequest_Click;
+            btnVehicles.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnVehicles.AutoSize = false;
+            btnVehicles.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnVehicles.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnVehicles.Depth = 0;
+            btnVehicles.HighEmphasis = true;
+            btnVehicles.Icon = null;
+            btnVehicles.Location = new Point(517, 6);
+            btnVehicles.Margin = new Padding(4, 6, 4, 6);
+            btnVehicles.MouseState = MaterialSkin.MouseState.HOVER;
+            btnVehicles.Name = "btnVehicles";
+            btnVehicles.NoAccentTextColor = Color.Empty;
+            btnVehicles.Size = new Size(163, 36);
+            btnVehicles.TabIndex = 2;
+            btnVehicles.Text = "Vehicles";
+            btnVehicles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnVehicles.UseAccentColor = false;
+            btnVehicles.UseVisualStyleBackColor = true;
+            btnVehicles.Click += btnVehicles_Click;
             // 
-            // panel7
+            // btnOccupants
             // 
-            panel7.Location = new Point(3, 409);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(203, 31);
-            panel7.TabIndex = 9;
+            btnOccupants.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnOccupants.AutoSize = false;
+            btnOccupants.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnOccupants.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnOccupants.Depth = 0;
+            btnOccupants.HighEmphasis = true;
+            btnOccupants.Icon = null;
+            btnOccupants.Location = new Point(688, 6);
+            btnOccupants.Margin = new Padding(4, 6, 4, 6);
+            btnOccupants.MouseState = MaterialSkin.MouseState.HOVER;
+            btnOccupants.Name = "btnOccupants";
+            btnOccupants.NoAccentTextColor = Color.Empty;
+            btnOccupants.Size = new Size(163, 36);
+            btnOccupants.TabIndex = 3;
+            btnOccupants.Text = "Occupants";
+            btnOccupants.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnOccupants.UseAccentColor = false;
+            btnOccupants.UseVisualStyleBackColor = true;
+            btnOccupants.Click += btnOccupants_Click;
             // 
-            // panel8
+            // tbpRequest
             // 
-            panel8.Controls.Add(btnLogout);
-            panel8.Location = new Point(3, 446);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(208, 67);
-            panel8.TabIndex = 14;
+            tbpRequest.ImageKey = "Request.png";
+            tbpRequest.Location = new Point(4, 39);
+            tbpRequest.Name = "tbpRequest";
+            tbpRequest.Padding = new Padding(3);
+            tbpRequest.Size = new Size(863, 489);
+            tbpRequest.TabIndex = 2;
+            tbpRequest.Text = "Request";
+            tbpRequest.UseVisualStyleBackColor = true;
             // 
-            // btnLogout
+            // tbpPayment
             // 
-            btnLogout.Cursor = Cursors.Hand;
-            btnLogout.FlatStyle = FlatStyle.Flat;
-            btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
-            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(3, 4);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(202, 60);
-            btnLogout.TabIndex = 9;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
+            tbpPayment.ImageKey = "Payment.png";
+            tbpPayment.Location = new Point(4, 39);
+            tbpPayment.Name = "tbpPayment";
+            tbpPayment.Padding = new Padding(3);
+            tbpPayment.Size = new Size(863, 489);
+            tbpPayment.TabIndex = 3;
+            tbpPayment.Text = "Payment";
+            tbpPayment.UseVisualStyleBackColor = true;
             // 
-            // pnlTitlebar
+            // imageList1
             // 
-            pnlTitlebar.BackColor = Color.FromArgb(0, 119, 182);
-            pnlTitlebar.Dock = DockStyle.Top;
-            pnlTitlebar.Location = new Point(210, 0);
-            pnlTitlebar.Name = "pnlTitlebar";
-            pnlTitlebar.Size = new Size(734, 70);
-            pnlTitlebar.TabIndex = 8;
-            // 
-            // sidebarTimer
-            // 
-            sidebarTimer.Tick += sidebarTimer_Tick;
-            // 
-            // pnlDisplay
-            // 
-            pnlDisplay.Location = new Point(217, 76);
-            pnlDisplay.Name = "pnlDisplay";
-            pnlDisplay.Size = new Size(727, 445);
-            pnlDisplay.TabIndex = 9;
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "Request.png");
+            imageList1.Images.SetKeyName(1, "Payment.png");
+            imageList1.Images.SetKeyName(2, "Manage.png");
+            imageList1.Images.SetKeyName(3, "Home.png");
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(944, 521);
-            Controls.Add(pnlDisplay);
-            Controls.Add(pbxLogo);
-            Controls.Add(pnlTitlebar);
-            Controls.Add(sidebarContainer);
-            FormBorderStyle = FormBorderStyle.None;
+            ClientSize = new Size(877, 599);
+            Controls.Add(materialTabControl1);
+            DrawerTabControl = materialTabControl1;
+            MinimumSize = new Size(877, 599);
             Name = "Dashboard";
-            Text = " ";
-            ((System.ComponentModel.ISupportInitialize)pbxLogo).EndInit();
-            sidebarContainer.ResumeLayout(false);
+            Sizable = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "HoaMage";
+            materialTabControl1.ResumeLayout(false);
+            tbpProfile.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel8.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDisplay).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private PictureBox pbxLogo;
-        private FlowLayoutPanel sidebarContainer;
+        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private TabPage tbpProfile;
+        private TabPage tbpHome;
+        private TabPage tbpRequest;
+        private TabPage tbpPayment;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private MaterialSkin.Controls.MaterialButton btnMembers;
+        private MaterialSkin.Controls.MaterialButton btnProperties;
+        private MaterialSkin.Controls.MaterialButton btnVehicles;
+        private MaterialSkin.Controls.MaterialButton btnOccupants;
         private Panel panel1;
-        private Button btnMenu;
-        private Panel panel2;
-        private Panel panel3;
-        private Button btnHome;
-        private Panel panel4;
-        private Button btnManage;
-        private Panel panel5;
-        private Button btnPayments;
-        private Panel panel6;
-        private Button btnRequest;
-        private Panel panel7;
-        private Panel panel8;
-        private Button btnLogout;
-        private Panel pnlTitlebar;
-        private System.Windows.Forms.Timer sidebarTimer;
-        private TextBox tbxID;
-        private Panel pnlDisplay;
+        private MaterialSkin.Controls.MaterialButton btnDelete;
+        private MaterialSkin.Controls.MaterialButton btnAdd;
+        private DataGridView dgvDisplay;
+        private MaterialSkin.Controls.MaterialButton btnSearch;
+        private TextBox tbxSearch;
+        private Label label1;
+        private ImageList imageList1;
+        private MaterialSkin.Controls.MaterialButton btnAccounts;
     }
 }

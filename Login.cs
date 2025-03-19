@@ -52,10 +52,19 @@ namespace HoaMage
 
                                     Identification.AccountID = AccountID;
                                     Identification.Role = UserRole;
-
-                                        Dashboard homeowner = new Dashboard();
-                                        homeowner.Show();
-                                        this.Hide();
+                                if(UserRole == "Admin")
+                                {
+                                    Dashboard dashboard = new Dashboard();
+                                    dashboard.Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    HomeownerDashboard homeownerDashboard = new HomeownerDashboard();
+                                    homeownerDashboard.Show();
+                                    this.Hide();
+                                }
+                                        
                             }
                             else
                             {

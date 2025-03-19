@@ -1,104 +1,197 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-
+using MaterialSkin.Controls;
 
 namespace HoaMage
 {
-    public partial class Dashboard : Shared
+    public partial class Dashboard : MaterialForm
     {
-        bool sidebarExpand;
+        private string currentTable = "";
         public Dashboard()
         {
             InitializeComponent();
-            int AID = Identification.AccountID;
-            string Role = Identification.Role;
-            tbxID.Text = AID + " " + Role.ToString();
-            sidebarExpand = false;
+            Shared.Set(this);
         }
-        private void btnHome_Click(object sender, EventArgs e)
-        {
 
-        }
-        private void btnManage_Click(object sender, EventArgs e)
+        private void LoadData()
         {
-            if (Identification.Role == "Admin")
+            if (string.IsNullOrEmpty(currentTable)) return;
+
+            string query = $"SELECT * FROM {currentTable}";
+            DataSet ds = DatabaseHelper.ExecuteQuery(query);
+
+            if (ds.Tables.Count > 0)
             {
-                ShowUserControl(new AdminManage(), pnlDisplay);
-                //working
+                dgvDisplay.DataSource = ds.Tables[0];
             }
             else
             {
-                ShowUserControl(new HomeownerManage(), pnlDisplay);
-                //working
+                dgvDisplay.DataSource = null;
+            }
+        }
+
+        private void btnMembers_Click(object sender, EventArgs e)
+        {
+            currentTable = "MemberInformation";
+            LoadData();
+        }
+
+        private void btnProperties_Click(object sender, EventArgs e)
+        {
+            currentTable = "PropertyInformation";
+            LoadData();
+        }
+
+        private void btnVehicles_Click(object sender, EventArgs e)
+        {
+            currentTable = "VehicleInformation";
+            LoadData();
+        }
+
+        private void btnOccupants_Click(object sender, EventArgs e)
+        {
+            currentTable = "OccupantInformation";
+            LoadData();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Registration register = new Registration();
+            register.IsFromDashboard = true;
+            register.Show();
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(currentTable))
+            {
+                MessageBox.Show("Please select a table first.");
+                return;
             }
 
-        }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            sidebarTimer.Start();
-        }
-
-        private void sidebarTimer_Tick(object sender, EventArgs e)
-        {
-            if (sidebarExpand)
+            if (string.IsNullOrWhiteSpace(tbxSearch.Text))
             {
-                sidebarContainer.Width -= 30;
-                if (sidebarContainer.Width == sidebarContainer.MinimumSize.Width)
-                {
-                    sidebarExpand = false;
-                    sidebarTimer.Stop();
-                }
+                MessageBox.Show("Please enter a search term.");
+                return;
+            }
+
+            string searchTerm = tbxSearch.Text.Trim();
+            string searchQuery = $"SELECT * FROM {currentTable} WHERE ";
+
+            switch (currentTable)
+            {
+                case "Accounts":
+                    searchQuery += $"Username LIKE '%{searchTerm}%' OR Role LIKE '%{searchTerm}%'";
+                    break;
+                case "MemberInformation":
+                    searchQuery += $"FirstName LIKE '%{searchTerm}%' OR LastName LIKE '%{searchTerm}%'";
+                    break;
+                case "PropertyInformation":
+                    searchQuery += $"HomeAddress LIKE '%{searchTerm}%' OR ResidenceName LIKE '%{searchTerm}%'";
+                    break;
+                case "VehicleInformation":
+                    searchQuery += $"PlateNumber LIKE '%{searchTerm}%' OR Model LIKE '%{searchTerm}%'";
+                    break;
+                //case "OccupantInformation":
+                //searchQuery += $"FullName LIKE '%{searchTerm}%' OR PropertyID LIKE '%{searchTerm}%'";
+                //break;
+                default:
+                    MessageBox.Show("Invalid table selection.");
+                    return;
+            }
+
+            DataSet ds = DatabaseHelper.ExecuteQuery(searchQuery);
+
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                dgvDisplay.DataSource = ds.Tables[0];
             }
             else
             {
-                sidebarContainer.Width += 30;
-                if (sidebarContainer.Width == sidebarContainer.MaximumSize.Width)
-                {
-                    sidebarExpand = true;
-                    sidebarTimer.Stop();
-                }
+                MessageBox.Show("No matching records found.");
+                dgvDisplay.DataSource = null;
             }
-        }
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            tbxSearch.Clear();
         }
 
-        private void btnPayments_Click(object sender, EventArgs e)
+
+
+
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (Identification.Role == "Admin")
+            if (string.IsNullOrEmpty(currentTable))
             {
-                ShowUserControl(new AdminPayments(), pnlDisplay);
-                //working
+                MessageBox.Show("Please select a table first.");
+                return;
+            }
+
+            if (dgvDisplay.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to delete.");
+                return;
+            }
+
+            int id = Convert.ToInt32(dgvDisplay.SelectedRows[0].Cells[0].Value);
+            string deleteQuery = $"DELETE FROM {currentTable} WHERE AccountID = {id}";
+
+            if (DatabaseHelper.ExecuteNonQuery(deleteQuery) > 0)
+            {
+                MessageBox.Show("Record deleted successfully!");
+                LoadData();
             }
             else
             {
-                ShowUserControl(new HomeownerPayments(), pnlDisplay);
-                //working
+                MessageBox.Show("Failed to delete record.");
             }
         }
 
-        private void btnRequest_Click(object sender, EventArgs e)
+        private void btnAccounts_Click(object sender, EventArgs e)
         {
-            if (Identification.Role == "Admin")
+            currentTable = "Accounts";
+            LoadData();
+        }
+
+        private void btnEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            bool enableEditing = true;
+            if (enableEditing)
             {
-                ShowUserControl(new AdminRequest(), pnlDisplay);
-                //working
+                dgvDisplay.ReadOnly = false;
             }
             else
             {
-                ShowUserControl(new HomeownerRequest(), pnlDisplay);
-                //working
+                dgvDisplay.ReadOnly = true;
+
             }
         }
+        private void dgvDisplay_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {//edit unfinished
+            if (string.IsNullOrEmpty(currentTable))
+            {
+                return;
+            }
+
+            DataGridViewRow row = dgvDisplay.Rows[e.RowIndex];
+
+            int id = Convert.ToInt32(row.Cells[0].Value);
+
+            string columnName = dgvDisplay.Columns[e.ColumnIndex].Name;
+            string newValue = row.Cells[e.ColumnIndex].Value.ToString();
+
+            string updateQuery = $"UPDATE {currentTable} SET {columnName} = '{newValue}' WHERE AccountID = {id}";
+
+            if (DatabaseHelper.ExecuteNonQuery(updateQuery) > 0)
+            {
+                MessageBox.Show("Record updated successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Failed to update record.");
+            }
+        }
+
     }
 }

@@ -35,8 +35,8 @@
             tbxUsername = new MaterialSkin.Controls.MaterialTextBox2();
             tbxPassword = new MaterialSkin.Controls.MaterialTextBox2();
             pictureBox2 = new PictureBox();
-            label2 = new Label();
             button1 = new Button();
+            linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -151,18 +151,6 @@
             pictureBox2.TabStop = false;
             pictureBox2.Click += materialLabel2_Click;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.LightSeaGreen;
-            label2.Location = new Point(566, 339);
-            label2.Name = "label2";
-            label2.Size = new Size(133, 17);
-            label2.TabIndex = 15;
-            label2.Text = "Create an account";
-            label2.Click += lblRegister_Click;
-            // 
             // button1
             // 
             button1.Location = new Point(700, 415);
@@ -173,14 +161,27 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Century Gothic", 10F);
+            linkLabel1.LinkColor = Color.LightSeaGreen;
+            linkLabel1.Location = new Point(561, 339);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(143, 19);
+            linkLabel1.TabIndex = 17;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Create an Account";
+            linkLabel1.Click += lblRegister_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(787, 450);
+            Controls.Add(linkLabel1);
             Controls.Add(button1);
-            Controls.Add(label2);
             Controls.Add(pictureBox2);
             Controls.Add(tbxPassword);
             Controls.Add(tbxUsername);
@@ -205,7 +206,7 @@
         private MaterialSkin.Controls.MaterialTextBox2 tbxUsername;
         private MaterialSkin.Controls.MaterialTextBox2 tbxPassword;
         private PictureBox pictureBox2;
-        private Label label2;
         private Button button1;
+        private LinkLabel linkLabel1;
     }
 }

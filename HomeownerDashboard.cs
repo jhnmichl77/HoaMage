@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MaterialSkin.Controls;
 namespace HoaMage
 {
-    public partial class HomeownerManage : UserControl
+    public partial class HomeownerDashboard: MaterialForm
     {
-        public HomeownerManage()
+        public HomeownerDashboard()
         {
             InitializeComponent();
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
+            Shared.Set(this);
+            
         }
     }
 }

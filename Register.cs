@@ -12,6 +12,8 @@ namespace HoaMage
 {
     public partial class Registration : Shared
     {
+        public bool IsFromDashboard { get; set; } = false;
+
         public Registration()
         {
             InitializeComponent();

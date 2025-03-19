@@ -34,12 +34,6 @@
             cbxRole = new ComboBox();
             tbxConfirmPassword = new MaterialSkin.Controls.MaterialTextBox2();
             btnNext = new MaterialSkin.Controls.MaterialButton();
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // tbxUsername
@@ -51,8 +45,8 @@
             tbxUsername.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             tbxUsername.HideSelection = true;
             tbxUsername.Hint = "Username";
-            tbxUsername.LeadingIcon = null;
-            tbxUsername.Location = new Point(63, 49);
+            tbxUsername.LeadingIcon = Properties.Resources._274c61d5_e0b8_4c7a_bd67_f6adf21e17fa_removalai_preview;
+            tbxUsername.Location = new Point(37, 48);
             tbxUsername.MaxLength = 32767;
             tbxUsername.MouseState = MaterialSkin.MouseState.OUT;
             tbxUsername.Name = "tbxUsername";
@@ -80,8 +74,8 @@
             tbxPassword.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             tbxPassword.HideSelection = true;
             tbxPassword.Hint = "Password";
-            tbxPassword.LeadingIcon = null;
-            tbxPassword.Location = new Point(63, 103);
+            tbxPassword.LeadingIcon = Properties.Resources._0ac81286_c507_4f48_9480_59c2934c1aa3_removalai_preview;
+            tbxPassword.Location = new Point(37, 102);
             tbxPassword.MaxLength = 32767;
             tbxPassword.MouseState = MaterialSkin.MouseState.OUT;
             tbxPassword.Name = "tbxPassword";
@@ -109,8 +103,8 @@
             tbxEmailAddress.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             tbxEmailAddress.HideSelection = true;
             tbxEmailAddress.Hint = "Email Address";
-            tbxEmailAddress.LeadingIcon = null;
-            tbxEmailAddress.Location = new Point(63, 251);
+            tbxEmailAddress.LeadingIcon = Properties.Resources.c52ecfb6_cbc4_4ef2_b554_ebd49559bb66_removalai_preview;
+            tbxEmailAddress.Location = new Point(37, 250);
             tbxEmailAddress.MaxLength = 32767;
             tbxEmailAddress.MouseState = MaterialSkin.MouseState.OUT;
             tbxEmailAddress.Name = "tbxEmailAddress";
@@ -133,8 +127,8 @@
             // 
             cbxRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxRole.FormattingEnabled = true;
-            cbxRole.Items.AddRange(new object[] { "Admin", "Homeowner" });
-            cbxRole.Location = new Point(63, 305);
+            cbxRole.Items.AddRange(new object[] { "Renter", "Homeowner" });
+            cbxRole.Location = new Point(37, 304);
             cbxRole.Name = "cbxRole";
             cbxRole.Size = new Size(121, 23);
             cbxRole.TabIndex = 17;
@@ -149,7 +143,7 @@
             tbxConfirmPassword.HideSelection = true;
             tbxConfirmPassword.Hint = "Confirm Password";
             tbxConfirmPassword.LeadingIcon = null;
-            tbxConfirmPassword.Location = new Point(63, 157);
+            tbxConfirmPassword.Location = new Point(37, 156);
             tbxConfirmPassword.MaxLength = 32767;
             tbxConfirmPassword.MouseState = MaterialSkin.MouseState.OUT;
             tbxConfirmPassword.Name = "tbxConfirmPassword";
@@ -176,7 +170,7 @@
             btnNext.Depth = 0;
             btnNext.HighEmphasis = true;
             btnNext.Icon = null;
-            btnNext.Location = new Point(264, 308);
+            btnNext.Location = new Point(238, 307);
             btnNext.Margin = new Padding(4, 6, 4, 6);
             btnNext.MouseState = MaterialSkin.MouseState.HOVER;
             btnNext.Name = "btnNext";
@@ -189,44 +183,11 @@
             btnNext.UseVisualStyleBackColor = false;
             btnNext.Click += btnNext_Click;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources._274c61d5_e0b8_4c7a_bd67_f6adf21e17fa_removalai_preview;
-            pictureBox1.Location = new Point(19, 60);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(38, 31);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 20;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources._0ac81286_c507_4f48_9480_59c2934c1aa3_removalai_preview;
-            pictureBox2.Location = new Point(19, 112);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(38, 31);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 21;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources.c52ecfb6_cbc4_4ef2_b554_ebd49559bb66_removalai_preview;
-            pictureBox3.Location = new Point(19, 259);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(38, 31);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 22;
-            pictureBox3.TabStop = false;
-            // 
             // AccountAccess
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(pictureBox3);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox1);
             Controls.Add(btnNext);
             Controls.Add(tbxConfirmPassword);
             Controls.Add(cbxRole);
@@ -235,9 +196,6 @@
             Controls.Add(tbxUsername);
             Name = "AccountAccess";
             Size = new Size(800, 369);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -250,8 +208,5 @@
         private ComboBox cbxRole;
         private MaterialSkin.Controls.MaterialTextBox2 tbxConfirmPassword;
         private MaterialSkin.Controls.MaterialButton btnNext;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
     }
 }
