@@ -40,19 +40,31 @@
             tbpVehicle = new TabPage();
             materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             tbpRequest = new TabPage();
-            tbpPayment = new TabPage();
-            imageList1 = new ImageList(components);
-            materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
-            materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
-            textBox1 = new TextBox();
             btnSubmit = new MaterialSkin.Controls.MaterialButton();
+            textBox1 = new TextBox();
+            materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
+            materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
+            tbpPayment = new TabPage();
             dataGridView1 = new DataGridView();
+            imageList1 = new ImageList(components);
+            materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            tbxAccountName = new MaterialSkin.Controls.MaterialTextBox2();
+            tbxCardNumber = new MaterialSkin.Controls.MaterialTextBox2();
+            tbxExpiry = new MaterialSkin.Controls.MaterialTextBox2();
+            tbxCVC = new MaterialSkin.Controls.MaterialTextBox2();
+            materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            pictureBox1 = new PictureBox();
+            tbxReference = new MaterialSkin.Controls.MaterialTextBox2();
             materialTabControl1.SuspendLayout();
             tbpProfile.SuspendLayout();
             materialTabControl2.SuspendLayout();
             tbpRequest.SuspendLayout();
             tbpPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            materialCard1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -181,50 +193,32 @@
             tbpRequest.Text = "Request";
             tbpRequest.UseVisualStyleBackColor = true;
             // 
-            // tbpPayment
+            // btnSubmit
             // 
-            tbpPayment.Controls.Add(dataGridView1);
-            tbpPayment.ImageKey = "Payment.png";
-            tbpPayment.Location = new Point(4, 39);
-            tbpPayment.Name = "tbpPayment";
-            tbpPayment.Padding = new Padding(3);
-            tbpPayment.Size = new Size(863, 489);
-            tbpPayment.TabIndex = 3;
-            tbpPayment.Text = "Payment";
-            tbpPayment.UseVisualStyleBackColor = true;
+            btnSubmit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSubmit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSubmit.Depth = 0;
+            btnSubmit.HighEmphasis = true;
+            btnSubmit.Icon = null;
+            btnSubmit.Location = new Point(772, 447);
+            btnSubmit.Margin = new Padding(4, 6, 4, 6);
+            btnSubmit.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.NoAccentTextColor = Color.Empty;
+            btnSubmit.Size = new Size(75, 36);
+            btnSubmit.TabIndex = 3;
+            btnSubmit.Text = "Submit";
+            btnSubmit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSubmit.UseAccentColor = false;
+            btnSubmit.UseVisualStyleBackColor = true;
             // 
-            // imageList1
+            // textBox1
             // 
-            imageList1.ColorDepth = ColorDepth.Depth32Bit;
-            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
-            imageList1.TransparentColor = Color.Transparent;
-            imageList1.Images.SetKeyName(0, "Request.png");
-            imageList1.Images.SetKeyName(1, "Payment.png");
-            imageList1.Images.SetKeyName(2, "Manage.png");
-            imageList1.Images.SetKeyName(3, "Home.png");
-            // 
-            // materialComboBox1
-            // 
-            materialComboBox1.AutoResize = false;
-            materialComboBox1.BackColor = Color.FromArgb(255, 255, 255);
-            materialComboBox1.Depth = 0;
-            materialComboBox1.DrawMode = DrawMode.OwnerDrawVariable;
-            materialComboBox1.DropDownHeight = 174;
-            materialComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialComboBox1.DropDownWidth = 121;
-            materialComboBox1.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialComboBox1.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialComboBox1.FormattingEnabled = true;
-            materialComboBox1.Hint = "Type";
-            materialComboBox1.IntegralHeight = false;
-            materialComboBox1.ItemHeight = 43;
-            materialComboBox1.Location = new Point(22, 5);
-            materialComboBox1.MaxDropDownItems = 4;
-            materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
-            materialComboBox1.Name = "materialComboBox1";
-            materialComboBox1.Size = new Size(193, 49);
-            materialComboBox1.StartIndex = 0;
-            materialComboBox1.TabIndex = 0;
+            textBox1.Location = new Point(22, 61);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(825, 380);
+            textBox1.TabIndex = 2;
             // 
             // materialTextBox21
             // 
@@ -232,7 +226,7 @@
             materialTextBox21.BackgroundImageLayout = ImageLayout.None;
             materialTextBox21.CharacterCasing = CharacterCasing.Normal;
             materialTextBox21.Depth = 0;
-            materialTextBox21.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBox21.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox21.HideSelection = true;
             materialTextBox21.Hint = "Subject";
             materialTextBox21.LeadingIcon = null;
@@ -255,32 +249,49 @@
             materialTextBox21.TrailingIcon = null;
             materialTextBox21.UseSystemPasswordChar = false;
             // 
-            // textBox1
+            // materialComboBox1
             // 
-            textBox1.Location = new Point(22, 61);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(825, 380);
-            textBox1.TabIndex = 2;
+            materialComboBox1.AutoResize = false;
+            materialComboBox1.BackColor = Color.FromArgb(255, 255, 255);
+            materialComboBox1.Depth = 0;
+            materialComboBox1.DrawMode = DrawMode.OwnerDrawVariable;
+            materialComboBox1.DropDownHeight = 174;
+            materialComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            materialComboBox1.DropDownWidth = 121;
+            materialComboBox1.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialComboBox1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialComboBox1.FormattingEnabled = true;
+            materialComboBox1.Hint = "Type";
+            materialComboBox1.IntegralHeight = false;
+            materialComboBox1.ItemHeight = 43;
+            materialComboBox1.Location = new Point(22, 5);
+            materialComboBox1.MaxDropDownItems = 4;
+            materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
+            materialComboBox1.Name = "materialComboBox1";
+            materialComboBox1.Size = new Size(193, 49);
+            materialComboBox1.StartIndex = 0;
+            materialComboBox1.TabIndex = 0;
             // 
-            // btnSubmit
+            // tbpPayment
             // 
-            btnSubmit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnSubmit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnSubmit.Depth = 0;
-            btnSubmit.HighEmphasis = true;
-            btnSubmit.Icon = null;
-            btnSubmit.Location = new Point(689, 447);
-            btnSubmit.Margin = new Padding(4, 6, 4, 6);
-            btnSubmit.MouseState = MaterialSkin.MouseState.HOVER;
-            btnSubmit.Name = "btnSubmit";
-            btnSubmit.NoAccentTextColor = Color.Empty;
-            btnSubmit.Size = new Size(75, 36);
-            btnSubmit.TabIndex = 3;
-            btnSubmit.Text = "Submit";
-            btnSubmit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnSubmit.UseAccentColor = false;
-            btnSubmit.UseVisualStyleBackColor = true;
+            tbpPayment.Controls.Add(tbxReference);
+            tbpPayment.Controls.Add(materialButton1);
+            tbpPayment.Controls.Add(tbxCVC);
+            tbpPayment.Controls.Add(tbxExpiry);
+            tbpPayment.Controls.Add(tbxCardNumber);
+            tbpPayment.Controls.Add(tbxAccountName);
+            tbpPayment.Controls.Add(materialLabel2);
+            tbpPayment.Controls.Add(materialLabel1);
+            tbpPayment.Controls.Add(materialCard1);
+            tbpPayment.Controls.Add(dataGridView1);
+            tbpPayment.ImageKey = "Payment.png";
+            tbpPayment.Location = new Point(4, 39);
+            tbpPayment.Name = "tbpPayment";
+            tbpPayment.Padding = new Padding(3);
+            tbpPayment.Size = new Size(863, 489);
+            tbpPayment.TabIndex = 3;
+            tbpPayment.Text = "Payment";
+            tbpPayment.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -290,10 +301,234 @@
             dataGridView1.Size = new Size(512, 449);
             dataGridView1.TabIndex = 0;
             // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "Request.png");
+            imageList1.Images.SetKeyName(1, "Payment.png");
+            imageList1.Images.SetKeyName(2, "Manage.png");
+            imageList1.Images.SetKeyName(3, "Home.png");
+            // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(pictureBox1);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(547, 20);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(299, 157);
+            materialCard1.TabIndex = 1;
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(570, 202);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(1, 0);
+            materialLabel1.TabIndex = 2;
+            // 
+            // materialLabel2
+            // 
+            materialLabel2.AutoSize = true;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.Location = new Point(547, 191);
+            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(87, 19);
+            materialLabel2.TabIndex = 3;
+            materialLabel2.Text = "Card Details";
+            // 
+            // tbxAccountName
+            // 
+            tbxAccountName.AnimateReadOnly = false;
+            tbxAccountName.BackgroundImageLayout = ImageLayout.None;
+            tbxAccountName.CharacterCasing = CharacterCasing.Normal;
+            tbxAccountName.Depth = 0;
+            tbxAccountName.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxAccountName.HideSelection = true;
+            tbxAccountName.Hint = "Account Name";
+            tbxAccountName.LeadingIcon = null;
+            tbxAccountName.Location = new Point(547, 259);
+            tbxAccountName.MaxLength = 32767;
+            tbxAccountName.MouseState = MaterialSkin.MouseState.OUT;
+            tbxAccountName.Name = "tbxAccountName";
+            tbxAccountName.PasswordChar = '\0';
+            tbxAccountName.PrefixSuffixText = null;
+            tbxAccountName.ReadOnly = false;
+            tbxAccountName.RightToLeft = RightToLeft.No;
+            tbxAccountName.SelectedText = "";
+            tbxAccountName.SelectionLength = 0;
+            tbxAccountName.SelectionStart = 0;
+            tbxAccountName.ShortcutsEnabled = true;
+            tbxAccountName.Size = new Size(299, 48);
+            tbxAccountName.TabIndex = 4;
+            tbxAccountName.TabStop = false;
+            tbxAccountName.TextAlign = HorizontalAlignment.Left;
+            tbxAccountName.TrailingIcon = null;
+            tbxAccountName.UseSystemPasswordChar = false;
+            // 
+            // tbxCardNumber
+            // 
+            tbxCardNumber.AnimateReadOnly = false;
+            tbxCardNumber.BackgroundImageLayout = ImageLayout.None;
+            tbxCardNumber.CharacterCasing = CharacterCasing.Normal;
+            tbxCardNumber.Depth = 0;
+            tbxCardNumber.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxCardNumber.HideSelection = true;
+            tbxCardNumber.Hint = "Card Number";
+            tbxCardNumber.LeadingIcon = null;
+            tbxCardNumber.Location = new Point(547, 322);
+            tbxCardNumber.MaxLength = 32767;
+            tbxCardNumber.MouseState = MaterialSkin.MouseState.OUT;
+            tbxCardNumber.Name = "tbxCardNumber";
+            tbxCardNumber.PasswordChar = '\0';
+            tbxCardNumber.PrefixSuffixText = null;
+            tbxCardNumber.ReadOnly = false;
+            tbxCardNumber.RightToLeft = RightToLeft.No;
+            tbxCardNumber.SelectedText = "";
+            tbxCardNumber.SelectionLength = 0;
+            tbxCardNumber.SelectionStart = 0;
+            tbxCardNumber.ShortcutsEnabled = true;
+            tbxCardNumber.Size = new Size(299, 48);
+            tbxCardNumber.TabIndex = 5;
+            tbxCardNumber.TabStop = false;
+            tbxCardNumber.TextAlign = HorizontalAlignment.Left;
+            tbxCardNumber.TrailingIcon = null;
+            tbxCardNumber.UseSystemPasswordChar = false;
+            // 
+            // tbxExpiry
+            // 
+            tbxExpiry.AnimateReadOnly = false;
+            tbxExpiry.BackgroundImageLayout = ImageLayout.None;
+            tbxExpiry.CharacterCasing = CharacterCasing.Normal;
+            tbxExpiry.Depth = 0;
+            tbxExpiry.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxExpiry.HideSelection = true;
+            tbxExpiry.Hint = "Expiry (mm/yyyy)";
+            tbxExpiry.LeadingIcon = null;
+            tbxExpiry.Location = new Point(547, 376);
+            tbxExpiry.MaxLength = 32767;
+            tbxExpiry.MouseState = MaterialSkin.MouseState.OUT;
+            tbxExpiry.Name = "tbxExpiry";
+            tbxExpiry.PasswordChar = '\0';
+            tbxExpiry.PrefixSuffixText = null;
+            tbxExpiry.ReadOnly = false;
+            tbxExpiry.RightToLeft = RightToLeft.No;
+            tbxExpiry.SelectedText = "";
+            tbxExpiry.SelectionLength = 0;
+            tbxExpiry.SelectionStart = 0;
+            tbxExpiry.ShortcutsEnabled = true;
+            tbxExpiry.Size = new Size(148, 48);
+            tbxExpiry.TabIndex = 6;
+            tbxExpiry.TabStop = false;
+            tbxExpiry.TextAlign = HorizontalAlignment.Left;
+            tbxExpiry.TrailingIcon = null;
+            tbxExpiry.UseSystemPasswordChar = false;
+            // 
+            // tbxCVC
+            // 
+            tbxCVC.AnimateReadOnly = false;
+            tbxCVC.BackgroundImageLayout = ImageLayout.None;
+            tbxCVC.CharacterCasing = CharacterCasing.Normal;
+            tbxCVC.Depth = 0;
+            tbxCVC.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxCVC.HideSelection = true;
+            tbxCVC.Hint = "CVC";
+            tbxCVC.LeadingIcon = null;
+            tbxCVC.Location = new Point(701, 376);
+            tbxCVC.MaxLength = 32767;
+            tbxCVC.MouseState = MaterialSkin.MouseState.OUT;
+            tbxCVC.Name = "tbxCVC";
+            tbxCVC.PasswordChar = '\0';
+            tbxCVC.PrefixSuffixText = null;
+            tbxCVC.ReadOnly = false;
+            tbxCVC.RightToLeft = RightToLeft.No;
+            tbxCVC.SelectedText = "";
+            tbxCVC.SelectionLength = 0;
+            tbxCVC.SelectionStart = 0;
+            tbxCVC.ShortcutsEnabled = true;
+            tbxCVC.Size = new Size(145, 48);
+            tbxCVC.TabIndex = 7;
+            tbxCVC.TabStop = false;
+            tbxCVC.TextAlign = HorizontalAlignment.Left;
+            tbxCVC.TrailingIcon = null;
+            tbxCVC.UseSystemPasswordChar = false;
+            // 
+            // materialButton1
+            // 
+            materialButton1.AutoSize = false;
+            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton1.Depth = 0;
+            materialButton1.HighEmphasis = true;
+            materialButton1.Icon = null;
+            materialButton1.Location = new Point(547, 433);
+            materialButton1.Margin = new Padding(4, 6, 4, 6);
+            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton1.Name = "materialButton1";
+            materialButton1.NoAccentTextColor = Color.Empty;
+            materialButton1.Size = new Size(299, 36);
+            materialButton1.TabIndex = 8;
+            materialButton1.Text = "Pay";
+            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton1.UseAccentColor = false;
+            materialButton1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(14, 14);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(271, 129);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // tbxReference
+            // 
+            tbxReference.AnimateReadOnly = false;
+            tbxReference.BackgroundImageLayout = ImageLayout.None;
+            tbxReference.CharacterCasing = CharacterCasing.Normal;
+            tbxReference.Depth = 0;
+            tbxReference.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxReference.HideSelection = true;
+            tbxReference.Hint = "Reference Number";
+            tbxReference.LeadingIcon = null;
+            tbxReference.Location = new Point(547, 213);
+            tbxReference.MaxLength = 32767;
+            tbxReference.MouseState = MaterialSkin.MouseState.OUT;
+            tbxReference.Name = "tbxReference";
+            tbxReference.PasswordChar = '\0';
+            tbxReference.PrefixSuffixText = null;
+            tbxReference.ReadOnly = false;
+            tbxReference.RightToLeft = RightToLeft.No;
+            tbxReference.SelectedText = "";
+            tbxReference.SelectionLength = 0;
+            tbxReference.SelectionStart = 0;
+            tbxReference.ShortcutsEnabled = true;
+            tbxReference.Size = new Size(299, 48);
+            tbxReference.TabIndex = 9;
+            tbxReference.TabStop = false;
+            tbxReference.TextAlign = HorizontalAlignment.Left;
+            tbxReference.TrailingIcon = null;
+            tbxReference.UseSystemPasswordChar = false;
+            // 
             // HomeownerDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(877, 599);
             Controls.Add(materialTabControl1);
             DrawerTabControl = materialTabControl1;
@@ -306,7 +541,10 @@
             tbpRequest.ResumeLayout(false);
             tbpRequest.PerformLayout();
             tbpPayment.ResumeLayout(false);
+            tbpPayment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            materialCard1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -329,5 +567,15 @@
         private TextBox textBox1;
         private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
         private DataGridView dataGridView1;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxCVC;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxExpiry;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxCardNumber;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxAccountName;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private PictureBox pictureBox1;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxReference;
     }
 }
