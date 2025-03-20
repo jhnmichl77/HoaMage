@@ -10,13 +10,18 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 namespace HoaMage
 {
-    public partial class HomeownerDashboard: MaterialForm
+    public partial class HomeownerDashboard : MaterialForm
     {
         public HomeownerDashboard()
         {
             InitializeComponent();
             Shared.Set(this);
-            
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

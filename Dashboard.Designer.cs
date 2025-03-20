@@ -32,6 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tbpHome = new TabPage();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            materialCard6 = new MaterialSkin.Controls.MaterialCard();
+            materialCard5 = new MaterialSkin.Controls.MaterialCard();
+            materialCard4 = new MaterialSkin.Controls.MaterialCard();
             tbpProfile = new TabPage();
             panel1 = new Panel();
             btnSearch = new MaterialSkin.Controls.MaterialButton();
@@ -47,13 +52,37 @@
             btnVehicles = new MaterialSkin.Controls.MaterialButton();
             btnOccupants = new MaterialSkin.Controls.MaterialButton();
             tbpRequest = new TabPage();
+            materialCard9 = new MaterialSkin.Controls.MaterialCard();
+            materialCard8 = new MaterialSkin.Controls.MaterialCard();
+            materialCard7 = new MaterialSkin.Controls.MaterialCard();
+            btnResolved = new MaterialSkin.Controls.MaterialButton();
+            btnMail = new MaterialSkin.Controls.MaterialButton();
+            dataGridView2 = new DataGridView();
             tbpPayment = new TabPage();
+            btnRefund = new MaterialSkin.Controls.MaterialButton();
+            materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            label2 = new Label();
+            dataGridView3 = new DataGridView();
+            tbpAnnouncement = new TabPage();
+            btnCreate = new MaterialSkin.Controls.MaterialButton();
+            btnRemove = new MaterialSkin.Controls.MaterialButton();
+            btnEdit = new MaterialSkin.Controls.MaterialButton();
+            dataGridView1 = new DataGridView();
             imageList1 = new ImageList(components);
             materialTabControl1.SuspendLayout();
+            tbpHome.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             tbpProfile.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDisplay).BeginInit();
             flowLayoutPanel1.SuspendLayout();
+            tbpRequest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            tbpPayment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            tbpAnnouncement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -62,6 +91,7 @@
             materialTabControl1.Controls.Add(tbpProfile);
             materialTabControl1.Controls.Add(tbpRequest);
             materialTabControl1.Controls.Add(tbpPayment);
+            materialTabControl1.Controls.Add(tbpAnnouncement);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.ImageList = imageList1;
@@ -75,6 +105,7 @@
             // 
             // tbpHome
             // 
+            tbpHome.Controls.Add(flowLayoutPanel2);
             tbpHome.ImageKey = "Home.png";
             tbpHome.Location = new Point(4, 39);
             tbpHome.Name = "tbpHome";
@@ -83,6 +114,70 @@
             tbpHome.TabIndex = 1;
             tbpHome.Text = "Home";
             tbpHome.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(materialCard3);
+            flowLayoutPanel2.Controls.Add(materialCard6);
+            flowLayoutPanel2.Controls.Add(materialCard5);
+            flowLayoutPanel2.Controls.Add(materialCard4);
+            flowLayoutPanel2.Dock = DockStyle.Fill;
+            flowLayoutPanel2.Location = new Point(3, 3);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(857, 483);
+            flowLayoutPanel2.TabIndex = 0;
+            // 
+            // materialCard3
+            // 
+            materialCard3.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard3.Depth = 0;
+            materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard3.Location = new Point(14, 14);
+            materialCard3.Margin = new Padding(14);
+            materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard3.Name = "materialCard3";
+            materialCard3.Padding = new Padding(14);
+            materialCard3.Size = new Size(186, 93);
+            materialCard3.TabIndex = 0;
+            // 
+            // materialCard6
+            // 
+            materialCard6.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard6.Depth = 0;
+            materialCard6.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard6.Location = new Point(228, 14);
+            materialCard6.Margin = new Padding(14);
+            materialCard6.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard6.Name = "materialCard6";
+            materialCard6.Padding = new Padding(14);
+            materialCard6.Size = new Size(186, 93);
+            materialCard6.TabIndex = 1;
+            // 
+            // materialCard5
+            // 
+            materialCard5.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard5.Depth = 0;
+            materialCard5.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard5.Location = new Point(442, 14);
+            materialCard5.Margin = new Padding(14);
+            materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard5.Name = "materialCard5";
+            materialCard5.Padding = new Padding(14);
+            materialCard5.Size = new Size(186, 93);
+            materialCard5.TabIndex = 1;
+            // 
+            // materialCard4
+            // 
+            materialCard4.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard4.Depth = 0;
+            materialCard4.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard4.Location = new Point(656, 14);
+            materialCard4.Margin = new Padding(14);
+            materialCard4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard4.Name = "materialCard4";
+            materialCard4.Padding = new Padding(14);
+            materialCard4.Size = new Size(186, 93);
+            materialCard4.TabIndex = 1;
             // 
             // tbpProfile
             // 
@@ -332,6 +427,12 @@
             // 
             // tbpRequest
             // 
+            tbpRequest.Controls.Add(materialCard9);
+            tbpRequest.Controls.Add(materialCard8);
+            tbpRequest.Controls.Add(materialCard7);
+            tbpRequest.Controls.Add(btnResolved);
+            tbpRequest.Controls.Add(btnMail);
+            tbpRequest.Controls.Add(dataGridView2);
             tbpRequest.ImageKey = "Request.png";
             tbpRequest.Location = new Point(4, 39);
             tbpRequest.Name = "tbpRequest";
@@ -341,8 +442,98 @@
             tbpRequest.Text = "Request";
             tbpRequest.UseVisualStyleBackColor = true;
             // 
+            // materialCard9
+            // 
+            materialCard9.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard9.Depth = 0;
+            materialCard9.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard9.Location = new Point(460, 372);
+            materialCard9.Margin = new Padding(14);
+            materialCard9.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard9.Name = "materialCard9";
+            materialCard9.Padding = new Padding(14);
+            materialCard9.Size = new Size(209, 100);
+            materialCard9.TabIndex = 5;
+            // 
+            // materialCard8
+            // 
+            materialCard8.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard8.Depth = 0;
+            materialCard8.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard8.Location = new Point(234, 372);
+            materialCard8.Margin = new Padding(14);
+            materialCard8.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard8.Name = "materialCard8";
+            materialCard8.Padding = new Padding(14);
+            materialCard8.Size = new Size(209, 100);
+            materialCard8.TabIndex = 4;
+            // 
+            // materialCard7
+            // 
+            materialCard7.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard7.Depth = 0;
+            materialCard7.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard7.Location = new Point(18, 372);
+            materialCard7.Margin = new Padding(14);
+            materialCard7.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard7.Name = "materialCard7";
+            materialCard7.Padding = new Padding(14);
+            materialCard7.Size = new Size(200, 100);
+            materialCard7.TabIndex = 3;
+            // 
+            // btnResolved
+            // 
+            btnResolved.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnResolved.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnResolved.Depth = 0;
+            btnResolved.HighEmphasis = true;
+            btnResolved.Icon = null;
+            btnResolved.Location = new Point(687, 415);
+            btnResolved.Margin = new Padding(4, 6, 4, 6);
+            btnResolved.MouseState = MaterialSkin.MouseState.HOVER;
+            btnResolved.Name = "btnResolved";
+            btnResolved.NoAccentTextColor = Color.Empty;
+            btnResolved.Size = new Size(160, 36);
+            btnResolved.TabIndex = 2;
+            btnResolved.Text = "Mark as Resolved";
+            btnResolved.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnResolved.UseAccentColor = false;
+            btnResolved.UseVisualStyleBackColor = true;
+            // 
+            // btnMail
+            // 
+            btnMail.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnMail.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnMail.Depth = 0;
+            btnMail.HighEmphasis = true;
+            btnMail.Icon = null;
+            btnMail.Location = new Point(756, 367);
+            btnMail.Margin = new Padding(4, 6, 4, 6);
+            btnMail.MouseState = MaterialSkin.MouseState.HOVER;
+            btnMail.Name = "btnMail";
+            btnMail.NoAccentTextColor = Color.Empty;
+            btnMail.Size = new Size(64, 36);
+            btnMail.TabIndex = 1;
+            btnMail.Text = "Mail";
+            btnMail.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnMail.UseAccentColor = false;
+            btnMail.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(18, 17);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(827, 341);
+            dataGridView2.TabIndex = 0;
+            // 
             // tbpPayment
             // 
+            tbpPayment.Controls.Add(btnRefund);
+            tbpPayment.Controls.Add(materialCard2);
+            tbpPayment.Controls.Add(materialCard1);
+            tbpPayment.Controls.Add(label2);
+            tbpPayment.Controls.Add(dataGridView3);
             tbpPayment.ImageKey = "Payment.png";
             tbpPayment.Location = new Point(4, 39);
             tbpPayment.Name = "tbpPayment";
@@ -351,6 +542,149 @@
             tbpPayment.TabIndex = 3;
             tbpPayment.Text = "Payment";
             tbpPayment.UseVisualStyleBackColor = true;
+            // 
+            // btnRefund
+            // 
+            btnRefund.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnRefund.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnRefund.Depth = 0;
+            btnRefund.HighEmphasis = true;
+            btnRefund.Icon = null;
+            btnRefund.Location = new Point(764, 333);
+            btnRefund.Margin = new Padding(4, 6, 4, 6);
+            btnRefund.MouseState = MaterialSkin.MouseState.HOVER;
+            btnRefund.Name = "btnRefund";
+            btnRefund.NoAccentTextColor = Color.Empty;
+            btnRefund.Size = new Size(77, 36);
+            btnRefund.TabIndex = 5;
+            btnRefund.Text = "Refund";
+            btnRefund.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnRefund.UseAccentColor = false;
+            btnRefund.UseVisualStyleBackColor = true;
+            // 
+            // materialCard2
+            // 
+            materialCard2.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard2.Depth = 0;
+            materialCard2.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard2.Location = new Point(371, 333);
+            materialCard2.Margin = new Padding(14);
+            materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard2.Name = "materialCard2";
+            materialCard2.Padding = new Padding(14);
+            materialCard2.Size = new Size(304, 142);
+            materialCard2.TabIndex = 3;
+            // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(22, 333);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(304, 142);
+            materialCard1.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Pixel);
+            label2.Location = new Point(22, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(180, 25);
+            label2.TabIndex = 1;
+            label2.Text = "Transaction History";
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new Point(22, 42);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.Size = new Size(819, 274);
+            dataGridView3.TabIndex = 0;
+            // 
+            // tbpAnnouncement
+            // 
+            tbpAnnouncement.Controls.Add(btnCreate);
+            tbpAnnouncement.Controls.Add(btnRemove);
+            tbpAnnouncement.Controls.Add(btnEdit);
+            tbpAnnouncement.Controls.Add(dataGridView1);
+            tbpAnnouncement.ImageKey = "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png";
+            tbpAnnouncement.Location = new Point(4, 39);
+            tbpAnnouncement.Name = "tbpAnnouncement";
+            tbpAnnouncement.Padding = new Padding(3);
+            tbpAnnouncement.Size = new Size(863, 489);
+            tbpAnnouncement.TabIndex = 4;
+            tbpAnnouncement.Text = "Announcement";
+            tbpAnnouncement.UseVisualStyleBackColor = true;
+            // 
+            // btnCreate
+            // 
+            btnCreate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCreate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCreate.Depth = 0;
+            btnCreate.HighEmphasis = true;
+            btnCreate.Icon = null;
+            btnCreate.Location = new Point(608, 412);
+            btnCreate.Margin = new Padding(4, 6, 4, 6);
+            btnCreate.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCreate.Name = "btnCreate";
+            btnCreate.NoAccentTextColor = Color.Empty;
+            btnCreate.Size = new Size(76, 36);
+            btnCreate.TabIndex = 7;
+            btnCreate.Text = "Create";
+            btnCreate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnCreate.UseAccentColor = false;
+            btnCreate.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            btnRemove.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnRemove.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnRemove.Depth = 0;
+            btnRemove.HighEmphasis = true;
+            btnRemove.Icon = null;
+            btnRemove.Location = new Point(764, 412);
+            btnRemove.Margin = new Padding(4, 6, 4, 6);
+            btnRemove.MouseState = MaterialSkin.MouseState.HOVER;
+            btnRemove.Name = "btnRemove";
+            btnRemove.NoAccentTextColor = Color.Empty;
+            btnRemove.Size = new Size(73, 36);
+            btnRemove.TabIndex = 6;
+            btnRemove.Text = "Delete";
+            btnRemove.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnRemove.UseAccentColor = false;
+            btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            btnEdit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEdit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnEdit.Depth = 0;
+            btnEdit.HighEmphasis = true;
+            btnEdit.Icon = null;
+            btnEdit.Location = new Point(692, 412);
+            btnEdit.Margin = new Padding(4, 6, 4, 6);
+            btnEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            btnEdit.Name = "btnEdit";
+            btnEdit.NoAccentTextColor = Color.Empty;
+            btnEdit.Size = new Size(64, 36);
+            btnEdit.TabIndex = 5;
+            btnEdit.Text = "Edit";
+            btnEdit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnEdit.UseAccentColor = false;
+            btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(26, 41);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(811, 349);
+            dataGridView1.TabIndex = 4;
             // 
             // imageList1
             // 
@@ -361,6 +695,7 @@
             imageList1.Images.SetKeyName(1, "Payment.png");
             imageList1.Images.SetKeyName(2, "Manage.png");
             imageList1.Images.SetKeyName(3, "Home.png");
+            imageList1.Images.SetKeyName(4, "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png");
             // 
             // Dashboard
             // 
@@ -369,17 +704,29 @@
             ClientSize = new Size(877, 599);
             Controls.Add(materialTabControl1);
             DrawerTabControl = materialTabControl1;
+            MaximumSize = new Size(877, 599);
             MinimumSize = new Size(877, 599);
             Name = "Dashboard";
             Sizable = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "HoaMage";
             materialTabControl1.ResumeLayout(false);
+            tbpHome.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
             tbpProfile.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDisplay).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
+            tbpRequest.ResumeLayout(false);
+            tbpRequest.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            tbpPayment.ResumeLayout(false);
+            tbpPayment.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            tbpAnnouncement.ResumeLayout(false);
+            tbpAnnouncement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -404,5 +751,26 @@
         private Label label1;
         private ImageList imageList1;
         private MaterialSkin.Controls.MaterialButton btnAccounts;
+        private TabPage tbpAnnouncement;
+        private MaterialSkin.Controls.MaterialButton btnCreate;
+        private MaterialSkin.Controls.MaterialButton btnRemove;
+        private MaterialSkin.Controls.MaterialButton btnEdit;
+        private DataGridView dataGridView1;
+        private DataGridView dataGridView2;
+        private MaterialSkin.Controls.MaterialButton btnMail;
+        private MaterialSkin.Controls.MaterialButton btnResolved;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private MaterialSkin.Controls.MaterialCard materialCard3;
+        private MaterialSkin.Controls.MaterialCard materialCard6;
+        private MaterialSkin.Controls.MaterialCard materialCard5;
+        private MaterialSkin.Controls.MaterialCard materialCard4;
+        private MaterialSkin.Controls.MaterialCard materialCard2;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
+        private Label label2;
+        private DataGridView dataGridView3;
+        private MaterialSkin.Controls.MaterialCard materialCard9;
+        private MaterialSkin.Controls.MaterialCard materialCard8;
+        private MaterialSkin.Controls.MaterialCard materialCard7;
+        private MaterialSkin.Controls.MaterialButton btnRefund;
     }
 }
