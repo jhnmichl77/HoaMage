@@ -4,7 +4,7 @@ using System.Data.OleDb;
 
 public static class DatabaseHelper
 {
-    public static readonly string myConn = @"Provider = Microsoft.ACE.OLEDB.12.0; Data Source=C:\Users\Ideadpad1\Documents\HoaMageDB.accdb;";
+    public static readonly string myConn = @"Provider = Microsoft.ACE.OLEDB.12.0; Data Source=C:\Users\johnm\OneDrive\Documents\HoaMageDB.accdb;";
 
     public static DataSet ExecuteQuery(string query)
     {

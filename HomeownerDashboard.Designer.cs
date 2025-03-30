@@ -80,6 +80,8 @@
             pictureBox3 = new PictureBox();
             tbpHomeownerRequest = new TabPage();
             dataGridView1 = new DataGridView();
+            tbpOccupants = new TabPage();
+            dgvOccupants = new MaterialSkin.Controls.MaterialListView();
             tbpRequest = new TabPage();
             btnSubmit = new MaterialSkin.Controls.MaterialButton();
             textBox1 = new TextBox();
@@ -95,6 +97,15 @@
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             dgvTransactions = new DataGridView();
             imageList1 = new ImageList(components);
+            btnAddOccupant = new MaterialSkin.Controls.MaterialButton();
+            btnDeleteOccupant = new MaterialSkin.Controls.MaterialButton();
+            btnEditOccupant = new MaterialSkin.Controls.MaterialButton();
+            materialCard6 = new MaterialSkin.Controls.MaterialCard();
+            lblName = new Label();
+            lblGender = new Label();
+            lblAge = new Label();
+            lblBirthday = new Label();
+            pbxOccupantImage = new PictureBox();
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -107,9 +118,12 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             tbpHomeownerRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tbpOccupants.SuspendLayout();
             tbpRequest.SuspendLayout();
             tbpPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).BeginInit();
+            materialCard6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbxOccupantImage).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -237,6 +251,7 @@
             materialTabControl2.Controls.Add(tbpProperty);
             materialTabControl2.Controls.Add(tbpVehicle);
             materialTabControl2.Controls.Add(tbpHomeownerRequest);
+            materialTabControl2.Controls.Add(tbpOccupants);
             materialTabControl2.Depth = 0;
             materialTabControl2.Dock = DockStyle.Bottom;
             materialTabControl2.Location = new Point(3, 63);
@@ -671,6 +686,39 @@
             dataGridView1.Size = new Size(837, 383);
             dataGridView1.TabIndex = 0;
             // 
+            // tbpOccupants
+            // 
+            tbpOccupants.Controls.Add(materialCard6);
+            tbpOccupants.Controls.Add(btnEditOccupant);
+            tbpOccupants.Controls.Add(btnDeleteOccupant);
+            tbpOccupants.Controls.Add(btnAddOccupant);
+            tbpOccupants.Controls.Add(dgvOccupants);
+            tbpOccupants.Location = new Point(4, 24);
+            tbpOccupants.Name = "tbpOccupants";
+            tbpOccupants.Padding = new Padding(3);
+            tbpOccupants.Size = new Size(849, 395);
+            tbpOccupants.TabIndex = 5;
+            tbpOccupants.Text = "Occupants";
+            tbpOccupants.UseVisualStyleBackColor = true;
+            // 
+            // dgvOccupants
+            // 
+            dgvOccupants.AutoSizeTable = false;
+            dgvOccupants.BackColor = Color.FromArgb(255, 255, 255);
+            dgvOccupants.BorderStyle = BorderStyle.None;
+            dgvOccupants.Depth = 0;
+            dgvOccupants.FullRowSelect = true;
+            dgvOccupants.Location = new Point(6, 6);
+            dgvOccupants.MinimumSize = new Size(200, 100);
+            dgvOccupants.MouseLocation = new Point(-1, -1);
+            dgvOccupants.MouseState = MaterialSkin.MouseState.OUT;
+            dgvOccupants.Name = "dgvOccupants";
+            dgvOccupants.OwnerDraw = true;
+            dgvOccupants.Size = new Size(380, 383);
+            dgvOccupants.TabIndex = 0;
+            dgvOccupants.UseCompatibleStateImageBehavior = false;
+            dgvOccupants.View = View.Details;
+            // 
             // tbpRequest
             // 
             tbpRequest.Controls.Add(btnSubmit);
@@ -991,6 +1039,130 @@
             imageList1.Images.SetKeyName(2, "Manage.png");
             imageList1.Images.SetKeyName(3, "Home.png");
             // 
+            // btnAddOccupant
+            // 
+            btnAddOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddOccupant.Depth = 0;
+            btnAddOccupant.HighEmphasis = true;
+            btnAddOccupant.Icon = null;
+            btnAddOccupant.Location = new Point(614, 232);
+            btnAddOccupant.Margin = new Padding(4, 6, 4, 6);
+            btnAddOccupant.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddOccupant.Name = "btnAddOccupant";
+            btnAddOccupant.NoAccentTextColor = Color.Empty;
+            btnAddOccupant.Size = new Size(64, 36);
+            btnAddOccupant.TabIndex = 2;
+            btnAddOccupant.Text = "Add";
+            btnAddOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddOccupant.UseAccentColor = false;
+            btnAddOccupant.UseVisualStyleBackColor = true;
+            btnAddOccupant.Click += btnAddOccupant_Click;
+            // 
+            // btnDeleteOccupant
+            // 
+            btnDeleteOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteOccupant.Depth = 0;
+            btnDeleteOccupant.HighEmphasis = true;
+            btnDeleteOccupant.Icon = null;
+            btnDeleteOccupant.Location = new Point(690, 232);
+            btnDeleteOccupant.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteOccupant.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteOccupant.Name = "btnDeleteOccupant";
+            btnDeleteOccupant.NoAccentTextColor = Color.Empty;
+            btnDeleteOccupant.Size = new Size(73, 36);
+            btnDeleteOccupant.TabIndex = 3;
+            btnDeleteOccupant.Text = "Delete";
+            btnDeleteOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteOccupant.UseAccentColor = false;
+            btnDeleteOccupant.UseVisualStyleBackColor = true;
+            // 
+            // btnEditOccupant
+            // 
+            btnEditOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEditOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnEditOccupant.Depth = 0;
+            btnEditOccupant.HighEmphasis = true;
+            btnEditOccupant.Icon = null;
+            btnEditOccupant.Location = new Point(776, 232);
+            btnEditOccupant.Margin = new Padding(4, 6, 4, 6);
+            btnEditOccupant.MouseState = MaterialSkin.MouseState.HOVER;
+            btnEditOccupant.Name = "btnEditOccupant";
+            btnEditOccupant.NoAccentTextColor = Color.Empty;
+            btnEditOccupant.Size = new Size(64, 36);
+            btnEditOccupant.TabIndex = 5;
+            btnEditOccupant.Text = "Edit";
+            btnEditOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnEditOccupant.UseAccentColor = false;
+            btnEditOccupant.UseVisualStyleBackColor = true;
+            // 
+            // materialCard6
+            // 
+            materialCard6.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard6.Controls.Add(pbxOccupantImage);
+            materialCard6.Controls.Add(lblBirthday);
+            materialCard6.Controls.Add(lblAge);
+            materialCard6.Controls.Add(lblGender);
+            materialCard6.Controls.Add(lblName);
+            materialCard6.Depth = 0;
+            materialCard6.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard6.Location = new Point(427, 6);
+            materialCard6.Margin = new Padding(14);
+            materialCard6.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard6.Name = "materialCard6";
+            materialCard6.Padding = new Padding(14);
+            materialCard6.Size = new Size(413, 217);
+            materialCard6.TabIndex = 6;
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.Font = new Font("Segoe UI", 12F);
+            lblName.Location = new Point(164, 35);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(118, 21);
+            lblName.TabIndex = 0;
+            lblName.Text = "OccupantName";
+            // 
+            // lblGender
+            // 
+            lblGender.AutoSize = true;
+            lblGender.Font = new Font("Segoe UI", 12F);
+            lblGender.Location = new Point(164, 76);
+            lblGender.Name = "lblGender";
+            lblGender.Size = new Size(127, 21);
+            lblGender.TabIndex = 1;
+            lblGender.Text = "OccupantGender";
+            // 
+            // lblAge
+            // 
+            lblAge.AutoSize = true;
+            lblAge.Font = new Font("Segoe UI", 12F);
+            lblAge.Location = new Point(164, 151);
+            lblAge.Name = "lblAge";
+            lblAge.Size = new Size(103, 21);
+            lblAge.TabIndex = 2;
+            lblAge.Text = "OccupantAge";
+            // 
+            // lblBirthday
+            // 
+            lblBirthday.AutoSize = true;
+            lblBirthday.Font = new Font("Segoe UI", 12F);
+            lblBirthday.Location = new Point(164, 113);
+            lblBirthday.Name = "lblBirthday";
+            lblBirthday.Size = new Size(134, 21);
+            lblBirthday.TabIndex = 3;
+            lblBirthday.Text = "OccupantBirthday";
+            // 
+            // pbxOccupantImage
+            // 
+            pbxOccupantImage.Location = new Point(27, 49);
+            pbxOccupantImage.Name = "pbxOccupantImage";
+            pbxOccupantImage.Size = new Size(100, 100);
+            pbxOccupantImage.TabIndex = 4;
+            pbxOccupantImage.TabStop = false;
+            // 
             // HomeownerDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1018,10 +1190,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             tbpHomeownerRequest.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tbpOccupants.ResumeLayout(false);
+            tbpOccupants.PerformLayout();
             tbpRequest.ResumeLayout(false);
             tbpRequest.PerformLayout();
             tbpPayment.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).EndInit();
+            materialCard6.ResumeLayout(false);
+            materialCard6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbxOccupantImage).EndInit();
             ResumeLayout(false);
         }
 
@@ -1092,5 +1269,17 @@
         private MaterialSkin.Controls.MaterialSwitch btnMemberEdit;
         private MaterialSkin.Controls.MaterialSwitch btnPropertyEdit;
         private MaterialSkin.Controls.MaterialSwitch btnVehicleEdit;
+        private TabPage tbpOccupants;
+        private MaterialSkin.Controls.MaterialListView dgvOccupants;
+        private MaterialSkin.Controls.MaterialButton btnAddOccupant;
+        private MaterialSkin.Controls.MaterialButton btnDeleteOccupant;
+        private MaterialSkin.Controls.MaterialButton btnEditOccupant;
+        private MaterialSkin.Controls.MaterialCard materialCard6;
+        private PictureBox pbxOccupantImage;
+        private Label lblBirthday;
+        private Label lblAge;
+        private Label lblGender;
+        private Label lblName;
+        private Button button1;
     }
 }

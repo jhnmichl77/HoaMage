@@ -11,6 +11,7 @@ namespace HoaMage
             InitializeComponent();
         }
 
+      
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbxResidenceName.Text))

@@ -30,7 +30,9 @@ public class Shared : Form
         public static int Username { get; set; }
         public static int AccountID { get; set; }
         public static string Role { get; set; }
+        public static int PropertyID { get; set; }
     }
+    
     public static void ShowUserControl(UserControl userControl, Control parent)
     {
         if (parent is Panel panel2)

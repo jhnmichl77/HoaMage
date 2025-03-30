@@ -23,5 +23,11 @@ namespace HoaMage
         {
 
         }
+
+        private void btnAddOccupant_Click(object sender, EventArgs e)
+        {
+            OccupantForm occupantForm = new OccupantForm();
+            occupantForm.Show();
+        }
     }
 }
