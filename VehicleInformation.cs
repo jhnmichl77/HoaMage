@@ -18,7 +18,7 @@ namespace HoaMage
         {
             InitializeComponent();
         }
-
+        string imagePath;
         private void btnFinish_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbxMake.Text))
@@ -61,7 +61,7 @@ namespace HoaMage
                         MessageBox.Show("No valid AccountID found. Please register an account first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    string query = "Insert Into VehicleInformation (AccountID, PlateNumber, Make, Model, Color) values (@AccountID, @PlateNumber, @Make, @Model, @Color)";
+                    string query = "Insert Into VehicleInformation (AccountID, PlateNumber, Make, Model, Color, VehicleImage) values (@AccountID, @PlateNumber, @Make, @Model, @Color, @VehicleImage)";
 
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
@@ -70,6 +70,7 @@ namespace HoaMage
                         command.Parameters.AddWithValue("@Make", tbxMake.Text);
                         command.Parameters.AddWithValue("@Model", tbxModel.Text);
                         command.Parameters.AddWithValue("@Color", tbxColor.Text);
+                        command.Parameters.AddWithValue("@VehicleImage", imagePath);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Vehicle Information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -91,6 +92,17 @@ namespace HoaMage
                 {
                     MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string selectedImagePath = Shared.uploadImage();
+
+            if (!string.IsNullOrEmpty(selectedImagePath))
+            {
+                imagePath = selectedImagePath;
+                pbxVehicleImage.Image = Shared.LoadImage(imagePath);
             }
         }
     }

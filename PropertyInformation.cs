@@ -24,6 +24,11 @@ namespace HoaMage
                 MessageBox.Show("Please enter a home address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(tbxBlockNumber.Text))
+            {
+                MessageBox.Show("Please enter a block number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (string.IsNullOrWhiteSpace(tbxUnitNumber.Text))
             {
                 MessageBox.Show("Please enter a unit number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -56,13 +61,14 @@ namespace HoaMage
                         return;
                     }
                     
-                    string query = "Insert Into PropertyInformation (AccountID, ResidenceName, HomeAddress, UnitNumber, NumOfOccupants, OwnershipType) values (@AccountID, @ResidenceName, @HomeAddress, @UnitNumber, @NumOfOccupants, @OwnershipType)";
+                    string query = "Insert Into PropertyInformation (AccountID, ResidenceName, HomeAddress, BlockNumber, UnitNumber, NumOfOccupants, OwnershipType) values (@AccountID, @ResidenceName, @HomeAddress, @BlockNumber, @UnitNumber, @NumOfOccupants, @OwnershipType)";
 
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("AccountID", AccountID);
                         command.Parameters.AddWithValue("@ResidenceName", tbxResidenceName.Text);
                         command.Parameters.AddWithValue("@HomeAddress", tbxHomeAddress.Text);
+                        command.Parameters.AddWithValue("@BlockNumber", tbxBlockNumber.Text);
                         command.Parameters.AddWithValue("@UnitNumber", tbxUnitNumber.Text);
                         command.Parameters.AddWithValue("@NumOfOccupants", Convert.ToInt32(tbxNumOfOccupants.Text));
                         command.Parameters.AddWithValue("@OwnershipType", cbxType.Text);

@@ -13,23 +13,20 @@ using System.Reflection;
 using static Shared;
 
 namespace HoaMage
+{
+    public partial class OccupantForm : MaterialForm
     {
-        public partial class OccupantForm : MaterialForm
+        public OccupantForm()
         {
-            public OccupantForm()
-            {
-                InitializeComponent();
-                Shared.Set(this);
-
-            }
-            public int age;
-            public string imagePath;
-
+            InitializeComponent();
+            Shared.Set(this);
+        }
+       public int age;
+       public string imagePath;
         private int GetPropertyID()
         {
             int propertyID = -1; 
             string query = "SELECT PropertyID FROM PropertyInformation WHERE AccountID = @AccountID";
-
             using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
             {
                 try
@@ -37,7 +34,7 @@ namespace HoaMage
                     connection.Open();
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@AccountID", Identification.AccountID); // Replace with actual username
+                        command.Parameters.AddWithValue("@AccountID", Identification.AccountID);
 
                         object result = command.ExecuteScalar();
                         if (result != null)
@@ -61,7 +58,6 @@ namespace HoaMage
                 MessageBox.Show("No PropertyID found for this account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             if (string.IsNullOrEmpty(tbxOccupantName.Text))
             {
                 MessageBox.Show("Occupant Name is Empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -81,9 +77,7 @@ namespace HoaMage
             {
                 MessageBox.Show("Occupant Age is Empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-
             }
-            
             string query = "Insert Into Occupants (PropertyID, OccupantName, OccupantGender, OccupantAge, OccupantBirthday,OccupantImage) values (@PropertyID, @OccupantName, @OccupantGender, @OccupantAge, @OccupantBirthday, @OccupantImage)";
             using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
             {
@@ -100,9 +94,6 @@ namespace HoaMage
                         command.Parameters.AddWithValue("@OccupantBirthday", dtpBirthday.Value.ToString("MM/dd/yyyy"));
                         command.Parameters.AddWithValue("@OccupantImage", imagePath);
                         command.ExecuteNonQuery();
-                        
-
-
                     }
                 }
                 catch (Exception ex)
@@ -113,18 +104,16 @@ namespace HoaMage
             MessageBox.Show("Occupant Added Succesfully!.", "Success", MessageBoxButtons.OK);
             this.Hide();
         }
-            private void label1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
+        {
+            string selectedImagePath = Shared.uploadImage();
+
+            if (!string.IsNullOrEmpty(selectedImagePath))
             {
-                OpenFileDialog openFile = new OpenFileDialog { Title = "Select an Image",
-                    Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"};
-
-                if (openFile.ShowDialog() == DialogResult.OK)
-                {
-                    imagePath = openFile.FileName;  
-                    pbxOccupantImage.Image = Image.FromFile(imagePath);  
-                
-                }       
-
+                imagePath=selectedImagePath;
+                pbxOccupantImage.Image = Shared.LoadImage(imagePath);
             }
+
         }
     }
+}

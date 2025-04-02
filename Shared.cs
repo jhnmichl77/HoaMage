@@ -9,7 +9,7 @@ public class Shared : Form
     public Shared()
     {
         InitializeComponent();
-        
+
     }
 
     private void InitializeComponent()
@@ -27,12 +27,12 @@ public class Shared : Form
     }
     public static class Identification
     {
-        public static int Username { get; set; }
+        public static string Username { get; set; }
         public static int AccountID { get; set; }
         public static string Role { get; set; }
         public static int PropertyID { get; set; }
     }
-    
+
     public static void ShowUserControl(UserControl userControl, Control parent)
     {
         if (parent is Panel panel2)
@@ -42,11 +42,27 @@ public class Shared : Form
             panel2.Controls.Add(userControl);
         }
     }
-
-    protected void ShowMessage(string message, string title = "Information")
+    public static string uploadImage()
     {
-        MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        using (OpenFileDialog openFile = new OpenFileDialog
+        {
+            Title = "Select an Image",
+            Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+        })
+        {
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                return openFile.FileName; 
+            }
+        }
+        return null;
     }
-
-
+    public static Image LoadImage(string imagePath)
+    {
+        if (!string.IsNullOrEmpty(imagePath))
+        {
+            return Image.FromFile(imagePath); 
+        }
+        return null; 
+    }
 }

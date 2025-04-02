@@ -17,7 +17,7 @@ namespace HoaMage
         {
             InitializeComponent();
         }
-
+        string imagePath;
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbxFirstname.Text))
@@ -51,7 +51,7 @@ namespace HoaMage
             }
 
 
-            using(OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
             {
                 try
                 {
@@ -68,7 +68,7 @@ namespace HoaMage
                         MessageBox.Show("No valid AccountID found. Please register an account first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    string query = "Insert Into MemberInformation (AccountID, FirstName, LastName, MiddleInitial, Birthday, Gender, ContactNumber) values (@AccountID, @FirstName, @LastName, @MiddleInitial, @Birthday, @Gender, @ContactNumber)";
+                    string query = "Insert Into MemberInformation (AccountID, FirstName, LastName, MiddleInitial, Birthday, Gender, ContactNumber, MemberProfile) values (@AccountID, @FirstName, @LastName, @MiddleInitial, @Birthday, @Gender, @ContactNumber, @MemberProfile)";
 
 
                     using (OleDbCommand command = new OleDbCommand(query, connection))
@@ -87,6 +87,8 @@ namespace HoaMage
                             gender = "Others";
                         command.Parameters.AddWithValue("@Gender", gender);
                         command.Parameters.AddWithValue("@ContactNumber", tbxContact.Text);
+                        command.Parameters.AddWithValue("@MemberProfile", imagePath);
+
                         command.ExecuteNonQuery();
                         MessageBox.Show("Member Information successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Registration parentForm = (Registration)this.FindForm();
@@ -113,6 +115,17 @@ namespace HoaMage
                 }
             }
             return false;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string selectedImagePath = Shared.uploadImage();
+
+            if (!string.IsNullOrEmpty(selectedImagePath))
+            {
+                imagePath = selectedImagePath;
+                pbxMemberProfile.Image = Shared.LoadImage(imagePath);
+            }
         }
     }
 }

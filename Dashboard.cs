@@ -52,7 +52,7 @@ namespace HoaMage
 
         private void btnOccupants_Click(object sender, EventArgs e)
         {
-            currentTable = "OccupantInformation";
+            currentTable = "Occupants";
             LoadData();
         }
 
@@ -95,9 +95,9 @@ namespace HoaMage
                 case "VehicleInformation":
                     searchQuery += $"PlateNumber LIKE '%{searchTerm}%' OR Model LIKE '%{searchTerm}%'";
                     break;
-                //case "OccupantInformation":
-                //searchQuery += $"FullName LIKE '%{searchTerm}%' OR PropertyID LIKE '%{searchTerm}%'";
-                //break;
+                case "Occupants":
+                    searchQuery += $"OccupantName LIKE '%{searchTerm}%' OR PropertyID LIKE '%{searchTerm}%'";
+                    break;
                 default:
                     MessageBox.Show("Invalid table selection.");
                     return;

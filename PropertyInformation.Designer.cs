@@ -34,6 +34,7 @@
             cbxType = new MaterialSkin.Controls.MaterialComboBox();
             tbxResidenceName = new MaterialSkin.Controls.MaterialTextBox2();
             btnNext = new MaterialSkin.Controls.MaterialButton();
+            tbxBlockNumber = new MaterialSkin.Controls.MaterialTextBox2();
             SuspendLayout();
             // 
             // tbxHomeAddress
@@ -75,7 +76,7 @@
             tbxUnitNumber.HideSelection = true;
             tbxUnitNumber.Hint = "Unit Number";
             tbxUnitNumber.LeadingIcon = null;
-            tbxUnitNumber.Location = new Point(29, 132);
+            tbxUnitNumber.Location = new Point(29, 186);
             tbxUnitNumber.MaxLength = 32767;
             tbxUnitNumber.MouseState = MaterialSkin.MouseState.OUT;
             tbxUnitNumber.Name = "tbxUnitNumber";
@@ -104,7 +105,7 @@
             tbxNumOfOccupants.HideSelection = true;
             tbxNumOfOccupants.Hint = "Number of Occupants";
             tbxNumOfOccupants.LeadingIcon = null;
-            tbxNumOfOccupants.Location = new Point(29, 186);
+            tbxNumOfOccupants.Location = new Point(29, 240);
             tbxNumOfOccupants.MaxLength = 32767;
             tbxNumOfOccupants.MouseState = MaterialSkin.MouseState.OUT;
             tbxNumOfOccupants.Name = "tbxNumOfOccupants";
@@ -139,7 +140,7 @@
             cbxType.IntegralHeight = false;
             cbxType.ItemHeight = 43;
             cbxType.Items.AddRange(new object[] { "Renter", "Owner-Occupied", "Vacant" });
-            cbxType.Location = new Point(29, 253);
+            cbxType.Location = new Point(29, 307);
             cbxType.MaxDropDownItems = 4;
             cbxType.MouseState = MaterialSkin.MouseState.OUT;
             cbxType.Name = "cbxType";
@@ -196,10 +197,40 @@
             btnNext.UseVisualStyleBackColor = true;
             btnNext.Click += btnSubmit_Click;
             // 
+            // tbxBlockNumber
+            // 
+            tbxBlockNumber.AnimateReadOnly = false;
+            tbxBlockNumber.BackgroundImageLayout = ImageLayout.None;
+            tbxBlockNumber.CharacterCasing = CharacterCasing.Normal;
+            tbxBlockNumber.Depth = 0;
+            tbxBlockNumber.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxBlockNumber.HideSelection = true;
+            tbxBlockNumber.Hint = "Block Number";
+            tbxBlockNumber.LeadingIcon = null;
+            tbxBlockNumber.Location = new Point(29, 132);
+            tbxBlockNumber.MaxLength = 32767;
+            tbxBlockNumber.MouseState = MaterialSkin.MouseState.OUT;
+            tbxBlockNumber.Name = "tbxBlockNumber";
+            tbxBlockNumber.PasswordChar = '\0';
+            tbxBlockNumber.PrefixSuffixText = null;
+            tbxBlockNumber.ReadOnly = false;
+            tbxBlockNumber.RightToLeft = RightToLeft.No;
+            tbxBlockNumber.SelectedText = "";
+            tbxBlockNumber.SelectionLength = 0;
+            tbxBlockNumber.SelectionStart = 0;
+            tbxBlockNumber.ShortcutsEnabled = true;
+            tbxBlockNumber.Size = new Size(408, 48);
+            tbxBlockNumber.TabIndex = 6;
+            tbxBlockNumber.TabStop = false;
+            tbxBlockNumber.TextAlign = HorizontalAlignment.Left;
+            tbxBlockNumber.TrailingIcon = null;
+            tbxBlockNumber.UseSystemPasswordChar = false;
+            // 
             // PropertyInformation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(tbxBlockNumber);
             Controls.Add(btnNext);
             Controls.Add(tbxResidenceName);
             Controls.Add(cbxType);
@@ -220,5 +251,6 @@
         private MaterialSkin.Controls.MaterialComboBox cbxType;
         private MaterialSkin.Controls.MaterialTextBox2 tbxResidenceName;
         private MaterialSkin.Controls.MaterialButton btnNext;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxBlockNumber;
     }
 }

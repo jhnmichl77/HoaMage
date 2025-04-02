@@ -49,9 +49,40 @@ namespace HoaMage
                             {
                                 int AccountID = reader.GetInt32(0);
                                 string UserRole = reader.GetString(1);
+                                string propertyQuery = "Select PropertyID From PropertyInformation where AccountID=@AccountID";
+                                using(OleDbCommand propertycommnad = new OleDbCommand(propertyQuery, connection))
+                                {
+                                    propertycommnad.Parameters.AddWithValue("@AccountID", AccountID);
+                                    using(OleDbDataReader propertyRead = propertycommnad.ExecuteReader())
+                                    {
+                                        if (propertyRead.Read())
+                                        {
+                                            int PropertyID = propertyRead.GetInt32(0);
+                                            Identification.Username = username;
+                                            Identification.AccountID = AccountID;
+                                            Identification.Role = UserRole;
+                                            Identification.PropertyID = PropertyID;
 
+                                            if (UserRole == "Admin")
+                                            {
+                                                Dashboard dashboard = new Dashboard();
+                                                dashboard.Show();
+                                                this.Hide();
+                                            }
+                                            else
+                                            {
+                                                HomeownerDashboard homeownerDashboard = new HomeownerDashboard();
+                                                homeownerDashboard.Show();
+                                                this.Hide();
+                                            }
+                                        }
+                                    }
+                                }
+                                    Identification.Username = username;
                                     Identification.AccountID = AccountID;
                                     Identification.Role = UserRole;
+
+
                                 if(UserRole == "Admin")
                                 {
                                     Dashboard dashboard = new Dashboard();

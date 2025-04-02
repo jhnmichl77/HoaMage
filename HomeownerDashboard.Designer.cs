@@ -54,8 +54,10 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            pictureBox2 = new PictureBox();
+            pbxMemberProfile = new PictureBox();
             tbpProperty = new TabPage();
+            tbxBlockNumber = new TextBox();
+            label14 = new Label();
             btnPropertyEdit = new MaterialSkin.Controls.MaterialSwitch();
             cbxOwnership = new ComboBox();
             label15 = new Label();
@@ -77,11 +79,20 @@
             label19 = new Label();
             label12 = new Label();
             label8 = new Label();
-            pictureBox3 = new PictureBox();
+            pbxVehicleImage = new PictureBox();
+            tbpOccupants = new TabPage();
+            dgvOccupants = new DataGridView();
+            materialCard6 = new MaterialSkin.Controls.MaterialCard();
+            pbxOccupantImage = new PictureBox();
+            lblBirthday = new Label();
+            lblAge = new Label();
+            lblGender = new Label();
+            lblName = new Label();
+            btnEditOccupant = new MaterialSkin.Controls.MaterialButton();
+            btnDeleteOccupant = new MaterialSkin.Controls.MaterialButton();
+            btnAddOccupant = new MaterialSkin.Controls.MaterialButton();
             tbpHomeownerRequest = new TabPage();
             dataGridView1 = new DataGridView();
-            tbpOccupants = new TabPage();
-            dgvOccupants = new MaterialSkin.Controls.MaterialListView();
             tbpRequest = new TabPage();
             btnSubmit = new MaterialSkin.Controls.MaterialButton();
             textBox1 = new TextBox();
@@ -97,33 +108,25 @@
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             dgvTransactions = new DataGridView();
             imageList1 = new ImageList(components);
-            btnAddOccupant = new MaterialSkin.Controls.MaterialButton();
-            btnDeleteOccupant = new MaterialSkin.Controls.MaterialButton();
-            btnEditOccupant = new MaterialSkin.Controls.MaterialButton();
-            materialCard6 = new MaterialSkin.Controls.MaterialCard();
-            lblName = new Label();
-            lblGender = new Label();
-            lblAge = new Label();
-            lblBirthday = new Label();
-            pbxOccupantImage = new PictureBox();
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             tbpProfile.SuspendLayout();
             materialTabControl2.SuspendLayout();
             tbpMember.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxMemberProfile).BeginInit();
             tbpProperty.SuspendLayout();
             tbpVehicle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxVehicleImage).BeginInit();
+            tbpOccupants.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvOccupants).BeginInit();
+            materialCard6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbxOccupantImage).BeginInit();
             tbpHomeownerRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            tbpOccupants.SuspendLayout();
             tbpRequest.SuspendLayout();
             tbpPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).BeginInit();
-            materialCard6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxOccupantImage).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -250,8 +253,8 @@
             materialTabControl2.Controls.Add(tbpMember);
             materialTabControl2.Controls.Add(tbpProperty);
             materialTabControl2.Controls.Add(tbpVehicle);
-            materialTabControl2.Controls.Add(tbpHomeownerRequest);
             materialTabControl2.Controls.Add(tbpOccupants);
+            materialTabControl2.Controls.Add(tbpHomeownerRequest);
             materialTabControl2.Depth = 0;
             materialTabControl2.Dock = DockStyle.Bottom;
             materialTabControl2.Location = new Point(3, 63);
@@ -277,7 +280,7 @@
             tbpMember.Controls.Add(label3);
             tbpMember.Controls.Add(label2);
             tbpMember.Controls.Add(label1);
-            tbpMember.Controls.Add(pictureBox2);
+            tbpMember.Controls.Add(pbxMemberProfile);
             tbpMember.Location = new Point(4, 24);
             tbpMember.Name = "tbpMember";
             tbpMember.Padding = new Padding(3);
@@ -301,10 +304,12 @@
             btnMemberEdit.TabIndex = 18;
             btnMemberEdit.Text = "Edit";
             btnMemberEdit.UseVisualStyleBackColor = true;
+            btnMemberEdit.CheckedChanged += btnMemberEdit_CheckedChanged;
             // 
             // tbxContactNumber
             // 
             tbxContactNumber.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxContactNumber.Enabled = false;
             tbxContactNumber.Location = new Point(406, 329);
             tbxContactNumber.Name = "tbxContactNumber";
             tbxContactNumber.Size = new Size(260, 23);
@@ -313,6 +318,7 @@
             // tbxGender
             // 
             tbxGender.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxGender.Enabled = false;
             tbxGender.Location = new Point(406, 271);
             tbxGender.Name = "tbxGender";
             tbxGender.Size = new Size(260, 23);
@@ -321,6 +327,7 @@
             // tbxMiddleInitial
             // 
             tbxMiddleInitial.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxMiddleInitial.Enabled = false;
             tbxMiddleInitial.Location = new Point(406, 155);
             tbxMiddleInitial.Name = "tbxMiddleInitial";
             tbxMiddleInitial.Size = new Size(260, 23);
@@ -329,6 +336,7 @@
             // tbxLastname
             // 
             tbxLastname.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxLastname.Enabled = false;
             tbxLastname.Location = new Point(406, 97);
             tbxLastname.Name = "tbxLastname";
             tbxLastname.Size = new Size(260, 23);
@@ -337,6 +345,7 @@
             // tbxFirstname
             // 
             tbxFirstname.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxFirstname.Enabled = false;
             tbxFirstname.Location = new Point(406, 39);
             tbxFirstname.Name = "tbxFirstname";
             tbxFirstname.Size = new Size(260, 23);
@@ -345,6 +354,7 @@
             // dtpBirthdate
             // 
             dtpBirthdate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dtpBirthdate.Enabled = false;
             dtpBirthdate.Location = new Point(406, 213);
             dtpBirthdate.Name = "dtpBirthdate";
             dtpBirthdate.Size = new Size(260, 23);
@@ -410,17 +420,20 @@
             label1.TabIndex = 1;
             label1.Text = "Firstname:";
             // 
-            // pictureBox2
+            // pbxMemberProfile
             // 
-            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox2.Location = new Point(89, 105);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(148, 145);
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
+            pbxMemberProfile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pbxMemberProfile.Location = new Point(95, 47);
+            pbxMemberProfile.Name = "pbxMemberProfile";
+            pbxMemberProfile.Size = new Size(148, 145);
+            pbxMemberProfile.SizeMode = PictureBoxSizeMode.Zoom;
+            pbxMemberProfile.TabIndex = 0;
+            pbxMemberProfile.TabStop = false;
             // 
             // tbpProperty
             // 
+            tbpProperty.Controls.Add(tbxBlockNumber);
+            tbpProperty.Controls.Add(label14);
             tbpProperty.Controls.Add(btnPropertyEdit);
             tbpProperty.Controls.Add(cbxOwnership);
             tbpProperty.Controls.Add(label15);
@@ -440,6 +453,25 @@
             tbpProperty.Text = "Property";
             tbpProperty.UseVisualStyleBackColor = true;
             // 
+            // tbxBlockNumber
+            // 
+            tbxBlockNumber.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxBlockNumber.Enabled = false;
+            tbxBlockNumber.Location = new Point(271, 167);
+            tbxBlockNumber.Name = "tbxBlockNumber";
+            tbxBlockNumber.Size = new Size(228, 23);
+            tbxBlockNumber.TabIndex = 22;
+            // 
+            // label14
+            // 
+            label14.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label14.AutoSize = true;
+            label14.Location = new Point(171, 175);
+            label14.Name = "label14";
+            label14.Size = new Size(86, 15);
+            label14.TabIndex = 23;
+            label14.Text = "Block Number:";
+            // 
             // btnPropertyEdit
             // 
             btnPropertyEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -455,24 +487,25 @@
             btnPropertyEdit.TabIndex = 19;
             btnPropertyEdit.Text = "Edit";
             btnPropertyEdit.UseVisualStyleBackColor = true;
+            btnPropertyEdit.CheckedChanged += btnPropertyEdit_CheckedChanged;
             // 
             // cbxOwnership
             // 
             cbxOwnership.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cbxOwnership.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxOwnership.Enabled = false;
             cbxOwnership.FormattingEnabled = true;
             cbxOwnership.Items.AddRange(new object[] { "Renter", "Owner-Occupied", "Vacant" });
-            cbxOwnership.Location = new Point(271, 283);
+            cbxOwnership.Location = new Point(271, 334);
             cbxOwnership.Name = "cbxOwnership";
             cbxOwnership.Size = new Size(228, 23);
             cbxOwnership.TabIndex = 18;
-            cbxOwnership.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label15
             // 
             label15.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label15.AutoSize = true;
-            label15.Location = new Point(186, 291);
+            label15.Location = new Point(186, 342);
             label15.Name = "label15";
             label15.Size = new Size(67, 15);
             label15.TabIndex = 17;
@@ -482,7 +515,7 @@
             // 
             label13.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label13.AutoSize = true;
-            label13.Location = new Point(122, 233);
+            label13.Location = new Point(122, 284);
             label13.Name = "label13";
             label13.Size = new Size(128, 15);
             label13.TabIndex = 13;
@@ -491,7 +524,8 @@
             // tbxOccupantNum
             // 
             tbxOccupantNum.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tbxOccupantNum.Location = new Point(271, 225);
+            tbxOccupantNum.Enabled = false;
+            tbxOccupantNum.Location = new Point(271, 276);
             tbxOccupantNum.Name = "tbxOccupantNum";
             tbxOccupantNum.Size = new Size(228, 23);
             tbxOccupantNum.TabIndex = 12;
@@ -499,7 +533,8 @@
             // tbxUnitNumber
             // 
             tbxUnitNumber.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tbxUnitNumber.Location = new Point(271, 167);
+            tbxUnitNumber.Enabled = false;
+            tbxUnitNumber.Location = new Point(271, 225);
             tbxUnitNumber.Name = "tbxUnitNumber";
             tbxUnitNumber.Size = new Size(228, 23);
             tbxUnitNumber.TabIndex = 8;
@@ -507,6 +542,7 @@
             // tbxAddress
             // 
             tbxAddress.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxAddress.Enabled = false;
             tbxAddress.Location = new Point(271, 109);
             tbxAddress.Name = "tbxAddress";
             tbxAddress.Size = new Size(228, 23);
@@ -515,6 +551,7 @@
             // tbxResidence
             // 
             tbxResidence.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxResidence.Enabled = false;
             tbxResidence.Location = new Point(271, 51);
             tbxResidence.Name = "tbxResidence";
             tbxResidence.Size = new Size(228, 23);
@@ -524,7 +561,7 @@
             // 
             label11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label11.AutoSize = true;
-            label11.Location = new Point(171, 175);
+            label11.Location = new Point(171, 233);
             label11.Name = "label11";
             label11.Size = new Size(79, 15);
             label11.TabIndex = 9;
@@ -561,7 +598,7 @@
             tbpVehicle.Controls.Add(label19);
             tbpVehicle.Controls.Add(label12);
             tbpVehicle.Controls.Add(label8);
-            tbpVehicle.Controls.Add(pictureBox3);
+            tbpVehicle.Controls.Add(pbxVehicleImage);
             tbpVehicle.Location = new Point(4, 24);
             tbpVehicle.Name = "tbpVehicle";
             tbpVehicle.Padding = new Padding(3);
@@ -585,6 +622,7 @@
             btnVehicleEdit.TabIndex = 15;
             btnVehicleEdit.Text = "Edit";
             btnVehicleEdit.UseVisualStyleBackColor = true;
+            btnVehicleEdit.CheckedChanged += btnVehicleEdit_CheckedChanged;
             // 
             // label17
             // 
@@ -599,6 +637,7 @@
             // tbxColor
             // 
             tbxColor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxColor.Enabled = false;
             tbxColor.Location = new Point(502, 291);
             tbxColor.Name = "tbxColor";
             tbxColor.Size = new Size(190, 23);
@@ -607,6 +646,7 @@
             // tbxPlateNumber
             // 
             tbxPlateNumber.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxPlateNumber.Enabled = false;
             tbxPlateNumber.Location = new Point(502, 233);
             tbxPlateNumber.Name = "tbxPlateNumber";
             tbxPlateNumber.Size = new Size(190, 23);
@@ -615,6 +655,7 @@
             // tbxModel
             // 
             tbxModel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxModel.Enabled = false;
             tbxModel.Location = new Point(502, 175);
             tbxModel.Name = "tbxModel";
             tbxModel.Size = new Size(190, 23);
@@ -623,6 +664,7 @@
             // tbxMake
             // 
             tbxMake.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxMake.Enabled = false;
             tbxMake.Location = new Point(502, 117);
             tbxMake.Name = "tbxMake";
             tbxMake.Size = new Size(190, 23);
@@ -658,14 +700,162 @@
             label8.TabIndex = 2;
             label8.Text = "Make:";
             // 
-            // pictureBox3
+            // pbxVehicleImage
             // 
-            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox3.Location = new Point(36, 54);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(324, 314);
-            pictureBox3.TabIndex = 0;
-            pictureBox3.TabStop = false;
+            pbxVehicleImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pbxVehicleImage.Location = new Point(39, 41);
+            pbxVehicleImage.Name = "pbxVehicleImage";
+            pbxVehicleImage.Size = new Size(324, 314);
+            pbxVehicleImage.SizeMode = PictureBoxSizeMode.Zoom;
+            pbxVehicleImage.TabIndex = 0;
+            pbxVehicleImage.TabStop = false;
+            // 
+            // tbpOccupants
+            // 
+            tbpOccupants.Controls.Add(dgvOccupants);
+            tbpOccupants.Controls.Add(materialCard6);
+            tbpOccupants.Controls.Add(btnEditOccupant);
+            tbpOccupants.Controls.Add(btnDeleteOccupant);
+            tbpOccupants.Controls.Add(btnAddOccupant);
+            tbpOccupants.Location = new Point(4, 24);
+            tbpOccupants.Name = "tbpOccupants";
+            tbpOccupants.Padding = new Padding(3);
+            tbpOccupants.Size = new Size(849, 395);
+            tbpOccupants.TabIndex = 5;
+            tbpOccupants.Text = "Occupants";
+            tbpOccupants.UseVisualStyleBackColor = true;
+            // 
+            // dgvOccupants
+            // 
+            dgvOccupants.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvOccupants.Location = new Point(6, 6);
+            dgvOccupants.Name = "dgvOccupants";
+            dgvOccupants.Size = new Size(404, 383);
+            dgvOccupants.TabIndex = 7;
+            // 
+            // materialCard6
+            // 
+            materialCard6.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard6.Controls.Add(pbxOccupantImage);
+            materialCard6.Controls.Add(lblBirthday);
+            materialCard6.Controls.Add(lblAge);
+            materialCard6.Controls.Add(lblGender);
+            materialCard6.Controls.Add(lblName);
+            materialCard6.Depth = 0;
+            materialCard6.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard6.Location = new Point(427, 6);
+            materialCard6.Margin = new Padding(14);
+            materialCard6.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard6.Name = "materialCard6";
+            materialCard6.Padding = new Padding(14);
+            materialCard6.Size = new Size(413, 217);
+            materialCard6.TabIndex = 6;
+            // 
+            // pbxOccupantImage
+            // 
+            pbxOccupantImage.Location = new Point(27, 49);
+            pbxOccupantImage.Name = "pbxOccupantImage";
+            pbxOccupantImage.Size = new Size(100, 100);
+            pbxOccupantImage.TabIndex = 4;
+            pbxOccupantImage.TabStop = false;
+            // 
+            // lblBirthday
+            // 
+            lblBirthday.AutoSize = true;
+            lblBirthday.Font = new Font("Segoe UI", 12F);
+            lblBirthday.Location = new Point(164, 113);
+            lblBirthday.Name = "lblBirthday";
+            lblBirthday.Size = new Size(134, 21);
+            lblBirthday.TabIndex = 3;
+            lblBirthday.Text = "OccupantBirthday";
+            // 
+            // lblAge
+            // 
+            lblAge.AutoSize = true;
+            lblAge.Font = new Font("Segoe UI", 12F);
+            lblAge.Location = new Point(164, 151);
+            lblAge.Name = "lblAge";
+            lblAge.Size = new Size(103, 21);
+            lblAge.TabIndex = 2;
+            lblAge.Text = "OccupantAge";
+            // 
+            // lblGender
+            // 
+            lblGender.AutoSize = true;
+            lblGender.Font = new Font("Segoe UI", 12F);
+            lblGender.Location = new Point(164, 76);
+            lblGender.Name = "lblGender";
+            lblGender.Size = new Size(127, 21);
+            lblGender.TabIndex = 1;
+            lblGender.Text = "OccupantGender";
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.Font = new Font("Segoe UI", 12F);
+            lblName.Location = new Point(164, 35);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(118, 21);
+            lblName.TabIndex = 0;
+            lblName.Text = "OccupantName";
+            // 
+            // btnEditOccupant
+            // 
+            btnEditOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEditOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnEditOccupant.Depth = 0;
+            btnEditOccupant.HighEmphasis = true;
+            btnEditOccupant.Icon = null;
+            btnEditOccupant.Location = new Point(776, 232);
+            btnEditOccupant.Margin = new Padding(4, 6, 4, 6);
+            btnEditOccupant.MouseState = MaterialSkin.MouseState.HOVER;
+            btnEditOccupant.Name = "btnEditOccupant";
+            btnEditOccupant.NoAccentTextColor = Color.Empty;
+            btnEditOccupant.Size = new Size(64, 36);
+            btnEditOccupant.TabIndex = 5;
+            btnEditOccupant.Text = "Edit";
+            btnEditOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnEditOccupant.UseAccentColor = false;
+            btnEditOccupant.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteOccupant
+            // 
+            btnDeleteOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteOccupant.Depth = 0;
+            btnDeleteOccupant.HighEmphasis = true;
+            btnDeleteOccupant.Icon = null;
+            btnDeleteOccupant.Location = new Point(690, 232);
+            btnDeleteOccupant.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteOccupant.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteOccupant.Name = "btnDeleteOccupant";
+            btnDeleteOccupant.NoAccentTextColor = Color.Empty;
+            btnDeleteOccupant.Size = new Size(73, 36);
+            btnDeleteOccupant.TabIndex = 3;
+            btnDeleteOccupant.Text = "Delete";
+            btnDeleteOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteOccupant.UseAccentColor = false;
+            btnDeleteOccupant.UseVisualStyleBackColor = true;
+            // 
+            // btnAddOccupant
+            // 
+            btnAddOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddOccupant.Depth = 0;
+            btnAddOccupant.HighEmphasis = true;
+            btnAddOccupant.Icon = null;
+            btnAddOccupant.Location = new Point(614, 232);
+            btnAddOccupant.Margin = new Padding(4, 6, 4, 6);
+            btnAddOccupant.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddOccupant.Name = "btnAddOccupant";
+            btnAddOccupant.NoAccentTextColor = Color.Empty;
+            btnAddOccupant.Size = new Size(64, 36);
+            btnAddOccupant.TabIndex = 2;
+            btnAddOccupant.Text = "Add";
+            btnAddOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddOccupant.UseAccentColor = false;
+            btnAddOccupant.UseVisualStyleBackColor = true;
+            btnAddOccupant.Click += btnAddOccupant_Click;
             // 
             // tbpHomeownerRequest
             // 
@@ -685,39 +875,6 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(837, 383);
             dataGridView1.TabIndex = 0;
-            // 
-            // tbpOccupants
-            // 
-            tbpOccupants.Controls.Add(materialCard6);
-            tbpOccupants.Controls.Add(btnEditOccupant);
-            tbpOccupants.Controls.Add(btnDeleteOccupant);
-            tbpOccupants.Controls.Add(btnAddOccupant);
-            tbpOccupants.Controls.Add(dgvOccupants);
-            tbpOccupants.Location = new Point(4, 24);
-            tbpOccupants.Name = "tbpOccupants";
-            tbpOccupants.Padding = new Padding(3);
-            tbpOccupants.Size = new Size(849, 395);
-            tbpOccupants.TabIndex = 5;
-            tbpOccupants.Text = "Occupants";
-            tbpOccupants.UseVisualStyleBackColor = true;
-            // 
-            // dgvOccupants
-            // 
-            dgvOccupants.AutoSizeTable = false;
-            dgvOccupants.BackColor = Color.FromArgb(255, 255, 255);
-            dgvOccupants.BorderStyle = BorderStyle.None;
-            dgvOccupants.Depth = 0;
-            dgvOccupants.FullRowSelect = true;
-            dgvOccupants.Location = new Point(6, 6);
-            dgvOccupants.MinimumSize = new Size(200, 100);
-            dgvOccupants.MouseLocation = new Point(-1, -1);
-            dgvOccupants.MouseState = MaterialSkin.MouseState.OUT;
-            dgvOccupants.Name = "dgvOccupants";
-            dgvOccupants.OwnerDraw = true;
-            dgvOccupants.Size = new Size(380, 383);
-            dgvOccupants.TabIndex = 0;
-            dgvOccupants.UseCompatibleStateImageBehavior = false;
-            dgvOccupants.View = View.Details;
             // 
             // tbpRequest
             // 
@@ -1039,130 +1196,6 @@
             imageList1.Images.SetKeyName(2, "Manage.png");
             imageList1.Images.SetKeyName(3, "Home.png");
             // 
-            // btnAddOccupant
-            // 
-            btnAddOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnAddOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnAddOccupant.Depth = 0;
-            btnAddOccupant.HighEmphasis = true;
-            btnAddOccupant.Icon = null;
-            btnAddOccupant.Location = new Point(614, 232);
-            btnAddOccupant.Margin = new Padding(4, 6, 4, 6);
-            btnAddOccupant.MouseState = MaterialSkin.MouseState.HOVER;
-            btnAddOccupant.Name = "btnAddOccupant";
-            btnAddOccupant.NoAccentTextColor = Color.Empty;
-            btnAddOccupant.Size = new Size(64, 36);
-            btnAddOccupant.TabIndex = 2;
-            btnAddOccupant.Text = "Add";
-            btnAddOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnAddOccupant.UseAccentColor = false;
-            btnAddOccupant.UseVisualStyleBackColor = true;
-            btnAddOccupant.Click += btnAddOccupant_Click;
-            // 
-            // btnDeleteOccupant
-            // 
-            btnDeleteOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnDeleteOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnDeleteOccupant.Depth = 0;
-            btnDeleteOccupant.HighEmphasis = true;
-            btnDeleteOccupant.Icon = null;
-            btnDeleteOccupant.Location = new Point(690, 232);
-            btnDeleteOccupant.Margin = new Padding(4, 6, 4, 6);
-            btnDeleteOccupant.MouseState = MaterialSkin.MouseState.HOVER;
-            btnDeleteOccupant.Name = "btnDeleteOccupant";
-            btnDeleteOccupant.NoAccentTextColor = Color.Empty;
-            btnDeleteOccupant.Size = new Size(73, 36);
-            btnDeleteOccupant.TabIndex = 3;
-            btnDeleteOccupant.Text = "Delete";
-            btnDeleteOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnDeleteOccupant.UseAccentColor = false;
-            btnDeleteOccupant.UseVisualStyleBackColor = true;
-            // 
-            // btnEditOccupant
-            // 
-            btnEditOccupant.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnEditOccupant.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnEditOccupant.Depth = 0;
-            btnEditOccupant.HighEmphasis = true;
-            btnEditOccupant.Icon = null;
-            btnEditOccupant.Location = new Point(776, 232);
-            btnEditOccupant.Margin = new Padding(4, 6, 4, 6);
-            btnEditOccupant.MouseState = MaterialSkin.MouseState.HOVER;
-            btnEditOccupant.Name = "btnEditOccupant";
-            btnEditOccupant.NoAccentTextColor = Color.Empty;
-            btnEditOccupant.Size = new Size(64, 36);
-            btnEditOccupant.TabIndex = 5;
-            btnEditOccupant.Text = "Edit";
-            btnEditOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnEditOccupant.UseAccentColor = false;
-            btnEditOccupant.UseVisualStyleBackColor = true;
-            // 
-            // materialCard6
-            // 
-            materialCard6.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard6.Controls.Add(pbxOccupantImage);
-            materialCard6.Controls.Add(lblBirthday);
-            materialCard6.Controls.Add(lblAge);
-            materialCard6.Controls.Add(lblGender);
-            materialCard6.Controls.Add(lblName);
-            materialCard6.Depth = 0;
-            materialCard6.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard6.Location = new Point(427, 6);
-            materialCard6.Margin = new Padding(14);
-            materialCard6.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard6.Name = "materialCard6";
-            materialCard6.Padding = new Padding(14);
-            materialCard6.Size = new Size(413, 217);
-            materialCard6.TabIndex = 6;
-            // 
-            // lblName
-            // 
-            lblName.AutoSize = true;
-            lblName.Font = new Font("Segoe UI", 12F);
-            lblName.Location = new Point(164, 35);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(118, 21);
-            lblName.TabIndex = 0;
-            lblName.Text = "OccupantName";
-            // 
-            // lblGender
-            // 
-            lblGender.AutoSize = true;
-            lblGender.Font = new Font("Segoe UI", 12F);
-            lblGender.Location = new Point(164, 76);
-            lblGender.Name = "lblGender";
-            lblGender.Size = new Size(127, 21);
-            lblGender.TabIndex = 1;
-            lblGender.Text = "OccupantGender";
-            // 
-            // lblAge
-            // 
-            lblAge.AutoSize = true;
-            lblAge.Font = new Font("Segoe UI", 12F);
-            lblAge.Location = new Point(164, 151);
-            lblAge.Name = "lblAge";
-            lblAge.Size = new Size(103, 21);
-            lblAge.TabIndex = 2;
-            lblAge.Text = "OccupantAge";
-            // 
-            // lblBirthday
-            // 
-            lblBirthday.AutoSize = true;
-            lblBirthday.Font = new Font("Segoe UI", 12F);
-            lblBirthday.Location = new Point(164, 113);
-            lblBirthday.Name = "lblBirthday";
-            lblBirthday.Size = new Size(134, 21);
-            lblBirthday.TabIndex = 3;
-            lblBirthday.Text = "OccupantBirthday";
-            // 
-            // pbxOccupantImage
-            // 
-            pbxOccupantImage.Location = new Point(27, 49);
-            pbxOccupantImage.Name = "pbxOccupantImage";
-            pbxOccupantImage.Size = new Size(100, 100);
-            pbxOccupantImage.TabIndex = 4;
-            pbxOccupantImage.TabStop = false;
-            // 
             // HomeownerDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1182,23 +1215,24 @@
             materialTabControl2.ResumeLayout(false);
             tbpMember.ResumeLayout(false);
             tbpMember.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxMemberProfile).EndInit();
             tbpProperty.ResumeLayout(false);
             tbpProperty.PerformLayout();
             tbpVehicle.ResumeLayout(false);
             tbpVehicle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            tbpHomeownerRequest.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxVehicleImage).EndInit();
             tbpOccupants.ResumeLayout(false);
             tbpOccupants.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvOccupants).EndInit();
+            materialCard6.ResumeLayout(false);
+            materialCard6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbxOccupantImage).EndInit();
+            tbpHomeownerRequest.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tbpRequest.ResumeLayout(false);
             tbpRequest.PerformLayout();
             tbpPayment.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).EndInit();
-            materialCard6.ResumeLayout(false);
-            materialCard6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxOccupantImage).EndInit();
             ResumeLayout(false);
         }
 
@@ -1240,7 +1274,7 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private PictureBox pictureBox2;
+        private PictureBox pbxMemberProfile;
         private TabPage tbpProperty;
         private ComboBox cbxOwnership;
         private Label label15;
@@ -1261,7 +1295,7 @@
         private Label label19;
         private Label label12;
         private Label label8;
-        private PictureBox pictureBox3;
+        private PictureBox pbxVehicleImage;
         private TabPage tbpHomeownerRequest;
         private DataGridView dataGridView1;
         private MaterialSkin.Controls.MaterialCard materialCard4;
@@ -1270,7 +1304,6 @@
         private MaterialSkin.Controls.MaterialSwitch btnPropertyEdit;
         private MaterialSkin.Controls.MaterialSwitch btnVehicleEdit;
         private TabPage tbpOccupants;
-        private MaterialSkin.Controls.MaterialListView dgvOccupants;
         private MaterialSkin.Controls.MaterialButton btnAddOccupant;
         private MaterialSkin.Controls.MaterialButton btnDeleteOccupant;
         private MaterialSkin.Controls.MaterialButton btnEditOccupant;
@@ -1281,5 +1314,8 @@
         private Label lblGender;
         private Label lblName;
         private Button button1;
+        private TextBox tbxBlockNumber;
+        private Label label14;
+        private DataGridView dgvOccupants;
     }
 }

@@ -33,6 +33,9 @@
             tbxColor = new MaterialSkin.Controls.MaterialTextBox2();
             tbxLicencePlate = new MaterialSkin.Controls.MaterialTextBox2();
             btnFinish = new MaterialSkin.Controls.MaterialButton();
+            pbxVehicleImage = new PictureBox();
+            linkLabel1 = new LinkLabel();
+            ((System.ComponentModel.ISupportInitialize)pbxVehicleImage).BeginInit();
             SuspendLayout();
             // 
             // tbxMake
@@ -45,7 +48,7 @@
             tbxMake.HideSelection = true;
             tbxMake.Hint = "Make";
             tbxMake.LeadingIcon = null;
-            tbxMake.Location = new Point(35, 46);
+            tbxMake.Location = new Point(393, 68);
             tbxMake.MaxLength = 32767;
             tbxMake.MouseState = MaterialSkin.MouseState.OUT;
             tbxMake.Name = "tbxMake";
@@ -74,7 +77,7 @@
             tbxModel.HideSelection = true;
             tbxModel.Hint = "Model";
             tbxModel.LeadingIcon = null;
-            tbxModel.Location = new Point(35, 116);
+            tbxModel.Location = new Point(393, 138);
             tbxModel.MaxLength = 32767;
             tbxModel.MouseState = MaterialSkin.MouseState.OUT;
             tbxModel.Name = "tbxModel";
@@ -103,7 +106,7 @@
             tbxColor.HideSelection = true;
             tbxColor.Hint = "Color";
             tbxColor.LeadingIcon = null;
-            tbxColor.Location = new Point(35, 188);
+            tbxColor.Location = new Point(393, 210);
             tbxColor.MaxLength = 32767;
             tbxColor.MouseState = MaterialSkin.MouseState.OUT;
             tbxColor.Name = "tbxColor";
@@ -132,7 +135,7 @@
             tbxLicencePlate.HideSelection = true;
             tbxLicencePlate.Hint = "License Plate";
             tbxLicencePlate.LeadingIcon = null;
-            tbxLicencePlate.Location = new Point(35, 256);
+            tbxLicencePlate.Location = new Point(393, 278);
             tbxLicencePlate.MaxLength = 32767;
             tbxLicencePlate.MouseState = MaterialSkin.MouseState.OUT;
             tbxLicencePlate.Name = "tbxLicencePlate";
@@ -171,10 +174,32 @@
             btnFinish.UseVisualStyleBackColor = true;
             btnFinish.Click += btnFinish_Click;
             // 
+            // pbxVehicleImage
+            // 
+            pbxVehicleImage.Location = new Point(101, 68);
+            pbxVehicleImage.Name = "pbxVehicleImage";
+            pbxVehicleImage.Size = new Size(200, 200);
+            pbxVehicleImage.SizeMode = PictureBoxSizeMode.Zoom;
+            pbxVehicleImage.TabIndex = 6;
+            pbxVehicleImage.TabStop = false;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(256, 278);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(45, 15);
+            linkLabel1.TabIndex = 7;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Upload";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // VehicleInformation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(linkLabel1);
+            Controls.Add(pbxVehicleImage);
             Controls.Add(btnFinish);
             Controls.Add(tbxLicencePlate);
             Controls.Add(tbxColor);
@@ -182,6 +207,7 @@
             Controls.Add(tbxMake);
             Name = "VehicleInformation";
             Size = new Size(800, 369);
+            ((System.ComponentModel.ISupportInitialize)pbxVehicleImage).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -192,5 +218,7 @@
         private MaterialSkin.Controls.MaterialTextBox2 tbxColor;
         private MaterialSkin.Controls.MaterialTextBox2 tbxLicencePlate;
         private MaterialSkin.Controls.MaterialButton btnFinish;
+        private PictureBox pbxVehicleImage;
+        private LinkLabel linkLabel1;
     }
 }
