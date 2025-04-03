@@ -817,6 +817,7 @@
             btnEditOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnEditOccupant.UseAccentColor = false;
             btnEditOccupant.UseVisualStyleBackColor = true;
+            btnEditOccupant.Click += btnEditOccupant_Click;
             // 
             // btnDeleteOccupant
             // 
@@ -836,6 +837,7 @@
             btnDeleteOccupant.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnDeleteOccupant.UseAccentColor = false;
             btnDeleteOccupant.UseVisualStyleBackColor = true;
+            btnDeleteOccupant.Click += btnDeleteOccupant_Click;
             // 
             // btnAddOccupant
             // 

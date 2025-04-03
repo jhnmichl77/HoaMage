@@ -78,24 +78,6 @@ namespace HoaMage
                                         }
                                     }
                                 }
-                                    Identification.Username = username;
-                                    Identification.AccountID = AccountID;
-                                    Identification.Role = UserRole;
-
-
-                                if(UserRole == "Admin")
-                                {
-                                    Dashboard dashboard = new Dashboard();
-                                    dashboard.Show();
-                                    this.Hide();
-                                }
-                                else
-                                {
-                                    HomeownerDashboard homeownerDashboard = new HomeownerDashboard();
-                                    homeownerDashboard.Show();
-                                    this.Hide();
-                                }
-                                        
                             }
                             else
                             {

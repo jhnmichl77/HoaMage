@@ -1,2 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HoaMage.Properties.Resources" Collapsed="true">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQAAAAEAQAEAAgAIABEABBAYAAAAgAAAAAAAAEAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.AccountAccess" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAggAAACAAAAAAAACAABAKAAAAAkAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccountAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.Dashboard" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQBEghAIIGAQIBIQAAmCAAIyALjfiAAgAAARgSAAAQY=</HashCode>
+      <FileName>Dashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.HomeownerDashboard" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>66E1CiBYAOogGBEhgACARBDDBYnfYOAAsCAAAGDAMKg=</HashCode>
+      <FileName>HomeownerDashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.Login" Collapsed="true">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAASgAAACQAAICkAAAEAAAARAAAA=</HashCode>
+      <FileName>Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.MemberInformation" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAgBIEACAICAABgASAABgCAAAkAQBAIAAAAAAAAAA=</HashCode>
+      <FileName>MemberInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.OccupantForm" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAQAACAIQBAAgACAAABCAQEAYDAAgAAAAAIAAAk=</HashCode>
+      <FileName>OccupantForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.Program" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.PropertyInformation" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAiAAAACAAAAAAAACAAAACCAAAAAEgAAABAAAACAA=</HashCode>
+      <FileName>PropertyInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.Registration" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgABAAAACAAABAIAACgAAQCAAAAAAAAAAAAAQBIAAA=</HashCode>
+      <FileName>Register.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.VehicleInformation" Collapsed="true">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAgAAAACAACAAAgASAAAACAACgAAAAAAAAAAAAAYA=</HashCode>
+      <FileName>VehicleInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseHelper" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAABAAAAAAAAAACAAAAAAAAAQAAAAAAAQA=</HashCode>
+      <FileName>Shared.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
