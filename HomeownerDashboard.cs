@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using System.Data.OleDb;
+using static Google.Protobuf.Reflection.FieldOptions.Types;
+using Mysqlx.Expr;
 namespace HoaMage
 {
     public partial class HomeownerDashboard : MaterialForm
     {
         private int currentAccountId = Shared.Identification.AccountID;
         private int currentPropertyId = Shared.Identification.PropertyID;
+
         public HomeownerDashboard()
         {
             InitializeComponent();
@@ -24,7 +27,44 @@ namespace HoaMage
             loadPropertyInformation();
             loadVehicleInformation();
             loadOccupants();
+            LoadPaymentData();
+            loadRequest();
         }
+
+        private void loadRequest()
+        {
+            string query = "Select ReqType, ReqSubject, ReqContext, Status, DateSubmitted from Request where AccountID = @AccountID";
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                try
+                {
+                    connection.Open();
+                    using (OleDbCommand commna = new OleDbCommand(query, connection))
+                    {
+                        commna.Parameters.AddWithValue("@AccountID", currentAccountId);
+                        using (OleDbDataReader reader = commna.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string type = reader["ReqType"].ToString();
+                                string subject = reader["ReqSubject"].ToString();
+                                string context = reader["ReqContext"].ToString();
+                                string status = reader["Status"].ToString();
+                                string dateSubmitted = Convert.ToDateTime(reader["DateSubmitted"]).ToShortDateString();
+
+
+                                dgvRequest.Rows.Add(type, subject, context, status, dateSubmitted);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading user data: " + ex.Message);
+                }
+            }
+        }
+
         private void loadMemberInformation()
         {
             string query = "SELECT FirstName, LastName, MiddleInitial, Birthday, Gender, ContactNumber, MemberProfile FROM MemberInformation WHERE AccountID = @AccountID";
@@ -185,7 +225,7 @@ namespace HoaMage
 
                         using (OleDbDataReader reader = command.ExecuteReader())
                         {
-                            dgvOccupants.Rows.Clear(); // Clear previous data
+                            dgvOccupants.Rows.Clear();  
 
                             while (reader.Read())
                             {
@@ -198,7 +238,7 @@ namespace HoaMage
                                     reader["OccupantGender"].ToString(),
                                     reader["OccupantAge"].ToString(),
                                     Convert.ToDateTime(reader["OccupantBirthday"]).ToString("MM/dd/yyyy"),
-                                    imagePath // Store path in the hidden column
+                                    imagePath  
                                 );
                             }
                         }
@@ -210,8 +250,36 @@ namespace HoaMage
                 }
             }
         }
+        private void LoadPaymentData()
+        {
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                try
+                {
+                    connection.Open();
 
+                    int accountID = Shared.Identification.AccountID;
+                    string query = "SELECT * FROM Payment WHERE AccountID = @AccountID";
 
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@AccountID", accountID);
+
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
+                        {
+                            DataTable paymentTable = new DataTable();
+                            adapter.Fill(paymentTable);
+                            dgvTransactions.DataSource = paymentTable;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load payment data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+ 
         private void dgvOccupants_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string imagePath;
@@ -236,13 +304,12 @@ namespace HoaMage
             }
         }
 
-
         private void btnAddOccupant_Click(object sender, EventArgs e)
         {
             OccupantForm occupantForm = new OccupantForm();
-            if (occupantForm.ShowDialog() == DialogResult.OK)  
+            if (occupantForm.ShowDialog() == DialogResult.OK)
             {
-                loadOccupants();  
+                loadOccupants();
             }
         }
 
@@ -265,6 +332,39 @@ namespace HoaMage
                 dtpBirthdate.Enabled = false;
                 tbxGender.Enabled = false;
                 tbxContactNumber.Enabled = false;
+                using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+                {
+                    try
+                    {
+                        connection.Open();
+                        string query = "UPDATE MemberInformation SET FirstName = @FirstName, LastName = @LastName, MiddleInitial = @MiddleInitial, Birthday = @Birthday, Gender = @Gender, ContactNumber = @ContactNumber WHERE AccountID = @AccountID";
+
+                        using (OleDbCommand command = new OleDbCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@FirstName", tbxFirstname.Text);
+                            command.Parameters.AddWithValue("@LastName", tbxLastname.Text);
+                            command.Parameters.AddWithValue("@MiddleInitial", tbxMiddleInitial.Text);
+                            command.Parameters.AddWithValue("@Birthday", Convert.ToDateTime(dtpBirthdate.Value.Date));
+                            command.Parameters.AddWithValue("@Gender", tbxGender.Text);
+                            command.Parameters.AddWithValue("@ContactNumber", tbxContactNumber.Text);
+                            command.Parameters.AddWithValue("@AccountID", currentAccountId);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Member Information successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No record updated. Please check the AccountID.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to update Member Information: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -287,6 +387,38 @@ namespace HoaMage
                 tbxUnitNumber.Enabled = false;
                 tbxOccupantNum.Enabled = false;
                 cbxOwnership.Enabled = false;
+
+                using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+                    try
+                    {
+                        connection.Open();
+                        int AccountID = Shared.Identification.AccountID;
+
+
+                        string query = "UPDATE PropertyInformation " +
+                        "SET ResidenceName = ?, HomeAddress = ?, BlockNumber = ?, UnitNumber = ?, NumOfOccupants = ?, OwnershipType = ? " +
+                        "WHERE AccountID = ?";
+
+                        using (OleDbCommand command = new OleDbCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("?", tbxResidence.Text);
+                            command.Parameters.AddWithValue("?", tbxAddress.Text);
+                            command.Parameters.AddWithValue("?", tbxBlockNumber.Text);
+                            command.Parameters.AddWithValue("?", tbxUnitNumber.Text);
+                            command.Parameters.AddWithValue("?", Convert.ToInt32(tbxOccupantNum.Text));
+                            command.Parameters.AddWithValue("?", cbxOwnership.Text);
+                            command.Parameters.AddWithValue("?", AccountID);
+
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Property Information successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
             }
         }
 
@@ -305,6 +437,33 @@ namespace HoaMage
                 tbxModel.Enabled = false;
                 tbxPlateNumber.Enabled = false;
                 tbxColor.Enabled = false;
+
+                using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+                {
+                    try
+                    {
+                        connection.Open();
+                        int AccountID = Shared.Identification.AccountID;
+
+                        string query = "Update VehicleInformation Set PlateNumber=?, Make=?, Model=?, Color=? Where AccountID = ?";
+
+                        using (OleDbCommand command = new OleDbCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("?", tbxPlateNumber.Text);
+                            command.Parameters.AddWithValue("?", tbxMake.Text);
+                            command.Parameters.AddWithValue("?", tbxModel.Text);
+                            command.Parameters.AddWithValue("?", tbxColor.Text);
+                            command.Parameters.AddWithValue("?", AccountID);
+
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Vehicle Information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -359,7 +518,6 @@ namespace HoaMage
         {
             if (dgvOccupants.SelectedRows.Count > 0)
             {
-                // Get selected occupant details
                 DataGridViewRow selectedRow = dgvOccupants.SelectedRows[0];
                 int occupantID = Convert.ToInt32(selectedRow.Cells["ID"].Value);
                 string name = selectedRow.Cells["Name"].Value.ToString();
@@ -368,11 +526,10 @@ namespace HoaMage
                 DateTime birthday = Convert.ToDateTime(selectedRow.Cells["Birthday"].Value);
                 string imagePath = selectedRow.Cells["ImagePath"].Value.ToString();
 
-                // Open OccupantForm for editing, passing occupant details
                 OccupantForm occupantForm = new OccupantForm(occupantID, name, gender, age, birthday, imagePath);
                 if (occupantForm.ShowDialog() == DialogResult.OK)
                 {
-                    loadOccupants(); // Refresh the occupants list after editing
+                    loadOccupants();
                 }
             }
             else
@@ -381,5 +538,90 @@ namespace HoaMage
             }
         }
 
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                connection.Open();
+
+                int AccountID = Shared.Identification.AccountID;
+                string status = "Open";
+                DateTime dateSubmitted = DateTime.Today;
+                string query = "Insert Into Request (AccountID, ReqType, ReqSubject, ReqContext, Status, DateSubmitted) Values (?, ?, ?, ?, ?, ?)";
+
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("?", AccountID);
+                    command.Parameters.AddWithValue("?", cbxType.Text);
+                    command.Parameters.AddWithValue("?", tbxSubject.Text);
+                    command.Parameters.AddWithValue("?", tbxContext.Text);
+                    command.Parameters.AddWithValue("?", status);
+                    command.Parameters.AddWithValue("?", dateSubmitted);
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Request Information Successfully Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                cbxType.SelectedIndex = -1;
+                tbxSubject.Clear();
+                tbxContext.Clear();
+                dgvRequest.Rows.Clear();
+                loadRequest();
+            }
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+
+            DateTime expiry;
+            if (!DateTime.TryParse(tbxExpiry.Text, out expiry))
+            {
+                MessageBox.Show("Invalid Expiry Date format. Please use MM/yyyy.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                connection.Open();
+
+                int AccountID = Shared.Identification.AccountID;
+                string query = "Insert Into Payment (AccountID, Reference, AccountName, CardNumber, ExpiryDate, CVV) Values (@AccountID, @Reference, @AccountName, @CardNumber, @ExpiryDate, @CVV)";
+
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AccountID", AccountID);
+                    command.Parameters.AddWithValue("@Reference", tbxReference.Text);
+                    command.Parameters.AddWithValue("@AccountName", tbxCardName.Text);
+                    command.Parameters.AddWithValue("@CardNumber", Convert.ToInt32(tbxCardNumber.Text));
+                    string formattedExpiry = expiry.ToString("MM/yyyy");
+                    command.Parameters.AddWithValue("@ExpiryDate", formattedExpiry);
+                    command.Parameters.AddWithValue("@CVV", Convert.ToInt32(tbxCVV.Text));
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Payment Transaction Successfull", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            LoadPaymentData();
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if (dgvRequest.CurrentRow != null)
+            {
+                
+                string type = dgvRequest.CurrentRow.Cells[0].Value.ToString();
+                string subject = dgvRequest.CurrentRow.Cells[1].Value.ToString();
+                string context = dgvRequest.CurrentRow.Cells[2].Value.ToString();
+                string status = dgvRequest.CurrentRow.Cells[3].Value.ToString();
+                string dateSubmitted = dgvRequest.CurrentRow.Cells[4].Value.ToString();
+
+                
+                viewRequest viewForm = new viewRequest(type, subject, context, status, dateSubmitted);
+                viewForm.Show(); 
+            }
+            else
+            {
+                MessageBox.Show("Please select a request to view.");
+            }
+        }
     }
 }

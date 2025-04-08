@@ -55,15 +55,14 @@
             materialCard9 = new MaterialSkin.Controls.MaterialCard();
             materialCard8 = new MaterialSkin.Controls.MaterialCard();
             materialCard7 = new MaterialSkin.Controls.MaterialCard();
-            btnResolved = new MaterialSkin.Controls.MaterialButton();
-            btnMail = new MaterialSkin.Controls.MaterialButton();
-            dataGridView2 = new DataGridView();
+            btnView = new MaterialSkin.Controls.MaterialButton();
+            dgvRequest = new DataGridView();
             tbpPayment = new TabPage();
             btnRefund = new MaterialSkin.Controls.MaterialButton();
             materialCard2 = new MaterialSkin.Controls.MaterialCard();
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             label2 = new Label();
-            dataGridView3 = new DataGridView();
+            dgvTransactions = new DataGridView();
             tbpAnnouncement = new TabPage();
             btnCreate = new MaterialSkin.Controls.MaterialButton();
             btnRemove = new MaterialSkin.Controls.MaterialButton();
@@ -78,9 +77,9 @@
             ((System.ComponentModel.ISupportInitialize)dgvDisplay).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             tbpRequest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRequest).BeginInit();
             tbpPayment.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTransactions).BeginInit();
             tbpAnnouncement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -299,7 +298,6 @@
             dgvDisplay.ReadOnly = true;
             dgvDisplay.Size = new Size(857, 403);
             dgvDisplay.TabIndex = 0;
-            dgvDisplay.CellEndEdit += dgvDisplay_CellEndEdit;
             // 
             // flowLayoutPanel1
             // 
@@ -430,9 +428,8 @@
             tbpRequest.Controls.Add(materialCard9);
             tbpRequest.Controls.Add(materialCard8);
             tbpRequest.Controls.Add(materialCard7);
-            tbpRequest.Controls.Add(btnResolved);
-            tbpRequest.Controls.Add(btnMail);
-            tbpRequest.Controls.Add(dataGridView2);
+            tbpRequest.Controls.Add(btnView);
+            tbpRequest.Controls.Add(dgvRequest);
             tbpRequest.ImageKey = "Request.png";
             tbpRequest.Location = new Point(4, 39);
             tbpRequest.Name = "tbpRequest";
@@ -481,51 +478,34 @@
             materialCard7.Size = new Size(200, 100);
             materialCard7.TabIndex = 3;
             // 
-            // btnResolved
+            // btnView
             // 
-            btnResolved.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnResolved.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnResolved.Depth = 0;
-            btnResolved.HighEmphasis = true;
-            btnResolved.Icon = null;
-            btnResolved.Location = new Point(687, 415);
-            btnResolved.Margin = new Padding(4, 6, 4, 6);
-            btnResolved.MouseState = MaterialSkin.MouseState.HOVER;
-            btnResolved.Name = "btnResolved";
-            btnResolved.NoAccentTextColor = Color.Empty;
-            btnResolved.Size = new Size(160, 36);
-            btnResolved.TabIndex = 2;
-            btnResolved.Text = "Mark as Resolved";
-            btnResolved.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnResolved.UseAccentColor = false;
-            btnResolved.UseVisualStyleBackColor = true;
+            btnView.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnView.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnView.Depth = 0;
+            btnView.HighEmphasis = true;
+            btnView.Icon = null;
+            btnView.Location = new Point(685, 372);
+            btnView.Margin = new Padding(4, 6, 4, 6);
+            btnView.MouseState = MaterialSkin.MouseState.HOVER;
+            btnView.Name = "btnView";
+            btnView.NoAccentTextColor = Color.Empty;
+            btnView.Size = new Size(160, 36);
+            btnView.TabIndex = 2;
+            btnView.Text = "View";
+            btnView.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnView.UseAccentColor = false;
+            btnView.UseVisualStyleBackColor = true;
+            btnView.Click += btnView_Click;
             // 
-            // btnMail
+            // dgvRequest
             // 
-            btnMail.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnMail.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnMail.Depth = 0;
-            btnMail.HighEmphasis = true;
-            btnMail.Icon = null;
-            btnMail.Location = new Point(756, 367);
-            btnMail.Margin = new Padding(4, 6, 4, 6);
-            btnMail.MouseState = MaterialSkin.MouseState.HOVER;
-            btnMail.Name = "btnMail";
-            btnMail.NoAccentTextColor = Color.Empty;
-            btnMail.Size = new Size(64, 36);
-            btnMail.TabIndex = 1;
-            btnMail.Text = "Mail";
-            btnMail.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnMail.UseAccentColor = false;
-            btnMail.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(18, 17);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(827, 341);
-            dataGridView2.TabIndex = 0;
+            dgvRequest.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRequest.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRequest.Location = new Point(18, 17);
+            dgvRequest.Name = "dgvRequest";
+            dgvRequest.Size = new Size(827, 341);
+            dgvRequest.TabIndex = 0;
             // 
             // tbpPayment
             // 
@@ -533,7 +513,7 @@
             tbpPayment.Controls.Add(materialCard2);
             tbpPayment.Controls.Add(materialCard1);
             tbpPayment.Controls.Add(label2);
-            tbpPayment.Controls.Add(dataGridView3);
+            tbpPayment.Controls.Add(dgvTransactions);
             tbpPayment.ImageKey = "Payment.png";
             tbpPayment.Location = new Point(4, 39);
             tbpPayment.Name = "tbpPayment";
@@ -598,13 +578,14 @@
             label2.TabIndex = 1;
             label2.Text = "Transaction History";
             // 
-            // dataGridView3
+            // dgvTransactions
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(22, 42);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(819, 274);
-            dataGridView3.TabIndex = 0;
+            dgvTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTransactions.Location = new Point(22, 42);
+            dgvTransactions.Name = "dgvTransactions";
+            dgvTransactions.Size = new Size(819, 274);
+            dgvTransactions.TabIndex = 0;
             // 
             // tbpAnnouncement
             // 
@@ -720,10 +701,10 @@
             flowLayoutPanel1.ResumeLayout(false);
             tbpRequest.ResumeLayout(false);
             tbpRequest.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRequest).EndInit();
             tbpPayment.ResumeLayout(false);
             tbpPayment.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTransactions).EndInit();
             tbpAnnouncement.ResumeLayout(false);
             tbpAnnouncement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -756,9 +737,9 @@
         private MaterialSkin.Controls.MaterialButton btnRemove;
         private MaterialSkin.Controls.MaterialButton btnEdit;
         private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
+        private DataGridView dgvRequest;
         private MaterialSkin.Controls.MaterialButton btnMail;
-        private MaterialSkin.Controls.MaterialButton btnResolved;
+        private MaterialSkin.Controls.MaterialButton btnView;
         private FlowLayoutPanel flowLayoutPanel2;
         private MaterialSkin.Controls.MaterialCard materialCard3;
         private MaterialSkin.Controls.MaterialCard materialCard6;
@@ -767,7 +748,7 @@
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private Label label2;
-        private DataGridView dataGridView3;
+        private DataGridView dgvTransactions;
         private MaterialSkin.Controls.MaterialCard materialCard9;
         private MaterialSkin.Controls.MaterialCard materialCard8;
         private MaterialSkin.Controls.MaterialCard materialCard7;
