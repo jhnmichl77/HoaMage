@@ -92,12 +92,17 @@
             btnDeleteOccupant = new MaterialSkin.Controls.MaterialButton();
             btnAddOccupant = new MaterialSkin.Controls.MaterialButton();
             tbpHomeownerRequest = new TabPage();
-            dataGridView1 = new DataGridView();
+            btnView = new MaterialSkin.Controls.MaterialButton();
+            dgvRequest = new DataGridView();
+            colType = new DataGridViewTextBoxColumn();
+            colSubject = new DataGridViewTextBoxColumn();
+            colContext = new DataGridViewTextBoxColumn();
+            colStatus = new DataGridViewTextBoxColumn();
             tbpRequest = new TabPage();
             btnSubmit = new MaterialSkin.Controls.MaterialButton();
-            textBox1 = new TextBox();
-            materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
-            materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
+            tbxContext = new TextBox();
+            tbxSubject = new MaterialSkin.Controls.MaterialTextBox2();
+            cbxType = new MaterialSkin.Controls.MaterialComboBox();
             tbpPayment = new TabPage();
             btnPay = new MaterialSkin.Controls.MaterialButton();
             tbxCVV = new MaterialSkin.Controls.MaterialTextBox2();
@@ -108,6 +113,7 @@
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             dgvTransactions = new DataGridView();
             imageList1 = new ImageList(components);
+            colDate = new DataGridViewTextBoxColumn();
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -123,7 +129,7 @@
             materialCard6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbxOccupantImage).BeginInit();
             tbpHomeownerRequest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRequest).BeginInit();
             tbpRequest.SuspendLayout();
             tbpPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).BeginInit();
@@ -861,7 +867,8 @@
             // 
             // tbpHomeownerRequest
             // 
-            tbpHomeownerRequest.Controls.Add(dataGridView1);
+            tbpHomeownerRequest.Controls.Add(btnView);
+            tbpHomeownerRequest.Controls.Add(dgvRequest);
             tbpHomeownerRequest.Location = new Point(4, 24);
             tbpHomeownerRequest.Name = "tbpHomeownerRequest";
             tbpHomeownerRequest.Padding = new Padding(3);
@@ -870,20 +877,67 @@
             tbpHomeownerRequest.Text = "Request";
             tbpHomeownerRequest.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // btnView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 6);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(837, 383);
-            dataGridView1.TabIndex = 0;
+            btnView.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnView.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnView.Depth = 0;
+            btnView.HighEmphasis = true;
+            btnView.Icon = null;
+            btnView.Location = new Point(762, 318);
+            btnView.Margin = new Padding(4, 6, 4, 6);
+            btnView.MouseState = MaterialSkin.MouseState.HOVER;
+            btnView.Name = "btnView";
+            btnView.NoAccentTextColor = Color.Empty;
+            btnView.Size = new Size(64, 36);
+            btnView.TabIndex = 1;
+            btnView.Text = "View";
+            btnView.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnView.UseAccentColor = false;
+            btnView.UseVisualStyleBackColor = true;
+            btnView.Click += btnView_Click;
+            // 
+            // dgvRequest
+            // 
+            dgvRequest.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRequest.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRequest.Columns.AddRange(new DataGridViewColumn[] { colType, colSubject, colContext, colStatus, colDate });
+            dgvRequest.Location = new Point(23, 40);
+            dgvRequest.Name = "dgvRequest";
+            dgvRequest.Size = new Size(803, 269);
+            dgvRequest.TabIndex = 0;
+            // 
+            // colType
+            // 
+            colType.FillWeight = 68.17853F;
+            colType.HeaderText = "Request Type";
+            colType.Name = "colType";
+            colType.ReadOnly = true;
+            // 
+            // colSubject
+            // 
+            colSubject.FillWeight = 60.9137039F;
+            colSubject.HeaderText = "Subject";
+            colSubject.Name = "colSubject";
+            // 
+            // colContext
+            // 
+            colContext.FillWeight = 189.074234F;
+            colContext.HeaderText = "Context";
+            colContext.Name = "colContext";
+            // 
+            // colStatus
+            // 
+            colStatus.FillWeight = 81.83353F;
+            colStatus.HeaderText = "Status";
+            colStatus.Name = "colStatus";
             // 
             // tbpRequest
             // 
             tbpRequest.Controls.Add(btnSubmit);
-            tbpRequest.Controls.Add(textBox1);
-            tbpRequest.Controls.Add(materialTextBox21);
-            tbpRequest.Controls.Add(materialComboBox1);
+            tbpRequest.Controls.Add(tbxContext);
+            tbpRequest.Controls.Add(tbxSubject);
+            tbpRequest.Controls.Add(cbxType);
             tbpRequest.ImageKey = "Request.png";
             tbpRequest.Location = new Point(4, 39);
             tbpRequest.Name = "tbpRequest";
@@ -911,68 +965,69 @@
             btnSubmit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnSubmit.UseAccentColor = false;
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
-            // textBox1
+            // tbxContext
             // 
-            textBox1.Location = new Point(21, 76);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(825, 380);
-            textBox1.TabIndex = 2;
+            tbxContext.Location = new Point(21, 76);
+            tbxContext.Multiline = true;
+            tbxContext.Name = "tbxContext";
+            tbxContext.Size = new Size(825, 380);
+            tbxContext.TabIndex = 2;
             // 
-            // materialTextBox21
+            // tbxSubject
             // 
-            materialTextBox21.Anchor = AnchorStyles.Top;
-            materialTextBox21.AnimateReadOnly = false;
-            materialTextBox21.BackgroundImageLayout = ImageLayout.None;
-            materialTextBox21.CharacterCasing = CharacterCasing.Normal;
-            materialTextBox21.Depth = 0;
-            materialTextBox21.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox21.HideSelection = true;
-            materialTextBox21.Hint = "Subject";
-            materialTextBox21.LeadingIcon = null;
-            materialTextBox21.Location = new Point(220, 21);
-            materialTextBox21.MaxLength = 32767;
-            materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox21.Name = "materialTextBox21";
-            materialTextBox21.PasswordChar = '\0';
-            materialTextBox21.PrefixSuffixText = null;
-            materialTextBox21.ReadOnly = false;
-            materialTextBox21.RightToLeft = RightToLeft.No;
-            materialTextBox21.SelectedText = "";
-            materialTextBox21.SelectionLength = 0;
-            materialTextBox21.SelectionStart = 0;
-            materialTextBox21.ShortcutsEnabled = true;
-            materialTextBox21.Size = new Size(626, 48);
-            materialTextBox21.TabIndex = 1;
-            materialTextBox21.TabStop = false;
-            materialTextBox21.TextAlign = HorizontalAlignment.Left;
-            materialTextBox21.TrailingIcon = null;
-            materialTextBox21.UseSystemPasswordChar = false;
+            tbxSubject.Anchor = AnchorStyles.Top;
+            tbxSubject.AnimateReadOnly = false;
+            tbxSubject.BackgroundImageLayout = ImageLayout.None;
+            tbxSubject.CharacterCasing = CharacterCasing.Normal;
+            tbxSubject.Depth = 0;
+            tbxSubject.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbxSubject.HideSelection = true;
+            tbxSubject.Hint = "Subject";
+            tbxSubject.LeadingIcon = null;
+            tbxSubject.Location = new Point(220, 21);
+            tbxSubject.MaxLength = 32767;
+            tbxSubject.MouseState = MaterialSkin.MouseState.OUT;
+            tbxSubject.Name = "tbxSubject";
+            tbxSubject.PasswordChar = '\0';
+            tbxSubject.PrefixSuffixText = null;
+            tbxSubject.ReadOnly = false;
+            tbxSubject.RightToLeft = RightToLeft.No;
+            tbxSubject.SelectedText = "";
+            tbxSubject.SelectionLength = 0;
+            tbxSubject.SelectionStart = 0;
+            tbxSubject.ShortcutsEnabled = true;
+            tbxSubject.Size = new Size(626, 48);
+            tbxSubject.TabIndex = 1;
+            tbxSubject.TabStop = false;
+            tbxSubject.TextAlign = HorizontalAlignment.Left;
+            tbxSubject.TrailingIcon = null;
+            tbxSubject.UseSystemPasswordChar = false;
             // 
-            // materialComboBox1
+            // cbxType
             // 
-            materialComboBox1.AutoResize = false;
-            materialComboBox1.BackColor = Color.FromArgb(255, 255, 255);
-            materialComboBox1.Depth = 0;
-            materialComboBox1.DrawMode = DrawMode.OwnerDrawVariable;
-            materialComboBox1.DropDownHeight = 174;
-            materialComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialComboBox1.DropDownWidth = 121;
-            materialComboBox1.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialComboBox1.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialComboBox1.FormattingEnabled = true;
-            materialComboBox1.Hint = "Type";
-            materialComboBox1.IntegralHeight = false;
-            materialComboBox1.ItemHeight = 43;
-            materialComboBox1.Items.AddRange(new object[] { "", "Complaints", "Maintainance", "Inquiry", "Report" });
-            materialComboBox1.Location = new Point(21, 20);
-            materialComboBox1.MaxDropDownItems = 4;
-            materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
-            materialComboBox1.Name = "materialComboBox1";
-            materialComboBox1.Size = new Size(193, 49);
-            materialComboBox1.StartIndex = 0;
-            materialComboBox1.TabIndex = 0;
+            cbxType.AutoResize = false;
+            cbxType.BackColor = Color.FromArgb(255, 255, 255);
+            cbxType.Depth = 0;
+            cbxType.DrawMode = DrawMode.OwnerDrawVariable;
+            cbxType.DropDownHeight = 174;
+            cbxType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxType.DropDownWidth = 121;
+            cbxType.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cbxType.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cbxType.FormattingEnabled = true;
+            cbxType.Hint = "Type";
+            cbxType.IntegralHeight = false;
+            cbxType.ItemHeight = 43;
+            cbxType.Items.AddRange(new object[] { "", "Complaints", "Maintainance", "Inquiry", "Report" });
+            cbxType.Location = new Point(21, 20);
+            cbxType.MaxDropDownItems = 4;
+            cbxType.MouseState = MaterialSkin.MouseState.OUT;
+            cbxType.Name = "cbxType";
+            cbxType.Size = new Size(193, 49);
+            cbxType.StartIndex = 0;
+            cbxType.TabIndex = 0;
             // 
             // tbpPayment
             // 
@@ -1013,6 +1068,7 @@
             btnPay.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnPay.UseAccentColor = false;
             btnPay.UseVisualStyleBackColor = true;
+            btnPay.Click += btnPay_Click;
             // 
             // tbxCVV
             // 
@@ -1102,7 +1158,7 @@
             tbxCardNumber.TabStop = false;
             tbxCardNumber.TextAlign = HorizontalAlignment.Left;
             tbxCardNumber.TrailingIcon = null;
-            tbxCardNumber.UseSystemPasswordChar = true;
+            tbxCardNumber.UseSystemPasswordChar = false;
             // 
             // tbxCardName
             // 
@@ -1198,6 +1254,11 @@
             imageList1.Images.SetKeyName(2, "Manage.png");
             imageList1.Images.SetKeyName(3, "Home.png");
             // 
+            // colDate
+            // 
+            colDate.HeaderText = "Date Submitted";
+            colDate.Name = "colDate";
+            // 
             // HomeownerDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1230,7 +1291,8 @@
             materialCard6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbxOccupantImage).EndInit();
             tbpHomeownerRequest.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tbpHomeownerRequest.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvRequest).EndInit();
             tbpRequest.ResumeLayout(false);
             tbpRequest.PerformLayout();
             tbpPayment.ResumeLayout(false);
@@ -1246,10 +1308,10 @@
         private TabPage tbpRequest;
         private TabPage tbpPayment;
         private ImageList imageList1;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox1;
+        private MaterialSkin.Controls.MaterialComboBox cbxType;
         private MaterialSkin.Controls.MaterialButton btnSubmit;
-        private TextBox textBox1;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
+        private TextBox tbxContext;
+        private MaterialSkin.Controls.MaterialTextBox2 tbxSubject;
         private DataGridView dgvTransactions;
         private MaterialSkin.Controls.MaterialButton btnPay;
         private MaterialSkin.Controls.MaterialTextBox2 tbxCVV;
@@ -1299,7 +1361,7 @@
         private Label label8;
         private PictureBox pbxVehicleImage;
         private TabPage tbpHomeownerRequest;
-        private DataGridView dataGridView1;
+        private DataGridView dgvRequest;
         private MaterialSkin.Controls.MaterialCard materialCard4;
         private MaterialSkin.Controls.MaterialCard materialCard5;
         private MaterialSkin.Controls.MaterialSwitch btnMemberEdit;
@@ -1319,5 +1381,11 @@
         private TextBox tbxBlockNumber;
         private Label label14;
         private DataGridView dgvOccupants;
+        private MaterialSkin.Controls.MaterialButton btnView;
+        private DataGridViewTextBoxColumn colType;
+        private DataGridViewTextBoxColumn colSubject;
+        private DataGridViewTextBoxColumn colContext;
+        private DataGridViewTextBoxColumn colStatus;
+        private DataGridViewTextBoxColumn colDate;
     }
 }

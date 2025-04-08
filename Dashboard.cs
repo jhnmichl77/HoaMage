@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.OleDb;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
@@ -13,8 +14,9 @@ namespace HoaMage
         {
             InitializeComponent();
             Shared.Set(this);
+            loadRequest();
+            loadTransaction();
         }
-
         private void LoadData()
         {
             if (string.IsNullOrEmpty(currentTable)) return;
@@ -31,31 +33,57 @@ namespace HoaMage
                 dgvDisplay.DataSource = null;
             }
         }
+        private void loadRequest()
+        {
+            string query = "SELECT * FROM Request";
 
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                connection.Open();
+                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dgvRequest.DataSource = dt;
+                }
+            }
+        }
+        private void loadTransaction()
+        {
+            string query = "Select * From Payment";
+
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                connection.Open();
+                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dgvTransactions.DataSource = dt;
+                }
+            }
+        }
         private void btnMembers_Click(object sender, EventArgs e)
         {
             currentTable = "MemberInformation";
             LoadData();
         }
-
         private void btnProperties_Click(object sender, EventArgs e)
         {
             currentTable = "PropertyInformation";
             LoadData();
         }
-
         private void btnVehicles_Click(object sender, EventArgs e)
         {
             currentTable = "VehicleInformation";
             LoadData();
         }
-
         private void btnOccupants_Click(object sender, EventArgs e)
         {
             currentTable = "Occupants";
             LoadData();
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Registration register = new Registration();
@@ -63,7 +91,6 @@ namespace HoaMage
             register.Show();
 
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(currentTable))
@@ -116,10 +143,6 @@ namespace HoaMage
             }
             tbxSearch.Clear();
         }
-
-
-
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(currentTable))
@@ -147,60 +170,31 @@ namespace HoaMage
                 MessageBox.Show("Failed to delete record.");
             }
         }
-
         private void btnAccounts_Click(object sender, EventArgs e)
         {
             currentTable = "Accounts";
             LoadData();
         }
 
-        private void btnEdit_CheckedChanged(object sender, EventArgs e)
+        private void btnView_Click(object sender, EventArgs e)
         {
-            bool enableEditing = true;
-            if (enableEditing)
+            if (dgvRequest.CurrentRow != null)
             {
-                dgvDisplay.ReadOnly = false;
+
+                string type = dgvRequest.CurrentRow.Cells[2].Value.ToString();
+                string subject = dgvRequest.CurrentRow.Cells[3].Value.ToString();
+                string context = dgvRequest.CurrentRow.Cells[4].Value.ToString();
+                string status = dgvRequest.CurrentRow.Cells[5].Value.ToString();
+                string dateSubmitted = dgvRequest.CurrentRow.Cells[6].Value.ToString();
+
+
+                viewRequest viewForm = new viewRequest(type, subject, context, status, dateSubmitted);
+                viewForm.Show();
             }
             else
             {
-                dgvDisplay.ReadOnly = true;
-
+                MessageBox.Show("Please select a request to view.");
             }
-        }
-        private void dgvDisplay_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {//edit unfinished
-            if (string.IsNullOrEmpty(currentTable))
-            {
-                return;
-            }
-
-            DataGridViewRow row = dgvDisplay.Rows[e.RowIndex];
-
-            int id = Convert.ToInt32(row.Cells[0].Value);
-
-            string columnName = dgvDisplay.Columns[e.ColumnIndex].Name;
-            string newValue = row.Cells[e.ColumnIndex].Value.ToString();
-
-            string updateQuery = $"UPDATE {currentTable} SET {columnName} = '{newValue}' WHERE AccountID = {id}";
-
-            if (DatabaseHelper.ExecuteNonQuery(updateQuery) > 0)
-            {
-                MessageBox.Show("Record updated successfully!");
-            }
-            else
-            {
-                MessageBox.Show("Failed to update record.");
-            }
-        }
-
-        private void materialButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
