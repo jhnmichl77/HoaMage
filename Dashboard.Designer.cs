@@ -64,10 +64,31 @@
             label2 = new Label();
             dgvTransactions = new DataGridView();
             tbpAnnouncement = new TabPage();
+            btnDeleteAnnouncement = new MaterialSkin.Controls.MaterialButton();
             btnCreate = new MaterialSkin.Controls.MaterialButton();
-            btnRemove = new MaterialSkin.Controls.MaterialButton();
-            btnEdit = new MaterialSkin.Controls.MaterialButton();
-            dataGridView1 = new DataGridView();
+            dgvAnnouncements = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colRe = new DataGridViewTextBoxColumn();
+            colContext = new DataGridViewTextBoxColumn();
+            colDate = new DataGridViewTextBoxColumn();
+            tbpRulesEnforcement = new TabPage();
+            btnIssue = new LinkLabel();
+            btnDeleteViolation = new LinkLabel();
+            label4 = new Label();
+            dgvViolators = new DataGridView();
+            colViolationID = new DataGridViewTextBoxColumn();
+            colName = new DataGridViewTextBoxColumn();
+            colViolation = new DataGridViewTextBoxColumn();
+            colViolationDate = new DataGridViewTextBoxColumn();
+            colAmount = new DataGridViewTextBoxColumn();
+            colStatus = new DataGridViewTextBoxColumn();
+            btnNewViolation = new LinkLabel();
+            label3 = new Label();
+            dgvViolations = new DataGridView();
+            colRuleID = new DataGridViewTextBoxColumn();
+            colRuleName = new DataGridViewTextBoxColumn();
+            colDescription = new DataGridViewTextBoxColumn();
+            colPenalty = new DataGridViewTextBoxColumn();
             imageList1 = new ImageList(components);
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
@@ -81,7 +102,10 @@
             tbpPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).BeginInit();
             tbpAnnouncement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAnnouncements).BeginInit();
+            tbpRulesEnforcement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvViolators).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvViolations).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -91,6 +115,7 @@
             materialTabControl1.Controls.Add(tbpRequest);
             materialTabControl1.Controls.Add(tbpPayment);
             materialTabControl1.Controls.Add(tbpAnnouncement);
+            materialTabControl1.Controls.Add(tbpRulesEnforcement);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.ImageList = imageList1;
@@ -490,7 +515,7 @@
             btnView.MouseState = MaterialSkin.MouseState.HOVER;
             btnView.Name = "btnView";
             btnView.NoAccentTextColor = Color.Empty;
-            btnView.Size = new Size(160, 36);
+            btnView.Size = new Size(64, 36);
             btnView.TabIndex = 2;
             btnView.Text = "View";
             btnView.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -504,6 +529,7 @@
             dgvRequest.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRequest.Location = new Point(18, 17);
             dgvRequest.Name = "dgvRequest";
+            dgvRequest.ReadOnly = true;
             dgvRequest.Size = new Size(827, 341);
             dgvRequest.TabIndex = 0;
             // 
@@ -584,15 +610,15 @@
             dgvTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTransactions.Location = new Point(22, 42);
             dgvTransactions.Name = "dgvTransactions";
+            dgvTransactions.ReadOnly = true;
             dgvTransactions.Size = new Size(819, 274);
             dgvTransactions.TabIndex = 0;
             // 
             // tbpAnnouncement
             // 
+            tbpAnnouncement.Controls.Add(btnDeleteAnnouncement);
             tbpAnnouncement.Controls.Add(btnCreate);
-            tbpAnnouncement.Controls.Add(btnRemove);
-            tbpAnnouncement.Controls.Add(btnEdit);
-            tbpAnnouncement.Controls.Add(dataGridView1);
+            tbpAnnouncement.Controls.Add(dgvAnnouncements);
             tbpAnnouncement.ImageKey = "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png";
             tbpAnnouncement.Location = new Point(4, 39);
             tbpAnnouncement.Name = "tbpAnnouncement";
@@ -602,6 +628,26 @@
             tbpAnnouncement.Text = "Announcement";
             tbpAnnouncement.UseVisualStyleBackColor = true;
             // 
+            // btnDeleteAnnouncement
+            // 
+            btnDeleteAnnouncement.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteAnnouncement.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteAnnouncement.Depth = 0;
+            btnDeleteAnnouncement.HighEmphasis = true;
+            btnDeleteAnnouncement.Icon = null;
+            btnDeleteAnnouncement.Location = new Point(595, 412);
+            btnDeleteAnnouncement.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteAnnouncement.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteAnnouncement.Name = "btnDeleteAnnouncement";
+            btnDeleteAnnouncement.NoAccentTextColor = Color.Empty;
+            btnDeleteAnnouncement.Size = new Size(158, 36);
+            btnDeleteAnnouncement.TabIndex = 8;
+            btnDeleteAnnouncement.Text = "Delete";
+            btnDeleteAnnouncement.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteAnnouncement.UseAccentColor = false;
+            btnDeleteAnnouncement.UseVisualStyleBackColor = true;
+            btnDeleteAnnouncement.Click += materialButton1_Click;
+            // 
             // btnCreate
             // 
             btnCreate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -609,7 +655,7 @@
             btnCreate.Depth = 0;
             btnCreate.HighEmphasis = true;
             btnCreate.Icon = null;
-            btnCreate.Location = new Point(608, 412);
+            btnCreate.Location = new Point(761, 412);
             btnCreate.Margin = new Padding(4, 6, 4, 6);
             btnCreate.MouseState = MaterialSkin.MouseState.HOVER;
             btnCreate.Name = "btnCreate";
@@ -620,52 +666,207 @@
             btnCreate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnCreate.UseAccentColor = false;
             btnCreate.UseVisualStyleBackColor = true;
+            btnCreate.Click += btnCreate_Click;
             // 
-            // btnRemove
+            // dgvAnnouncements
             // 
-            btnRemove.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnRemove.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnRemove.Depth = 0;
-            btnRemove.HighEmphasis = true;
-            btnRemove.Icon = null;
-            btnRemove.Location = new Point(764, 412);
-            btnRemove.Margin = new Padding(4, 6, 4, 6);
-            btnRemove.MouseState = MaterialSkin.MouseState.HOVER;
-            btnRemove.Name = "btnRemove";
-            btnRemove.NoAccentTextColor = Color.Empty;
-            btnRemove.Size = new Size(73, 36);
-            btnRemove.TabIndex = 6;
-            btnRemove.Text = "Delete";
-            btnRemove.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnRemove.UseAccentColor = false;
-            btnRemove.UseVisualStyleBackColor = true;
+            dgvAnnouncements.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAnnouncements.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAnnouncements.Columns.AddRange(new DataGridViewColumn[] { colID, colRe, colContext, colDate });
+            dgvAnnouncements.Location = new Point(26, 41);
+            dgvAnnouncements.Name = "dgvAnnouncements";
+            dgvAnnouncements.ReadOnly = true;
+            dgvAnnouncements.Size = new Size(811, 349);
+            dgvAnnouncements.TabIndex = 4;
             // 
-            // btnEdit
+            // colID
             // 
-            btnEdit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnEdit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnEdit.Depth = 0;
-            btnEdit.HighEmphasis = true;
-            btnEdit.Icon = null;
-            btnEdit.Location = new Point(692, 412);
-            btnEdit.Margin = new Padding(4, 6, 4, 6);
-            btnEdit.MouseState = MaterialSkin.MouseState.HOVER;
-            btnEdit.Name = "btnEdit";
-            btnEdit.NoAccentTextColor = Color.Empty;
-            btnEdit.Size = new Size(64, 36);
-            btnEdit.TabIndex = 5;
-            btnEdit.Text = "Edit";
-            btnEdit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnEdit.UseAccentColor = false;
-            btnEdit.UseVisualStyleBackColor = true;
+            colID.FillWeight = 20F;
+            colID.HeaderText = "ID";
+            colID.Name = "colID";
+            colID.ReadOnly = true;
             // 
-            // dataGridView1
+            // colRe
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(26, 41);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(811, 349);
-            dataGridView1.TabIndex = 4;
+            colRe.FillWeight = 60F;
+            colRe.HeaderText = "Re:";
+            colRe.Name = "colRe";
+            colRe.ReadOnly = true;
+            // 
+            // colContext
+            // 
+            colContext.FillWeight = 178.0676F;
+            colContext.HeaderText = "Context";
+            colContext.Name = "colContext";
+            colContext.ReadOnly = true;
+            // 
+            // colDate
+            // 
+            colDate.FillWeight = 45F;
+            colDate.HeaderText = "Date";
+            colDate.Name = "colDate";
+            colDate.ReadOnly = true;
+            // 
+            // tbpRulesEnforcement
+            // 
+            tbpRulesEnforcement.Controls.Add(btnIssue);
+            tbpRulesEnforcement.Controls.Add(btnDeleteViolation);
+            tbpRulesEnforcement.Controls.Add(label4);
+            tbpRulesEnforcement.Controls.Add(dgvViolators);
+            tbpRulesEnforcement.Controls.Add(btnNewViolation);
+            tbpRulesEnforcement.Controls.Add(label3);
+            tbpRulesEnforcement.Controls.Add(dgvViolations);
+            tbpRulesEnforcement.ImageKey = "Rules";
+            tbpRulesEnforcement.Location = new Point(4, 39);
+            tbpRulesEnforcement.Name = "tbpRulesEnforcement";
+            tbpRulesEnforcement.Padding = new Padding(3);
+            tbpRulesEnforcement.Size = new Size(863, 489);
+            tbpRulesEnforcement.TabIndex = 5;
+            tbpRulesEnforcement.Text = "Rules Enforcement";
+            tbpRulesEnforcement.UseVisualStyleBackColor = true;
+            // 
+            // btnIssue
+            // 
+            btnIssue.AutoSize = true;
+            btnIssue.Location = new Point(753, 438);
+            btnIssue.Name = "btnIssue";
+            btnIssue.Size = new Size(91, 15);
+            btnIssue.TabIndex = 6;
+            btnIssue.TabStop = true;
+            btnIssue.Text = "Issue a violation";
+            btnIssue.LinkClicked += btnIssue_LinkClicked;
+            // 
+            // btnDeleteViolation
+            // 
+            btnDeleteViolation.AutoSize = true;
+            btnDeleteViolation.Location = new Point(753, 229);
+            btnDeleteViolation.Name = "btnDeleteViolation";
+            btnDeleteViolation.Size = new Size(90, 15);
+            btnDeleteViolation.TabIndex = 5;
+            btnDeleteViolation.TabStop = true;
+            btnDeleteViolation.Text = "Delete Violation";
+            btnDeleteViolation.LinkClicked += btnDeleteViolation_LinkClicked;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(6, 253);
+            label4.Name = "label4";
+            label4.Size = new Size(137, 20);
+            label4.TabIndex = 4;
+            label4.Text = "Unpaid Violations:";
+            // 
+            // dgvViolators
+            // 
+            dgvViolators.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvViolators.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvViolators.Columns.AddRange(new DataGridViewColumn[] { colViolationID, colName, colViolation, colViolationDate, colAmount, colStatus });
+            dgvViolators.Location = new Point(6, 276);
+            dgvViolators.Name = "dgvViolators";
+            dgvViolators.ReadOnly = true;
+            dgvViolators.Size = new Size(851, 159);
+            dgvViolators.TabIndex = 3;
+            // 
+            // colViolationID
+            // 
+            colViolationID.FillWeight = 30F;
+            colViolationID.HeaderText = "ID";
+            colViolationID.Name = "colViolationID";
+            colViolationID.ReadOnly = true;
+            // 
+            // colName
+            // 
+            colName.FillWeight = 40F;
+            colName.HeaderText = "Name";
+            colName.Name = "colName";
+            colName.ReadOnly = true;
+            // 
+            // colViolation
+            // 
+            colViolation.HeaderText = "Violation";
+            colViolation.Name = "colViolation";
+            colViolation.ReadOnly = true;
+            // 
+            // colViolationDate
+            // 
+            colViolationDate.FillWeight = 40F;
+            colViolationDate.HeaderText = "Date";
+            colViolationDate.Name = "colViolationDate";
+            colViolationDate.ReadOnly = true;
+            // 
+            // colAmount
+            // 
+            colAmount.FillWeight = 25F;
+            colAmount.HeaderText = "Amount";
+            colAmount.Name = "colAmount";
+            colAmount.ReadOnly = true;
+            // 
+            // colStatus
+            // 
+            colStatus.FillWeight = 30F;
+            colStatus.HeaderText = "Status";
+            colStatus.Name = "colStatus";
+            colStatus.ReadOnly = true;
+            // 
+            // btnNewViolation
+            // 
+            btnNewViolation.AutoSize = true;
+            btnNewViolation.Location = new Point(650, 229);
+            btnNewViolation.Name = "btnNewViolation";
+            btnNewViolation.Size = new Size(81, 15);
+            btnNewViolation.TabIndex = 2;
+            btnNewViolation.TabStop = true;
+            btnNewViolation.Text = "New Violation";
+            btnNewViolation.LinkClicked += btnNewViolation_LinkClicked;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(6, 3);
+            label3.Name = "label3";
+            label3.Size = new Size(129, 20);
+            label3.TabIndex = 1;
+            label3.Text = "List of Violations:";
+            // 
+            // dgvViolations
+            // 
+            dgvViolations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvViolations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvViolations.Columns.AddRange(new DataGridViewColumn[] { colRuleID, colRuleName, colDescription, colPenalty });
+            dgvViolations.Location = new Point(6, 23);
+            dgvViolations.Name = "dgvViolations";
+            dgvViolations.ReadOnly = true;
+            dgvViolations.Size = new Size(851, 203);
+            dgvViolations.TabIndex = 0;
+            // 
+            // colRuleID
+            // 
+            colRuleID.FillWeight = 20F;
+            colRuleID.HeaderText = "RuleID";
+            colRuleID.Name = "colRuleID";
+            colRuleID.ReadOnly = true;
+            // 
+            // colRuleName
+            // 
+            colRuleName.FillWeight = 40F;
+            colRuleName.HeaderText = "Rule Name";
+            colRuleName.Name = "colRuleName";
+            colRuleName.ReadOnly = true;
+            // 
+            // colDescription
+            // 
+            colDescription.HeaderText = "Description";
+            colDescription.Name = "colDescription";
+            colDescription.ReadOnly = true;
+            // 
+            // colPenalty
+            // 
+            colPenalty.FillWeight = 30F;
+            colPenalty.HeaderText = "Penalty";
+            colPenalty.Name = "colPenalty";
+            colPenalty.ReadOnly = true;
             // 
             // imageList1
             // 
@@ -677,6 +878,7 @@
             imageList1.Images.SetKeyName(2, "Manage.png");
             imageList1.Images.SetKeyName(3, "Home.png");
             imageList1.Images.SetKeyName(4, "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png");
+            imageList1.Images.SetKeyName(5, "Rules");
             // 
             // Dashboard
             // 
@@ -707,7 +909,11 @@
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).EndInit();
             tbpAnnouncement.ResumeLayout(false);
             tbpAnnouncement.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAnnouncements).EndInit();
+            tbpRulesEnforcement.ResumeLayout(false);
+            tbpRulesEnforcement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvViolators).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvViolations).EndInit();
             ResumeLayout(false);
         }
 
@@ -734,9 +940,7 @@
         private MaterialSkin.Controls.MaterialButton btnAccounts;
         private TabPage tbpAnnouncement;
         private MaterialSkin.Controls.MaterialButton btnCreate;
-        private MaterialSkin.Controls.MaterialButton btnRemove;
-        private MaterialSkin.Controls.MaterialButton btnEdit;
-        private DataGridView dataGridView1;
+        private DataGridView dgvAnnouncements;
         private DataGridView dgvRequest;
         private MaterialSkin.Controls.MaterialButton btnMail;
         private MaterialSkin.Controls.MaterialButton btnView;
@@ -753,5 +957,28 @@
         private MaterialSkin.Controls.MaterialCard materialCard8;
         private MaterialSkin.Controls.MaterialCard materialCard7;
         private MaterialSkin.Controls.MaterialButton btnRefund;
+        private TabPage tbpRulesEnforcement;
+        private MaterialSkin.Controls.MaterialButton btnDeleteAnnouncement;
+        private DataGridViewTextBoxColumn colID;
+        private DataGridViewTextBoxColumn colRe;
+        private DataGridViewTextBoxColumn colContext;
+        private DataGridViewTextBoxColumn colDate;
+        private DataGridView dgvViolations;
+        private LinkLabel btnNewViolation;
+        private Label label3;
+        private DataGridView dgvViolators;
+        private Label label4;
+        private LinkLabel btnDeleteViolation;
+        private LinkLabel btnIssue;
+        private DataGridViewTextBoxColumn colRuleID;
+        private DataGridViewTextBoxColumn colRuleName;
+        private DataGridViewTextBoxColumn colDescription;
+        private DataGridViewTextBoxColumn colPenalty;
+        private DataGridViewTextBoxColumn colViolationID;
+        private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colViolation;
+        private DataGridViewTextBoxColumn colViolationDate;
+        private DataGridViewTextBoxColumn colAmount;
+        private DataGridViewTextBoxColumn colStatus;
     }
 }

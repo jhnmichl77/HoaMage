@@ -16,6 +16,9 @@ namespace HoaMage
             Shared.Set(this);
             loadRequest();
             loadTransaction();
+            loadAnnouncements();
+            loadViolations();
+            loadViolators();
         }
         private void LoadData()
         {
@@ -187,13 +190,218 @@ namespace HoaMage
                 string status = dgvRequest.CurrentRow.Cells[5].Value.ToString();
                 string dateSubmitted = dgvRequest.CurrentRow.Cells[6].Value.ToString();
 
-
                 viewRequest viewForm = new viewRequest(type, subject, context, status, dateSubmitted);
                 viewForm.Show();
             }
             else
             {
                 MessageBox.Show("Please select a request to view.");
+            }
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+
+            using (createAnnouncement announcement = new createAnnouncement())
+            {
+                announcement.ShowDialog();
+                loadAnnouncements();
+            }
+
+        }
+
+        private void loadAnnouncements()
+        {
+            dgvAnnouncements.Rows.Clear();
+            string query = "SELECT ID, Regarding, Context, DayDate FROM Announcements";
+
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                connection.Open();
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    using (OleDbDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string id = reader["ID"].ToString();
+                            string regarding = reader["Regarding"].ToString();
+                            string context = reader["Context"].ToString();
+                            DateTime date = Convert.ToDateTime(reader["DayDate"]);
+                            dgvAnnouncements.Rows.Add(id, regarding, context, date);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            if (dgvAnnouncements.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an announcement to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedID = Convert.ToInt32(dgvAnnouncements.SelectedRows[0].Cells[0].Value);
+
+            DialogResult confirm = MessageBox.Show("Are you sure you want to delete the selected announcement?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                string query = "DELETE FROM Announcements WHERE ID = @ID";
+
+                using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+                {
+                    connection.Open();
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", selectedID);
+
+                        try
+                        {
+                            int result = command.ExecuteNonQuery();
+                            if (result > 0)
+                            {
+                                MessageBox.Show("Announcement deleted successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                loadAnnouncements();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to delete the selected announcement.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+        private void loadViolations()
+        {
+            dgvViolations.Rows.Clear();
+            string query = "SELECT * FROM Violations";
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                connection.Open();
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    using (OleDbDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string ruleid = reader["ID"].ToString();
+                            string rulename = reader["RuleName"].ToString();
+                            string description = reader["Description"].ToString();
+                            string penalty = reader["Penalty"].ToString();
+                            dgvViolations.Rows.Add(ruleid, rulename, description, penalty);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnNewViolation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (addViolation newViolation = new addViolation())
+            {
+                newViolation.ShowDialog();
+                loadViolations();
+            }
+        }
+
+        private void btnDeleteViolation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (dgvViolations.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a violation to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int violationID = Convert.ToInt32(dgvViolations.SelectedRows[0].Cells[0].Value);
+
+            DialogResult confirm = MessageBox.Show("Are you sure you want to delete this violation?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                string query = "DELETE FROM Violations WHERE ID = @ID";
+
+                using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+                {
+                    connection.Open();
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", violationID);
+
+                        try
+                        {
+                            int result = command.ExecuteNonQuery();
+                            if (result > 0)
+                            {
+                                MessageBox.Show("Violation deleted successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                loadViolations();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to delete the violation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void loadViolators()
+        {
+            dgvViolators.Rows.Clear(); 
+            string query = "SELECT AccountID, ViolatorName, Violation, ViolationDate, Penalty, Status FROM Violators";
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+                {
+                    connection.Open();
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        using (OleDbDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string accId = reader["AccountID"].ToString();
+                                string name = reader["ViolatorName"].ToString();
+                                string violation = reader["Violation"].ToString();
+                                DateTime date = Convert.ToDateTime(reader["ViolationDate"]);
+                                string penalty = reader["Penalty"].ToString();
+                                string status = reader["Status"].ToString();
+
+                                dgvViolators.Rows.Add(accId, name, violation, date.ToShortDateString(), penalty, status);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (OleDbException oleDbEx)
+            {
+                // Specific catch block for OleDb exceptions
+                MessageBox.Show("OleDb error: " + oleDbEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading violators: " + ex.Message);
+            }
+        }
+
+        private void btnIssue_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using(Citation cite = new Citation())
+            {
+                cite.ShowDialog();
+                loadViolators();
             }
         }
     }

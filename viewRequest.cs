@@ -31,14 +31,18 @@ namespace HoaMage
         {
             bool isAdmin = Shared.Identification.Role == "Admin";
 
-            tbxReqDate.Enabled = false;      
-            tbxReqSubject.Enabled = false;   
+            tbxReqDate.Enabled = false;
+            tbxReqSubject.Enabled = false;
             tbxReqType.Enabled = false;
             tbxReqContext.Enabled = false;
-            cbxStatus.Enabled = isAdmin;     
-            btnSave.Visible = isAdmin;       
-            btnReply.Visible = isAdmin;      
+            cbxStatus.Enabled = isAdmin;
+            btnSave.Visible = isAdmin;
+            btnReply.Visible = isAdmin;
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
