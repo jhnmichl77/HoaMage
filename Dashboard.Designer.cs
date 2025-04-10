@@ -58,7 +58,6 @@
             btnView = new MaterialSkin.Controls.MaterialButton();
             dgvRequest = new DataGridView();
             tbpPayment = new TabPage();
-            btnRefund = new MaterialSkin.Controls.MaterialButton();
             materialCard2 = new MaterialSkin.Controls.MaterialCard();
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             label2 = new Label();
@@ -83,15 +82,15 @@
             colPenalty = new DataGridViewTextBoxColumn();
             tbpBills = new TabPage();
             dgvPayables = new DataGridView();
-            btnDelBill = new MaterialSkin.Controls.MaterialButton();
-            btnBill = new MaterialSkin.Controls.MaterialButton();
-            imageList1 = new ImageList(components);
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            btnDelBill = new MaterialSkin.Controls.MaterialButton();
+            btnBill = new MaterialSkin.Controls.MaterialButton();
+            imageList1 = new ImageList(components);
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -539,7 +538,6 @@
             // 
             // tbpPayment
             // 
-            tbpPayment.Controls.Add(btnRefund);
             tbpPayment.Controls.Add(materialCard2);
             tbpPayment.Controls.Add(materialCard1);
             tbpPayment.Controls.Add(label2);
@@ -552,25 +550,6 @@
             tbpPayment.TabIndex = 3;
             tbpPayment.Text = "Payment";
             tbpPayment.UseVisualStyleBackColor = true;
-            // 
-            // btnRefund
-            // 
-            btnRefund.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnRefund.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnRefund.Depth = 0;
-            btnRefund.HighEmphasis = true;
-            btnRefund.Icon = null;
-            btnRefund.Location = new Point(764, 333);
-            btnRefund.Margin = new Padding(4, 6, 4, 6);
-            btnRefund.MouseState = MaterialSkin.MouseState.HOVER;
-            btnRefund.Name = "btnRefund";
-            btnRefund.NoAccentTextColor = Color.Empty;
-            btnRefund.Size = new Size(77, 36);
-            btnRefund.TabIndex = 5;
-            btnRefund.Text = "Refund";
-            btnRefund.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnRefund.UseAccentColor = false;
-            btnRefund.UseVisualStyleBackColor = true;
             // 
             // materialCard2
             // 
@@ -832,6 +811,51 @@
             dgvPayables.Size = new Size(851, 297);
             dgvPayables.TabIndex = 6;
             // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column1.FillWeight = 30F;
+            Column1.Frozen = true;
+            Column1.HeaderText = "Reference";
+            Column1.Name = "Column1";
+            Column1.Width = 135;
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column2.Frozen = true;
+            Column2.HeaderText = "Billed To";
+            Column2.Name = "Column2";
+            Column2.Width = 134;
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column3.Frozen = true;
+            Column3.HeaderText = "Description";
+            Column3.Name = "Column3";
+            Column3.Width = 135;
+            // 
+            // Column4
+            // 
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column4.FillWeight = 30F;
+            Column4.HeaderText = "Amount";
+            Column4.Name = "Column4";
+            Column4.Width = 135;
+            // 
+            // Column5
+            // 
+            Column5.FillWeight = 30F;
+            Column5.HeaderText = "Date";
+            Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            Column6.FillWeight = 30F;
+            Column6.HeaderText = "Status";
+            Column6.Name = "Column6";
+            // 
             // btnDelBill
             // 
             btnDelBill.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -883,51 +907,6 @@
             imageList1.Images.SetKeyName(3, "Home.png");
             imageList1.Images.SetKeyName(4, "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png");
             imageList1.Images.SetKeyName(5, "Rules");
-            // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column1.FillWeight = 30F;
-            Column1.Frozen = true;
-            Column1.HeaderText = "Reference";
-            Column1.Name = "Column1";
-            Column1.Width = 135;
-            // 
-            // Column2
-            // 
-            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column2.Frozen = true;
-            Column2.HeaderText = "Billed To";
-            Column2.Name = "Column2";
-            Column2.Width = 134;
-            // 
-            // Column3
-            // 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column3.Frozen = true;
-            Column3.HeaderText = "Description";
-            Column3.Name = "Column3";
-            Column3.Width = 135;
-            // 
-            // Column4
-            // 
-            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column4.FillWeight = 30F;
-            Column4.HeaderText = "Amount";
-            Column4.Name = "Column4";
-            Column4.Width = 135;
-            // 
-            // Column5
-            // 
-            Column5.FillWeight = 30F;
-            Column5.HeaderText = "Date";
-            Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            Column6.FillWeight = 30F;
-            Column6.HeaderText = "Status";
-            Column6.Name = "Column6";
             // 
             // Dashboard
             // 
@@ -983,7 +962,6 @@
         private Panel panel1;
         private MaterialSkin.Controls.MaterialButton btnDelete;
         private MaterialSkin.Controls.MaterialButton btnAdd;
-        private DataGridView dgvDisplay;
         private MaterialSkin.Controls.MaterialButton btnSearch;
         private TextBox tbxSearch;
         private Label label1;
@@ -1007,7 +985,6 @@
         private MaterialSkin.Controls.MaterialCard materialCard9;
         private MaterialSkin.Controls.MaterialCard materialCard8;
         private MaterialSkin.Controls.MaterialCard materialCard7;
-        private MaterialSkin.Controls.MaterialButton btnRefund;
         private TabPage tbpRulesEnforcement;
         private MaterialSkin.Controls.MaterialButton btnDeleteAnnouncement;
         private DataGridViewTextBoxColumn colID;
@@ -1033,5 +1010,6 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
+        private DataGridView dgvDisplay;
     }
 }

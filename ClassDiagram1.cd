@@ -16,15 +16,14 @@
   <Class Name="HoaMage.Dashboard">
     <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BABEgpAIAWAQABJQAAGCAAIiALjfiAAwAAARgSAAEQY=</HashCode>
+      <HashCode>A4DEwvJJAGAUBBNABQGCJAIiILD/jxAwBAARgyoAEQY=</HashCode>
       <FileName>Dashboard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HoaMage.HomeownerDashboard">
     <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>66E3CqBcAOoAGBFhhCCCRBDiBYHfYOESoCAAAGDAOKg=</HashCode>
-      <FileName>HomeownerDashboard.cs</FileName>
+      <HashCode>66E3CCBMAOgACBBBhCCARAAiBIH/Z2AQoAAAAWDACKA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="HoaMage.Login">
@@ -107,8 +106,43 @@
   <Class Name="HoaMage.viewRequest">
     <Position X="9.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAIAAACEAAAAAAgCAAAACAAAAgAAAAAEAAAIAABA=</HashCode>
+      <HashCode>QAAAAIAAACEAAAAAAgCAAAACAAAAgBAAAAEAAAIAABA=</HashCode>
       <FileName>viewRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.addViolation">
+    <Position X="1.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAAAAAAAACACAACAAAAABABAAAAAAIAAAA=</HashCode>
+      <FileName>addViolation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.Bill">
+    <Position X="7.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIEAAACKAABEABACACAACAAAAABAAAAAAAAIBAAA=</HashCode>
+      <FileName>Bill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.Citation">
+    <Position X="3.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAEAACIAACUAAASAAAACIAAAEBAAAAAAAAIBAAA=</HashCode>
+      <FileName>Citation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.createAnnouncement">
+    <Position X="1.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgACAAAAAAAACAAAACAAAAABAIAAAAAAIAAQQ=</HashCode>
+      <FileName>createAnnouncement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoaMage.Payment">
+    <Position X="3.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQGIAAAAAAACCCAACAAAAAAAAgAAAEAAAAAg=</HashCode>
+      <FileName>Payment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

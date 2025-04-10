@@ -18,6 +18,7 @@ namespace HoaMage
             loadAnnouncements();
             loadViolations();
             loadPayables();
+            loadTransactions();
         }
         private void LoadData()
         {
@@ -194,6 +195,37 @@ namespace HoaMage
             }
 
         }
+        private void loadTransactions()
+        {
+            string query = "SELECT * FROM Payables"; 
+
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(query, connection);
+
+                DataSet dataSet = new DataSet();
+
+                try
+                {
+                    dataAdapter.Fill(dataSet, "Payables");
+
+                    dgvPayables.Rows.Clear();
+                    dgvPayables.Columns.Clear();
+
+                    dgvPayables.DataSource = dataSet.Tables["Payables"];
+
+                    foreach (DataGridViewColumn column in dgvPayables.Columns)
+                    {
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading data: " + ex.Message);
+                }
+            }
+        }
+
         private void loadPayables()
         {
             string query = "SELECT PayableID, BilledTo, Description, Amount, DateAdded, Status FROM Payables";
