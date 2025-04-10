@@ -98,6 +98,7 @@
             colSubject = new DataGridViewTextBoxColumn();
             colContext = new DataGridViewTextBoxColumn();
             colStatus = new DataGridViewTextBoxColumn();
+            colDate = new DataGridViewTextBoxColumn();
             tbpRequest = new TabPage();
             btnSubmit = new MaterialSkin.Controls.MaterialButton();
             tbxContext = new TextBox();
@@ -113,7 +114,7 @@
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             dgvTransactions = new DataGridView();
             imageList1 = new ImageList(components);
-            colDate = new DataGridViewTextBoxColumn();
+            tbpBills = new TabPage();
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -141,6 +142,7 @@
             materialTabControl1.Controls.Add(tbpProfile);
             materialTabControl1.Controls.Add(tbpRequest);
             materialTabControl1.Controls.Add(tbpPayment);
+            materialTabControl1.Controls.Add(tbpBills);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.ImageList = imageList1;
@@ -932,6 +934,11 @@
             colStatus.HeaderText = "Status";
             colStatus.Name = "colStatus";
             // 
+            // colDate
+            // 
+            colDate.HeaderText = "Date Submitted";
+            colDate.Name = "colDate";
+            // 
             // tbpRequest
             // 
             tbpRequest.Controls.Add(btnSubmit);
@@ -1254,10 +1261,15 @@
             imageList1.Images.SetKeyName(2, "Manage.png");
             imageList1.Images.SetKeyName(3, "Home.png");
             // 
-            // colDate
+            // tbpBills
             // 
-            colDate.HeaderText = "Date Submitted";
-            colDate.Name = "colDate";
+            tbpBills.Location = new Point(4, 39);
+            tbpBills.Name = "tbpBills";
+            tbpBills.Padding = new Padding(3);
+            tbpBills.Size = new Size(863, 489);
+            tbpBills.TabIndex = 4;
+            tbpBills.Text = "Bills";
+            tbpBills.UseVisualStyleBackColor = true;
             // 
             // HomeownerDashboard
             // 
@@ -1387,5 +1399,6 @@
         private DataGridViewTextBoxColumn colContext;
         private DataGridViewTextBoxColumn colStatus;
         private DataGridViewTextBoxColumn colDate;
+        private TabPage tbpBills;
     }
 }

@@ -89,6 +89,16 @@
             colRuleName = new DataGridViewTextBoxColumn();
             colDescription = new DataGridViewTextBoxColumn();
             colPenalty = new DataGridViewTextBoxColumn();
+            tbpBills = new TabPage();
+            btnDelBill = new MaterialSkin.Controls.MaterialButton();
+            btnBill = new MaterialSkin.Controls.MaterialButton();
+            dgvBills = new DataGridView();
+            colBillID = new DataGridViewTextBoxColumn();
+            colAID = new DataGridViewTextBoxColumn();
+            colBilledTo = new DataGridViewTextBoxColumn();
+            colDescrip = new DataGridViewTextBoxColumn();
+            colBillAmount = new DataGridViewTextBoxColumn();
+            colPaymentDate = new DataGridViewTextBoxColumn();
             imageList1 = new ImageList(components);
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
@@ -106,6 +116,8 @@
             tbpRulesEnforcement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvViolators).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvViolations).BeginInit();
+            tbpBills.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBills).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -116,6 +128,7 @@
             materialTabControl1.Controls.Add(tbpPayment);
             materialTabControl1.Controls.Add(tbpAnnouncement);
             materialTabControl1.Controls.Add(tbpRulesEnforcement);
+            materialTabControl1.Controls.Add(tbpBills);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.ImageList = imageList1;
@@ -640,7 +653,7 @@
             btnDeleteAnnouncement.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteAnnouncement.Name = "btnDeleteAnnouncement";
             btnDeleteAnnouncement.NoAccentTextColor = Color.Empty;
-            btnDeleteAnnouncement.Size = new Size(158, 36);
+            btnDeleteAnnouncement.Size = new Size(73, 36);
             btnDeleteAnnouncement.TabIndex = 8;
             btnDeleteAnnouncement.Text = "Delete";
             btnDeleteAnnouncement.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -868,6 +881,112 @@
             colPenalty.Name = "colPenalty";
             colPenalty.ReadOnly = true;
             // 
+            // tbpBills
+            // 
+            tbpBills.AutoScroll = true;
+            tbpBills.Controls.Add(btnDelBill);
+            tbpBills.Controls.Add(btnBill);
+            tbpBills.Controls.Add(dgvBills);
+            tbpBills.Location = new Point(4, 39);
+            tbpBills.Name = "tbpBills";
+            tbpBills.Padding = new Padding(3);
+            tbpBills.Size = new Size(863, 489);
+            tbpBills.TabIndex = 6;
+            tbpBills.Text = "Bills";
+            tbpBills.UseVisualStyleBackColor = true;
+            // 
+            // btnDelBill
+            // 
+            btnDelBill.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDelBill.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDelBill.Depth = 0;
+            btnDelBill.HighEmphasis = true;
+            btnDelBill.Icon = null;
+            btnDelBill.Location = new Point(766, 324);
+            btnDelBill.Margin = new Padding(4, 6, 4, 6);
+            btnDelBill.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDelBill.Name = "btnDelBill";
+            btnDelBill.NoAccentTextColor = Color.Empty;
+            btnDelBill.Size = new Size(73, 36);
+            btnDelBill.TabIndex = 5;
+            btnDelBill.Text = "Delete";
+            btnDelBill.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDelBill.UseAccentColor = false;
+            btnDelBill.UseVisualStyleBackColor = true;
+            btnDelBill.Click += btnDelBill_Click;
+            // 
+            // btnBill
+            // 
+            btnBill.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnBill.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnBill.Depth = 0;
+            btnBill.HighEmphasis = true;
+            btnBill.Icon = null;
+            btnBill.Location = new Point(678, 324);
+            btnBill.Margin = new Padding(4, 6, 4, 6);
+            btnBill.MouseState = MaterialSkin.MouseState.HOVER;
+            btnBill.Name = "btnBill";
+            btnBill.NoAccentTextColor = Color.Empty;
+            btnBill.Size = new Size(64, 36);
+            btnBill.TabIndex = 4;
+            btnBill.Text = "Bill";
+            btnBill.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnBill.UseAccentColor = false;
+            btnBill.UseVisualStyleBackColor = true;
+            btnBill.Click += btnBill_Click;
+            // 
+            // dgvBills
+            // 
+            dgvBills.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvBills.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBills.Columns.AddRange(new DataGridViewColumn[] { colBillID, colAID, colBilledTo, colDescrip, colBillAmount, colPaymentDate });
+            dgvBills.Location = new Point(23, 29);
+            dgvBills.Name = "dgvBills";
+            dgvBills.ReadOnly = true;
+            dgvBills.Size = new Size(816, 286);
+            dgvBills.TabIndex = 3;
+            // 
+            // colBillID
+            // 
+            colBillID.FillWeight = 20F;
+            colBillID.HeaderText = "Bill ID";
+            colBillID.Name = "colBillID";
+            colBillID.ReadOnly = true;
+            // 
+            // colAID
+            // 
+            colAID.FillWeight = 20F;
+            colAID.HeaderText = "AccountID";
+            colAID.Name = "colAID";
+            colAID.ReadOnly = true;
+            // 
+            // colBilledTo
+            // 
+            colBilledTo.FillWeight = 50F;
+            colBilledTo.HeaderText = "Billed To";
+            colBilledTo.Name = "colBilledTo";
+            colBilledTo.ReadOnly = true;
+            // 
+            // colDescrip
+            // 
+            colDescrip.HeaderText = "Description";
+            colDescrip.Name = "colDescrip";
+            colDescrip.ReadOnly = true;
+            // 
+            // colBillAmount
+            // 
+            colBillAmount.FillWeight = 30F;
+            colBillAmount.HeaderText = "Amount";
+            colBillAmount.Name = "colBillAmount";
+            colBillAmount.ReadOnly = true;
+            // 
+            // colPaymentDate
+            // 
+            colPaymentDate.FillWeight = 30F;
+            colPaymentDate.HeaderText = "Due Date";
+            colPaymentDate.Name = "colPaymentDate";
+            colPaymentDate.ReadOnly = true;
+            // 
             // imageList1
             // 
             imageList1.ColorDepth = ColorDepth.Depth32Bit;
@@ -914,6 +1033,9 @@
             tbpRulesEnforcement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvViolators).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvViolations).EndInit();
+            tbpBills.ResumeLayout(false);
+            tbpBills.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBills).EndInit();
             ResumeLayout(false);
         }
 
@@ -980,5 +1102,15 @@
         private DataGridViewTextBoxColumn colViolationDate;
         private DataGridViewTextBoxColumn colAmount;
         private DataGridViewTextBoxColumn colStatus;
+        private TabPage tbpBills;
+        private DataGridView dgvBills;
+        private MaterialSkin.Controls.MaterialButton btnBill;
+        private MaterialSkin.Controls.MaterialButton btnDelBill;
+        private DataGridViewTextBoxColumn colBillID;
+        private DataGridViewTextBoxColumn colAID;
+        private DataGridViewTextBoxColumn colBilledTo;
+        private DataGridViewTextBoxColumn colDescrip;
+        private DataGridViewTextBoxColumn colBillAmount;
+        private DataGridViewTextBoxColumn colPaymentDate;
     }
 }
