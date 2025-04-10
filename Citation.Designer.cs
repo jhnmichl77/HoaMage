@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             cbxRuleViolated = new MaterialSkin.Controls.MaterialComboBox();
-            tbxContext = new TextBox();
             dtpViolationDay = new DateTimePicker();
             tbxAmount = new MaterialSkin.Controls.MaterialTextBox2();
             btnSave = new MaterialSkin.Controls.MaterialButton();
@@ -60,14 +59,6 @@
             cbxRuleViolated.StartIndex = 0;
             cbxRuleViolated.TabIndex = 0;
             cbxRuleViolated.SelectedIndexChanged += cbxRuleViolated_SelectedIndexChanged;
-            // 
-            // tbxContext
-            // 
-            tbxContext.Location = new Point(25, 301);
-            tbxContext.Multiline = true;
-            tbxContext.Name = "tbxContext";
-            tbxContext.Size = new Size(327, 168);
-            tbxContext.TabIndex = 1;
             // 
             // dtpViolationDay
             // 
@@ -113,7 +104,7 @@
             btnSave.Depth = 0;
             btnSave.HighEmphasis = true;
             btnSave.Icon = null;
-            btnSave.Location = new Point(288, 478);
+            btnSave.Location = new Point(288, 333);
             btnSave.Margin = new Padding(4, 6, 4, 6);
             btnSave.MouseState = MaterialSkin.MouseState.HOVER;
             btnSave.Name = "btnSave";
@@ -183,16 +174,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(374, 528);
+            ClientSize = new Size(374, 393);
             Controls.Add(tbxName);
             Controls.Add(cbxViolator);
             Controls.Add(btnSave);
             Controls.Add(tbxAmount);
             Controls.Add(dtpViolationDay);
-            Controls.Add(tbxContext);
             Controls.Add(cbxRuleViolated);
-            MaximumSize = new Size(374, 528);
-            MinimumSize = new Size(374, 528);
+            MaximumSize = new Size(374, 393);
+            MinimumSize = new Size(374, 393);
             Name = "Citation";
             Text = "Citation";
             ResumeLayout(false);
@@ -202,7 +192,6 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialComboBox cbxRuleViolated;
-        private TextBox tbxContext;
         private DateTimePicker dtpViolationDay;
         private MaterialSkin.Controls.MaterialTextBox2 tbxAmount;
         private MaterialSkin.Controls.MaterialButton btnSave;

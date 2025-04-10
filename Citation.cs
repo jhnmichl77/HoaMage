@@ -119,13 +119,14 @@ namespace HoaMage
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
+
             if (dtpViolationDay.Value.Date > DateTime.Now.Date)
             {
                 MessageBox.Show("Violation date cannot be in the future.");
                 return;
             }
 
-            string query = "INSERT INTO Violators (AccountID, ViolatorName, Violation, ViolationDate, Penalty, Status) VALUES (?, ?, ?, ?, ?, ?)";
+            string query = "INSERT INTO Payables (AccountID, BilledTo, Description, Amount, DateAdded, Status) VALUES (?, ?, ?, ?, ?, ?)";
 
             try
             {
@@ -134,8 +135,6 @@ namespace HoaMage
                     connection.Open();
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-
-
                         if (!int.TryParse(cbxViolator.Text, out int accountId))
                         {
                             MessageBox.Show("Invalid Account ID.");
@@ -145,7 +144,6 @@ namespace HoaMage
                         command.Parameters.AddWithValue("?", accountId);
                         command.Parameters.AddWithValue("?", tbxName.Text);
                         command.Parameters.AddWithValue("?", cbxRuleViolated.Text);
-                        command.Parameters.AddWithValue("?", dtpViolationDay.Value.Date);
 
                         if (int.TryParse(tbxAmount.Text, out int penalty))
                         {
@@ -156,9 +154,14 @@ namespace HoaMage
                             MessageBox.Show("Please enter a valid amount for the penalty.");
                             return;
                         }
+
+                        command.Parameters.AddWithValue("?", dtpViolationDay.Value.Date);
                         command.Parameters.AddWithValue("?", "Unpaid");
+
                         command.ExecuteNonQuery();
+
                         MessageBox.Show("Record saved successfully.");
+
                         tbxName.Clear();
                         tbxAmount.Clear();
                         cbxViolator.SelectedIndex = 0;
@@ -173,5 +176,6 @@ namespace HoaMage
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
+
     }
 }

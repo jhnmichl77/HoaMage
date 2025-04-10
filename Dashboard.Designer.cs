@@ -74,14 +74,6 @@
             tbpRulesEnforcement = new TabPage();
             btnIssue = new LinkLabel();
             btnDeleteViolation = new LinkLabel();
-            label4 = new Label();
-            dgvViolators = new DataGridView();
-            colViolationID = new DataGridViewTextBoxColumn();
-            colName = new DataGridViewTextBoxColumn();
-            colViolation = new DataGridViewTextBoxColumn();
-            colViolationDate = new DataGridViewTextBoxColumn();
-            colAmount = new DataGridViewTextBoxColumn();
-            colStatus = new DataGridViewTextBoxColumn();
             btnNewViolation = new LinkLabel();
             label3 = new Label();
             dgvViolations = new DataGridView();
@@ -90,16 +82,16 @@
             colDescription = new DataGridViewTextBoxColumn();
             colPenalty = new DataGridViewTextBoxColumn();
             tbpBills = new TabPage();
+            dgvPayables = new DataGridView();
             btnDelBill = new MaterialSkin.Controls.MaterialButton();
             btnBill = new MaterialSkin.Controls.MaterialButton();
-            dgvBills = new DataGridView();
-            colBillID = new DataGridViewTextBoxColumn();
-            colAID = new DataGridViewTextBoxColumn();
-            colBilledTo = new DataGridViewTextBoxColumn();
-            colDescrip = new DataGridViewTextBoxColumn();
-            colBillAmount = new DataGridViewTextBoxColumn();
-            colPaymentDate = new DataGridViewTextBoxColumn();
             imageList1 = new ImageList(components);
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -114,10 +106,9 @@
             tbpAnnouncement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAnnouncements).BeginInit();
             tbpRulesEnforcement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvViolators).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvViolations).BeginInit();
             tbpBills.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvBills).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPayables).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -724,8 +715,6 @@
             // 
             tbpRulesEnforcement.Controls.Add(btnIssue);
             tbpRulesEnforcement.Controls.Add(btnDeleteViolation);
-            tbpRulesEnforcement.Controls.Add(label4);
-            tbpRulesEnforcement.Controls.Add(dgvViolators);
             tbpRulesEnforcement.Controls.Add(btnNewViolation);
             tbpRulesEnforcement.Controls.Add(label3);
             tbpRulesEnforcement.Controls.Add(dgvViolations);
@@ -741,7 +730,7 @@
             // btnIssue
             // 
             btnIssue.AutoSize = true;
-            btnIssue.Location = new Point(753, 438);
+            btnIssue.Location = new Point(528, 412);
             btnIssue.Name = "btnIssue";
             btnIssue.Size = new Size(91, 15);
             btnIssue.TabIndex = 6;
@@ -752,7 +741,7 @@
             // btnDeleteViolation
             // 
             btnDeleteViolation.AutoSize = true;
-            btnDeleteViolation.Location = new Point(753, 229);
+            btnDeleteViolation.Location = new Point(762, 412);
             btnDeleteViolation.Name = "btnDeleteViolation";
             btnDeleteViolation.Size = new Size(90, 15);
             btnDeleteViolation.TabIndex = 5;
@@ -760,72 +749,10 @@
             btnDeleteViolation.Text = "Delete Violation";
             btnDeleteViolation.LinkClicked += btnDeleteViolation_LinkClicked;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(6, 253);
-            label4.Name = "label4";
-            label4.Size = new Size(137, 20);
-            label4.TabIndex = 4;
-            label4.Text = "Unpaid Violations:";
-            // 
-            // dgvViolators
-            // 
-            dgvViolators.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvViolators.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvViolators.Columns.AddRange(new DataGridViewColumn[] { colViolationID, colName, colViolation, colViolationDate, colAmount, colStatus });
-            dgvViolators.Location = new Point(6, 276);
-            dgvViolators.Name = "dgvViolators";
-            dgvViolators.ReadOnly = true;
-            dgvViolators.Size = new Size(851, 159);
-            dgvViolators.TabIndex = 3;
-            // 
-            // colViolationID
-            // 
-            colViolationID.FillWeight = 30F;
-            colViolationID.HeaderText = "ID";
-            colViolationID.Name = "colViolationID";
-            colViolationID.ReadOnly = true;
-            // 
-            // colName
-            // 
-            colName.FillWeight = 40F;
-            colName.HeaderText = "Name";
-            colName.Name = "colName";
-            colName.ReadOnly = true;
-            // 
-            // colViolation
-            // 
-            colViolation.HeaderText = "Violation";
-            colViolation.Name = "colViolation";
-            colViolation.ReadOnly = true;
-            // 
-            // colViolationDate
-            // 
-            colViolationDate.FillWeight = 40F;
-            colViolationDate.HeaderText = "Date";
-            colViolationDate.Name = "colViolationDate";
-            colViolationDate.ReadOnly = true;
-            // 
-            // colAmount
-            // 
-            colAmount.FillWeight = 25F;
-            colAmount.HeaderText = "Amount";
-            colAmount.Name = "colAmount";
-            colAmount.ReadOnly = true;
-            // 
-            // colStatus
-            // 
-            colStatus.FillWeight = 30F;
-            colStatus.HeaderText = "Status";
-            colStatus.Name = "colStatus";
-            colStatus.ReadOnly = true;
-            // 
             // btnNewViolation
             // 
             btnNewViolation.AutoSize = true;
-            btnNewViolation.Location = new Point(650, 229);
+            btnNewViolation.Location = new Point(659, 412);
             btnNewViolation.Name = "btnNewViolation";
             btnNewViolation.Size = new Size(81, 15);
             btnNewViolation.TabIndex = 2;
@@ -851,7 +778,7 @@
             dgvViolations.Location = new Point(6, 23);
             dgvViolations.Name = "dgvViolations";
             dgvViolations.ReadOnly = true;
-            dgvViolations.Size = new Size(851, 203);
+            dgvViolations.Size = new Size(851, 386);
             dgvViolations.TabIndex = 0;
             // 
             // colRuleID
@@ -884,9 +811,9 @@
             // tbpBills
             // 
             tbpBills.AutoScroll = true;
+            tbpBills.Controls.Add(dgvPayables);
             tbpBills.Controls.Add(btnDelBill);
             tbpBills.Controls.Add(btnBill);
-            tbpBills.Controls.Add(dgvBills);
             tbpBills.Location = new Point(4, 39);
             tbpBills.Name = "tbpBills";
             tbpBills.Padding = new Padding(3);
@@ -894,6 +821,16 @@
             tbpBills.TabIndex = 6;
             tbpBills.Text = "Bills";
             tbpBills.UseVisualStyleBackColor = true;
+            // 
+            // dgvPayables
+            // 
+            dgvPayables.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPayables.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPayables.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
+            dgvPayables.Location = new Point(6, 6);
+            dgvPayables.Name = "dgvPayables";
+            dgvPayables.Size = new Size(851, 297);
+            dgvPayables.TabIndex = 6;
             // 
             // btnDelBill
             // 
@@ -935,58 +872,6 @@
             btnBill.UseVisualStyleBackColor = true;
             btnBill.Click += btnBill_Click;
             // 
-            // dgvBills
-            // 
-            dgvBills.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvBills.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBills.Columns.AddRange(new DataGridViewColumn[] { colBillID, colAID, colBilledTo, colDescrip, colBillAmount, colPaymentDate });
-            dgvBills.Location = new Point(23, 29);
-            dgvBills.Name = "dgvBills";
-            dgvBills.ReadOnly = true;
-            dgvBills.Size = new Size(816, 286);
-            dgvBills.TabIndex = 3;
-            // 
-            // colBillID
-            // 
-            colBillID.FillWeight = 20F;
-            colBillID.HeaderText = "Bill ID";
-            colBillID.Name = "colBillID";
-            colBillID.ReadOnly = true;
-            // 
-            // colAID
-            // 
-            colAID.FillWeight = 20F;
-            colAID.HeaderText = "AccountID";
-            colAID.Name = "colAID";
-            colAID.ReadOnly = true;
-            // 
-            // colBilledTo
-            // 
-            colBilledTo.FillWeight = 50F;
-            colBilledTo.HeaderText = "Billed To";
-            colBilledTo.Name = "colBilledTo";
-            colBilledTo.ReadOnly = true;
-            // 
-            // colDescrip
-            // 
-            colDescrip.HeaderText = "Description";
-            colDescrip.Name = "colDescrip";
-            colDescrip.ReadOnly = true;
-            // 
-            // colBillAmount
-            // 
-            colBillAmount.FillWeight = 30F;
-            colBillAmount.HeaderText = "Amount";
-            colBillAmount.Name = "colBillAmount";
-            colBillAmount.ReadOnly = true;
-            // 
-            // colPaymentDate
-            // 
-            colPaymentDate.FillWeight = 30F;
-            colPaymentDate.HeaderText = "Due Date";
-            colPaymentDate.Name = "colPaymentDate";
-            colPaymentDate.ReadOnly = true;
-            // 
             // imageList1
             // 
             imageList1.ColorDepth = ColorDepth.Depth32Bit;
@@ -998,6 +883,51 @@
             imageList1.Images.SetKeyName(3, "Home.png");
             imageList1.Images.SetKeyName(4, "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png");
             imageList1.Images.SetKeyName(5, "Rules");
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column1.FillWeight = 30F;
+            Column1.Frozen = true;
+            Column1.HeaderText = "Reference";
+            Column1.Name = "Column1";
+            Column1.Width = 135;
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column2.Frozen = true;
+            Column2.HeaderText = "Billed To";
+            Column2.Name = "Column2";
+            Column2.Width = 134;
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column3.Frozen = true;
+            Column3.HeaderText = "Description";
+            Column3.Name = "Column3";
+            Column3.Width = 135;
+            // 
+            // Column4
+            // 
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column4.FillWeight = 30F;
+            Column4.HeaderText = "Amount";
+            Column4.Name = "Column4";
+            Column4.Width = 135;
+            // 
+            // Column5
+            // 
+            Column5.FillWeight = 30F;
+            Column5.HeaderText = "Date";
+            Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            Column6.FillWeight = 30F;
+            Column6.HeaderText = "Status";
+            Column6.Name = "Column6";
             // 
             // Dashboard
             // 
@@ -1031,11 +961,10 @@
             ((System.ComponentModel.ISupportInitialize)dgvAnnouncements).EndInit();
             tbpRulesEnforcement.ResumeLayout(false);
             tbpRulesEnforcement.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvViolators).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvViolations).EndInit();
             tbpBills.ResumeLayout(false);
             tbpBills.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvBills).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPayables).EndInit();
             ResumeLayout(false);
         }
 
@@ -1088,29 +1017,21 @@
         private DataGridView dgvViolations;
         private LinkLabel btnNewViolation;
         private Label label3;
-        private DataGridView dgvViolators;
-        private Label label4;
         private LinkLabel btnDeleteViolation;
         private LinkLabel btnIssue;
         private DataGridViewTextBoxColumn colRuleID;
         private DataGridViewTextBoxColumn colRuleName;
         private DataGridViewTextBoxColumn colDescription;
         private DataGridViewTextBoxColumn colPenalty;
-        private DataGridViewTextBoxColumn colViolationID;
-        private DataGridViewTextBoxColumn colName;
-        private DataGridViewTextBoxColumn colViolation;
-        private DataGridViewTextBoxColumn colViolationDate;
-        private DataGridViewTextBoxColumn colAmount;
-        private DataGridViewTextBoxColumn colStatus;
         private TabPage tbpBills;
-        private DataGridView dgvBills;
         private MaterialSkin.Controls.MaterialButton btnBill;
         private MaterialSkin.Controls.MaterialButton btnDelBill;
-        private DataGridViewTextBoxColumn colBillID;
-        private DataGridViewTextBoxColumn colAID;
-        private DataGridViewTextBoxColumn colBilledTo;
-        private DataGridViewTextBoxColumn colDescrip;
-        private DataGridViewTextBoxColumn colBillAmount;
-        private DataGridViewTextBoxColumn colPaymentDate;
+        private DataGridView dgvPayables;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
     }
 }

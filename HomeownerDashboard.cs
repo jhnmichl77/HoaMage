@@ -27,8 +27,8 @@ namespace HoaMage
             loadPropertyInformation();
             loadVehicleInformation();
             loadOccupants();
-            LoadPaymentData();
             loadRequest();
+            loadPayables();
         }
 
         private void loadRequest()
@@ -225,7 +225,7 @@ namespace HoaMage
 
                         using (OleDbDataReader reader = command.ExecuteReader())
                         {
-                            dgvOccupants.Rows.Clear();  
+                            dgvOccupants.Rows.Clear();
 
                             while (reader.Read())
                             {
@@ -238,7 +238,7 @@ namespace HoaMage
                                     reader["OccupantGender"].ToString(),
                                     reader["OccupantAge"].ToString(),
                                     Convert.ToDateTime(reader["OccupantBirthday"]).ToString("MM/dd/yyyy"),
-                                    imagePath  
+                                    imagePath
                                 );
                             }
                         }
@@ -250,36 +250,7 @@ namespace HoaMage
                 }
             }
         }
-        private void LoadPaymentData()
-        {
-            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
-            {
-                try
-                {
-                    connection.Open();
 
-                    int accountID = Shared.Identification.AccountID;
-                    string query = "SELECT * FROM Payment WHERE AccountID = @AccountID";
-
-                    using (OleDbCommand command = new OleDbCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@AccountID", accountID);
-
-                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
-                        {
-                            DataTable paymentTable = new DataTable();
-                            adapter.Fill(paymentTable);
-                            dgvTransactions.DataSource = paymentTable;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to load payment data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
- 
         private void dgvOccupants_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string imagePath;
@@ -570,57 +541,83 @@ namespace HoaMage
             }
         }
 
-        private void btnPay_Click(object sender, EventArgs e)
-        {
 
-            DateTime expiry;
-            if (!DateTime.TryParse(tbxExpiry.Text, out expiry))
-            {
-                MessageBox.Show("Invalid Expiry Date format. Please use MM/yyyy.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
-            {
-                connection.Open();
-
-                int AccountID = Shared.Identification.AccountID;
-                string query = "Insert Into Payment (AccountID, Reference, AccountName, CardNumber, ExpiryDate, CVV) Values (@AccountID, @Reference, @AccountName, @CardNumber, @ExpiryDate, @CVV)";
-
-                using (OleDbCommand command = new OleDbCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@AccountID", AccountID);
-                    command.Parameters.AddWithValue("@Reference", tbxReference.Text);
-                    command.Parameters.AddWithValue("@AccountName", tbxCardName.Text);
-                    command.Parameters.AddWithValue("@CardNumber", Convert.ToInt32(tbxCardNumber.Text));
-                    string formattedExpiry = expiry.ToString("MM/yyyy");
-                    command.Parameters.AddWithValue("@ExpiryDate", formattedExpiry);
-                    command.Parameters.AddWithValue("@CVV", Convert.ToInt32(tbxCVV.Text));
-                    command.ExecuteNonQuery();
-
-                    MessageBox.Show("Payment Transaction Successfull", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            LoadPaymentData();
-        }
 
         private void btnView_Click(object sender, EventArgs e)
         {
             if (dgvRequest.CurrentRow != null)
             {
-                
+
                 string type = dgvRequest.CurrentRow.Cells[0].Value.ToString();
                 string subject = dgvRequest.CurrentRow.Cells[1].Value.ToString();
                 string context = dgvRequest.CurrentRow.Cells[2].Value.ToString();
                 string status = dgvRequest.CurrentRow.Cells[3].Value.ToString();
                 string dateSubmitted = dgvRequest.CurrentRow.Cells[4].Value.ToString();
 
-                
+
                 viewRequest viewForm = new viewRequest(type, subject, context, status, dateSubmitted);
-                viewForm.Show(); 
+                viewForm.Show();
             }
             else
             {
                 MessageBox.Show("Please select a request to view.");
+            }
+        }
+
+        private void loadPayables()
+        {
+            int accountId = Shared.Identification.AccountID;
+            string query = " Select PayableID, BilledTo, Description, Amount, DateAdded, Status From Payables Where AccountID = ?";
+
+            using(OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                connection.Open();
+                using(OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("?", accountId);
+                    using(OleDbDataReader reader = command.ExecuteReader())
+                    {
+                        dgvPayables.Rows.Clear();
+                        while (reader.Read())
+                        {
+                            string pID = reader["PayableID"].ToString();
+                            string billedTo = reader["BilledTo"].ToString();
+                            string description = reader["Description"].ToString();
+                            string amt = reader["Amount"].ToString();
+                            string date = reader["DateAdded"].ToString();
+                            string stats = reader["Status"].ToString();
+
+                            dgvPayables.Rows.Add(pID, billedTo, description, amt, date, stats);
+                        }
+                    }
+                }
+            }
+        }
+        private string selectedReferenceID;
+        private string selectedBilledTo;
+        private string selectedDescription;
+        private string selectedAmount;
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            using (Payment pay = new Payment(selectedReferenceID,selectedBilledTo,selectedAmount, selectedDescription))
+            {
+                pay.ShowDialog();
+                loadPayables();
+            }
+        }
+
+        private void dgvPayables_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) 
+            {
+                DataGridViewRow row = dgvPayables.Rows[e.RowIndex];
+
+                selectedReferenceID = row.Cells[0].Value.ToString();
+                selectedBilledTo = row.Cells[1].Value.ToString();
+                selectedDescription = row.Cells[2].Value.ToString();  
+                selectedAmount = row.Cells[3].Value.ToString();
+                loadPayables();
             }
         }
     }

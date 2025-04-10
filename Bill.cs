@@ -68,7 +68,7 @@ namespace HoaMage
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string query = "INSERT INTO Bills (AccountID, BilledTo, Description, Amount, DueDate) VALUES (?,?,?,?,?)";
+            string query = "INSERT INTO Payables (AccountID, BilledTo, Description, Amount, DateAdded, Status) VALUES (?, ?,?,?,?,?)";
 
             using(OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
             {
@@ -80,6 +80,7 @@ namespace HoaMage
                     command.Parameters.AddWithValue("@Description", tbxDescription.Text);
                     command.Parameters.AddWithValue("@Amount", tbxAmount.Text);
                     command.Parameters.AddWithValue("@DueDate", dtpDueDate.Value.Date);
+                    command.Parameters.AddWithValue("@Status", "Unpaid");
                     try
                     {
                         command.ExecuteNonQuery();

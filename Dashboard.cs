@@ -15,11 +15,9 @@ namespace HoaMage
             InitializeComponent();
             Shared.Set(this);
             loadRequest();
-            loadTransaction();
             loadAnnouncements();
             loadViolations();
-            loadViolators();
-            loadBill();
+            loadPayables();
         }
         private void LoadData()
         {
@@ -53,21 +51,7 @@ namespace HoaMage
                 }
             }
         }
-        private void loadTransaction()
-        {
-            string query = "Select * From Payment";
-
-            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
-            {
-                connection.Open();
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    dgvTransactions.DataSource = dt;
-                }
-            }
-        }
+       
         private void btnMembers_Click(object sender, EventArgs e)
         {
             currentTable = "MemberInformation";
@@ -209,6 +193,37 @@ namespace HoaMage
                 loadAnnouncements();
             }
 
+        }
+        private void loadPayables()
+        {
+            string query = "SELECT PayableID, BilledTo, Description, Amount, DateAdded, Status FROM Payables";
+
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                connection.Open();
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
+                    {
+                        DataTable payablesTable = new DataTable();
+                        adapter.Fill(payablesTable);  
+
+                        dgvPayables.Rows.Clear();  
+
+                        foreach (DataRow row in payablesTable.Rows)
+                        {
+                            dgvPayables.Rows.Add(
+                                row["PayableID"].ToString(),
+                                row["BilledTo"].ToString(),
+                                row["Description"].ToString(),
+                                row["Amount"].ToString(),
+                                row["DateAdded"].ToString(),
+                                row["Status"].ToString()
+                            );
+                        }
+                    }
+                }
+            }
         }
 
         private void loadAnnouncements()
@@ -356,51 +371,14 @@ namespace HoaMage
                 }
             }
         }
-        private void loadViolators()
-        {
-            dgvViolators.Rows.Clear();
-            string query = "SELECT AccountID, ViolatorName, Violation, ViolationDate, Penalty, Status FROM Violators";
-
-            try
-            {
-                using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
-                {
-                    connection.Open();
-                    using (OleDbCommand command = new OleDbCommand(query, connection))
-                    {
-                        using (OleDbDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                string accId = reader["AccountID"].ToString();
-                                string name = reader["ViolatorName"].ToString();
-                                string violation = reader["Violation"].ToString();
-                                DateTime date = Convert.ToDateTime(reader["ViolationDate"]);
-                                string penalty = reader["Penalty"].ToString();
-                                string status = reader["Status"].ToString();
-
-                                dgvViolators.Rows.Add(accId, name, violation, date.ToShortDateString(), penalty, status);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (OleDbException oleDbEx)
-            {
-                MessageBox.Show("OleDb error: " + oleDbEx.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading violators: " + ex.Message);
-            }
-        }
+        
 
         private void btnIssue_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (Citation cite = new Citation())
             {
                 cite.ShowDialog();
-                loadViolators();
+                loadPayables();
             }
         }
 
@@ -409,49 +387,25 @@ namespace HoaMage
             using (Bill bill = new Bill())
             {
                 bill.ShowDialog();
-                loadBill();
+                loadPayables();
             }
         }
-        private void loadBill()
-        {
-            dgvBills.Rows.Clear();
-            string query = "SELECT BillID, AccountID, BilledTo, Description, Amount, DueDate FROM Bills";
-            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
-            {
-                connection.Open();
-                using (OleDbCommand command = new OleDbCommand(query, connection))
-                {
-                    using (OleDbDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string billId = reader["BillID"].ToString();
-                            string accountId = reader["AccountID"].ToString();
-                            string billedto = reader["BilledTo"].ToString();
-                            string description = reader["Description"].ToString();
-                            string amount = reader["Amount"].ToString();
-                            DateTime dueDate = Convert.ToDateTime(reader["DueDate"]);
-                            dgvBills.Rows.Add(billId, accountId, billedto, description, amount, dueDate.ToShortDateString());
-                        }
-                    }
-                }
-            }
-        }
+        
 
         private void btnDelBill_Click(object sender, EventArgs e)
         {
-            if (dgvBills.SelectedRows.Count == 0)
+            if (dgvPayables.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a bill to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int billID = Convert.ToInt32(dgvBills.SelectedRows[0].Cells[0].Value);
+            int billID = Convert.ToInt32(dgvPayables.SelectedRows[0].Cells[0].Value);
 
             DialogResult confirm = MessageBox.Show("Are you sure you want to delete this bill?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
             {
-                string query = "DELETE FROM Violations WHERE BillID = @ID";
+                string query = "DELETE FROM Payables WHERE PayableID = @ID";
 
                 using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
                 {
@@ -466,7 +420,7 @@ namespace HoaMage
                             if (result > 0)
                             {
                                 MessageBox.Show("Bill deleted successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                loadViolations();
+                                loadPayables();
                             }
                             else
                             {
