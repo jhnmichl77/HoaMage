@@ -56,13 +56,14 @@ namespace HoaMage
 
             try
             {
-                string updateQuery = "UPDATE Payables SET Status = 'Paid' WHERE PayableID = ?";
+                string updateQuery = "UPDATE Payables SET Status = 'Paid', DatePaid=? WHERE PayableID = ?";
 
                 using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
                 {
                     connection.Open();
                     using (OleDbCommand command = new OleDbCommand(updateQuery, connection))
                     {
+                        command.Parameters.AddWithValue("?", DateTime.Today);
                         command.Parameters.AddWithValue("?", tbxReference.Text);  
                         command.ExecuteNonQuery();
                     }
