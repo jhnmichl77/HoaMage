@@ -177,12 +177,15 @@ namespace HoaMage
                 string dateSubmitted = dgvRequest.CurrentRow.Cells[6].Value.ToString();
 
                 viewRequest viewForm = new viewRequest(type, subject, context, status, dateSubmitted);
+                viewForm.FormClosed += (s, args) => loadRequest();
                 viewForm.Show();
+                
             }
             else
             {
                 MessageBox.Show("Please select a request to view.");
             }
+            
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -197,27 +200,33 @@ namespace HoaMage
         }
         private void loadTransactions()
         {
-            string query = "SELECT * FROM Payables"; 
+            string query = "SELECT PayableID, AccountID, BilledTo, Amount, DateAdded, Status, DatePaid FROM Payables";
 
             using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
             {
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(query, connection);
-
-                DataSet dataSet = new DataSet();
+                OleDbCommand command = new OleDbCommand(query, connection);
 
                 try
                 {
-                    dataAdapter.Fill(dataSet, "Payables");
+                    connection.Open();
+                    OleDbDataReader reader = command.ExecuteReader();
 
-                    dgvPayables.Rows.Clear();
-                    dgvPayables.Columns.Clear();
+                    dgvTransactions.Rows.Clear(); 
 
-                    dgvPayables.DataSource = dataSet.Tables["Payables"];
-
-                    foreach (DataGridViewColumn column in dgvPayables.Columns)
+                    while (reader.Read())
                     {
-                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; 
+                        string pId = reader["PayableID"].ToString();
+                        string accountId = reader["AccountID"].ToString();
+                        string billedTo = reader["BilledTo"].ToString();
+                        string amount = reader["Amount"].ToString();
+                        string dateAdded = reader["DateAdded"].ToString();
+                        string status = reader["Status"].ToString();
+                        string datePaid = reader["DatePaid"] == DBNull.Value ? "" : reader["DatePaid"].ToString();
+
+                        dgvTransactions.Rows.Add(pId, accountId, billedTo, amount, dateAdded, status, datePaid);
                     }
+
+                    reader.Close();
                 }
                 catch (Exception ex)
                 {
@@ -225,6 +234,8 @@ namespace HoaMage
                 }
             }
         }
+
+
 
         private void loadPayables()
         {

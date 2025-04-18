@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace HoaMage
 {
@@ -42,7 +44,42 @@ namespace HoaMage
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string newStatus = cbxStatus.Text;
+            string subject = tbxReqSubject.Text;
+            string dateSubmitted = tbxReqDate.Text; 
 
+            string query = "UPDATE Request SET Status = ? WHERE ReqSubject = ? AND DateSubmitted = ?";
+
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                OleDbCommand command = new OleDbCommand(query, connection);
+                command.Parameters.AddWithValue("?", newStatus);
+                command.Parameters.AddWithValue("?", subject);
+                command.Parameters.AddWithValue("?", Convert.ToDateTime(dateSubmitted));
+
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Request status updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update failed. Request not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
         }
+
+
     }
 }
