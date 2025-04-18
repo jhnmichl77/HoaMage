@@ -91,6 +91,13 @@
             btnDelBill = new MaterialSkin.Controls.MaterialButton();
             btnBill = new MaterialSkin.Controls.MaterialButton();
             imageList1 = new ImageList(components);
+            Column7 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
+            Column9 = new DataGridViewTextBoxColumn();
+            Column11 = new DataGridViewTextBoxColumn();
+            Column12 = new DataGridViewTextBoxColumn();
+            Column13 = new DataGridViewTextBoxColumn();
+            Column14 = new DataGridViewTextBoxColumn();
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -591,6 +598,7 @@
             // 
             dgvTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTransactions.Columns.AddRange(new DataGridViewColumn[] { Column7, Column8, Column9, Column11, Column12, Column13, Column14 });
             dgvTransactions.Location = new Point(22, 42);
             dgvTransactions.Name = "dgvTransactions";
             dgvTransactions.ReadOnly = true;
@@ -908,6 +916,48 @@
             imageList1.Images.SetKeyName(4, "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png");
             imageList1.Images.SetKeyName(5, "Rules");
             // 
+            // Column7
+            // 
+            Column7.HeaderText = "ID";
+            Column7.Name = "Column7";
+            Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            Column8.HeaderText = "AccountID";
+            Column8.Name = "Column8";
+            Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            Column9.HeaderText = "Billed To";
+            Column9.Name = "Column9";
+            Column9.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            Column11.HeaderText = "Amount";
+            Column11.Name = "Column11";
+            Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            Column12.HeaderText = "Date";
+            Column12.Name = "Column12";
+            Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            Column13.HeaderText = "Status";
+            Column13.Name = "Column13";
+            Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            Column14.HeaderText = "Paid";
+            Column14.Name = "Column14";
+            Column14.ReadOnly = true;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1011,5 +1061,12 @@
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
         private DataGridView dgvDisplay;
+        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column11;
+        private DataGridViewTextBoxColumn Column12;
+        private DataGridViewTextBoxColumn Column13;
+        private DataGridViewTextBoxColumn Column14;
     }
 }
