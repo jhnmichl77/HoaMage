@@ -29,6 +29,7 @@ namespace HoaMage
             loadOccupants();
             loadRequest();
             loadPayables();
+            Dashboard.LoadAnnouncements(flowLayoutPanel2);
         }
 
         private void loadRequest()

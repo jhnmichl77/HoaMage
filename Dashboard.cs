@@ -4,6 +4,7 @@ using System.Data.OleDb;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
+using MySql.Data.MySqlClient;
 
 namespace HoaMage
 {
@@ -19,7 +20,32 @@ namespace HoaMage
             loadViolations();
             loadPayables();
             loadTransactions();
+            LoadAnnouncements(flowLayoutPanel2);
         }
+        public static void LoadAnnouncements(FlowLayoutPanel panel)
+        {
+            string query = "SELECT Regarding, Context, DayDate FROM Announcements";
+            using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+            {
+                conn.Open();
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string title = reader["Regarding"].ToString();
+                        DateTime date = Convert.ToDateTime(reader["DayDate"]);
+                        string context = reader["Context"].ToString();
+
+                        announceCard card = new announceCard();
+                        card.SetData(title, date, context);
+
+                        panel.Controls.Add(card); 
+                    }
+                }
+            }
+        }
+
         private void LoadData()
         {
             if (string.IsNullOrEmpty(currentTable)) return;

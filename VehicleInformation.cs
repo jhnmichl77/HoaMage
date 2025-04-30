@@ -99,10 +99,18 @@ namespace HoaMage
         {
             string selectedImagePath = Shared.uploadImage();
 
+            if (cbxNoVehicle.Checked)
+            {
+                imagePath = null;
+                pbxVehicleImage.Image = null;
+                return;
+            }
+
             if (!string.IsNullOrEmpty(selectedImagePath))
             {
                 imagePath = selectedImagePath;
                 pbxVehicleImage.Image = Shared.LoadImage(imagePath);
+
             }
         }
     }

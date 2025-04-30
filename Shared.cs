@@ -2,7 +2,9 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Text;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 public class Shared : Form
 {
@@ -47,7 +49,7 @@ public class Shared : Form
         using (OpenFileDialog openFile = new OpenFileDialog
         {
             Title = "Select an Image",
-            Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+            Filter = "Image Files|*.jpg;*.JPEG;*.png;*.bmp;*.jfif"
         })
         {
             if (openFile.ShowDialog() == DialogResult.OK)
@@ -65,4 +67,19 @@ public class Shared : Form
         }
         return null; 
     }
+    public static string HashPassword(string password)
+    {
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(password);
+            byte[] hash = sha256.ComputeHash(bytes);
+            StringBuilder builder = new StringBuilder();
+            foreach (byte b in hash)
+            {
+                builder.Append(b.ToString("x2"));
+            }
+            return builder.ToString();
+        }
+    }
+
 }

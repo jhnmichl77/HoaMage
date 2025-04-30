@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
+using System.Security.Cryptography;
 
 namespace HoaMage
 {
@@ -67,7 +68,7 @@ namespace HoaMage
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Username", tbxUsername.Text);
-                        command.Parameters.AddWithValue("@Password", tbxPassword.Text);
+                        command.Parameters.AddWithValue("@Password", Shared.HashPassword(tbxPassword.Text));
                         command.Parameters.AddWithValue("@Email", tbxEmailAddress.Text);
                         command.Parameters.AddWithValue("@Role", cbxRole.Text);
 
@@ -91,7 +92,7 @@ namespace HoaMage
                 }
             }
         }
-
+       
     }
 }
 
