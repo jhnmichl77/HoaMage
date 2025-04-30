@@ -4,7 +4,6 @@ using System.Data.OleDb;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
-using MySql.Data.MySqlClient;
 
 namespace HoaMage
 {
@@ -16,15 +15,75 @@ namespace HoaMage
             InitializeComponent();
             Shared.Set(this);
             loadRequest();
-            loadAnnouncements();
             loadViolations();
             loadPayables();
             loadTransactions();
-            LoadAnnouncements(flowLayoutPanel2);
+            LoadAnnouncements(flowLayoutPanel2, dgvAnnouncements);
+            demographics();
+            analyticsRequest();
+            loadAccounting();
         }
-        public static void LoadAnnouncements(FlowLayoutPanel panel)
+        private void demographics()
         {
-            string query = "SELECT Regarding, Context, DayDate FROM Announcements";
+            int Population = 0;
+            int Adults = 0;
+            int Minors = 0;
+            int SeniorCitizens = 0;
+
+            string query = "SELECT BirthDay FROM MemberInformation UNION ALL SELECT OccupantBirthday FROM Occupants";
+
+            using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+            {
+                conn.Open();
+
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Population++;
+
+                        DateTime birthDate = reader["BirthDay"] != DBNull.Value ? Convert.ToDateTime(reader["BirthDay"]) : DateTime.MinValue;
+
+                        int age = 0;
+                        if (birthDate != DateTime.MinValue)
+                        {
+                            age = DateTime.Now.Year - birthDate.Year;
+                            if (DateTime.Now.DayOfYear < birthDate.DayOfYear)
+                            {
+                                age--;
+                            }
+                        }
+
+                        if (age >= 18 && age < 60)
+                        {
+                            Adults++;
+                        }
+                        else if (age < 18)
+                        {
+                            Minors++;
+                        }
+                        else if (age >= 60)
+                        {
+                            SeniorCitizens++;
+                        }
+                    }
+                }
+            }
+
+            cntPopul.Text = Population.ToString();
+            cntAdult.Text = Adults.ToString();
+            cntMinor.Text = Minors.ToString();
+            cntSC.Text = SeniorCitizens.ToString();
+        }
+        private void analyticsRequest()
+        {
+            int totalRequests = 0;
+            int unresolved = 0;
+            int resolved = 0;
+
+            string query = "SELECT Status FROM Request";
+
             using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
             using (OleDbCommand cmd = new OleDbCommand(query, conn))
             {
@@ -33,18 +92,66 @@ namespace HoaMage
                 {
                     while (reader.Read())
                     {
-                        string title = reader["Regarding"].ToString();
-                        DateTime date = Convert.ToDateTime(reader["DayDate"]);
-                        string context = reader["Context"].ToString();
+                        totalRequests++;
+
+                        string status = reader["Status"].ToString().Trim().ToLower();
+
+                        if (status == "resolved")
+                        {
+                            resolved++;
+                        }
+                        else
+                        {
+                            unresolved++;
+                        }
+                    }
+                }
+            }
+
+            cntRequest.Text = totalRequests.ToString();
+            cntSolved.Text = resolved.ToString();
+            cntUnresolved.Text = unresolved.ToString();
+        }
+
+
+        public static void LoadAnnouncements(FlowLayoutPanel panel, DataGridView dgv = null)
+        {
+            panel.Controls.Clear();
+
+            string query = "SELECT ID, Regarding, Context, DayDate FROM Announcements";
+            using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+            {
+                conn.Open();
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    DataTable table = new DataTable();
+                    table.Load(reader);
+
+                    DataView view = new DataView(table);
+                    view.RowFilter = $"DayDate >= #{DateTime.Now.ToString("MM/dd/yyyy")}#";
+                    DataTable filteredTable = view.ToTable();
+
+                    if (dgv != null)
+                    {
+                        dgv.DataSource = null;
+                        dgv.DataSource = filteredTable;
+                    }
+
+                    foreach (DataRow row in filteredTable.Rows)
+                    {
+                        string title = row["Regarding"].ToString();
+                        DateTime date = Convert.ToDateTime(row["DayDate"]);
+                        string context = row["Context"].ToString();
 
                         announceCard card = new announceCard();
                         card.SetData(title, date, context);
-
-                        panel.Controls.Add(card); 
+                        panel.Controls.Add(card);
                     }
                 }
             }
         }
+
 
         private void LoadData()
         {
@@ -56,12 +163,30 @@ namespace HoaMage
             if (ds.Tables.Count > 0)
             {
                 dgvDisplay.DataSource = ds.Tables[0];
+
+                if (currentTable == "Accounts" && dgvDisplay.Columns.Contains("Password"))
+                {
+                    dgvDisplay.Columns["Password"].Visible = false;
+                }
+                if (currentTable == "VehicleInformation" && dgvDisplay.Columns.Contains("VehicleImage"))
+                {
+                    dgvDisplay.Columns["VehicleImage"].Visible = false;
+                }
+                if (currentTable == "Occupants" && dgvDisplay.Columns.Contains("OccupantImage"))
+                {
+                    dgvDisplay.Columns["OccupantImage"].Visible = false;
+                }
+                if(currentTable == "MemberInformation" && dgvDisplay.Columns.Contains("MemberProfile"))
+                {
+                    dgvDisplay.Columns["MemberProfile"].Visible = false;
+                }
             }
             else
             {
                 dgvDisplay.DataSource = null;
             }
         }
+
         private void loadRequest()
         {
             string query = "SELECT * FROM Request";
@@ -78,7 +203,7 @@ namespace HoaMage
                 }
             }
         }
-       
+
         private void btnMembers_Click(object sender, EventArgs e)
         {
             currentTable = "MemberInformation";
@@ -104,6 +229,7 @@ namespace HoaMage
             Registration register = new Registration();
             register.IsFromDashboard = true;
             register.Show();
+            demographics();
 
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -184,6 +310,7 @@ namespace HoaMage
             {
                 MessageBox.Show("Failed to delete record.");
             }
+            demographics();
         }
         private void btnAccounts_Click(object sender, EventArgs e)
         {
@@ -205,13 +332,15 @@ namespace HoaMage
                 viewRequest viewForm = new viewRequest(type, subject, context, status, dateSubmitted);
                 viewForm.FormClosed += (s, args) => loadRequest();
                 viewForm.Show();
-                
+                analyticsRequest();
+
             }
             else
             {
                 MessageBox.Show("Please select a request to view.");
             }
-            
+
+
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -220,8 +349,9 @@ namespace HoaMage
             using (createAnnouncement announcement = new createAnnouncement())
             {
                 announcement.ShowDialog();
-                loadAnnouncements();
+
             }
+            LoadAnnouncements(flowLayoutPanel1, dgvAnnouncements);
 
         }
         private void loadTransactions()
@@ -237,7 +367,7 @@ namespace HoaMage
                     connection.Open();
                     OleDbDataReader reader = command.ExecuteReader();
 
-                    dgvTransactions.Rows.Clear(); 
+                    dgvTransactions.Rows.Clear();
 
                     while (reader.Read())
                     {
@@ -275,9 +405,9 @@ namespace HoaMage
                     using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
                     {
                         DataTable payablesTable = new DataTable();
-                        adapter.Fill(payablesTable);  
+                        adapter.Fill(payablesTable);
 
-                        dgvPayables.Rows.Clear();  
+                        dgvPayables.Rows.Clear();
 
                         foreach (DataRow row in payablesTable.Rows)
                         {
@@ -295,31 +425,6 @@ namespace HoaMage
             }
         }
 
-        private void loadAnnouncements()
-        {
-            dgvAnnouncements.Rows.Clear();
-            string query = "SELECT ID, Regarding, Context, DayDate FROM Announcements";
-
-            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
-            {
-                connection.Open();
-                using (OleDbCommand command = new OleDbCommand(query, connection))
-                {
-                    using (OleDbDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string id = reader["ID"].ToString();
-                            string regarding = reader["Regarding"].ToString();
-                            string context = reader["Context"].ToString();
-                            DateTime date = Convert.ToDateTime(reader["DayDate"]);
-                            dgvAnnouncements.Rows.Add(id, regarding, context, date);
-                        }
-                    }
-                }
-            }
-
-        }
 
         private void materialButton1_Click(object sender, EventArgs e)
         {
@@ -349,7 +454,7 @@ namespace HoaMage
                             if (result > 0)
                             {
                                 MessageBox.Show("Announcement deleted successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                loadAnnouncements();
+                                LoadAnnouncements(flowLayoutPanel1, dgvAnnouncements);
                             }
                             else
                             {
@@ -440,7 +545,7 @@ namespace HoaMage
                 }
             }
         }
-        
+
 
         private void btnIssue_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -459,7 +564,7 @@ namespace HoaMage
                 loadPayables();
             }
         }
-        
+
 
         private void btnDelBill_Click(object sender, EventArgs e)
         {
@@ -502,6 +607,116 @@ namespace HoaMage
                         }
                     }
                 }
+            }
+        }
+        private void loadAccounting()
+        {
+            decimal Total = 0;
+            decimal Outstanding = 0;
+            decimal Expenses = 0;
+            decimal Available = 0;
+
+             
+            Total = GetTotalCollected();         
+            Outstanding = GetOutstandingAmount();  
+            Expenses = GetTotalExpenses();        
+            Available = Total - Expenses;
+             
+            cntTotal.Text = "₱" + Total.ToString("N2");          
+            cntOutstanding.Text = "₱" + Outstanding.ToString("N2");
+            cntExpenses.Text = "₱" + Expenses.ToString("N2");
+            cntAvailable.Text = "₱" + Available.ToString("N2");
+        }
+
+        private decimal GetTotalCollected()
+        {
+            decimal totalCollected = 0;
+
+            string query = "SELECT SUM(Amount) FROM Payables WHERE Status = 'Paid'"; 
+            using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+            {
+                conn.Open();
+                totalCollected = Convert.ToDecimal(cmd.ExecuteScalar());
+            }
+
+            return totalCollected;
+        }
+        private decimal GetOutstandingAmount()
+        {
+            decimal outstandingAmount = 0;
+
+            string query = "SELECT SUM(Amount) FROM Payables WHERE Status = 'Unpaid'"; 
+            using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+            {
+                conn.Open();
+                outstandingAmount = Convert.ToDecimal(cmd.ExecuteScalar());
+            }
+
+            return outstandingAmount;
+        }
+        private decimal GetTotalExpenses()
+        {
+            decimal totalExpenses = 0;
+
+            string query = "SELECT SUM(Amount) FROM Expenses"; 
+            using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+            {
+                conn.Open();
+                totalExpenses = Convert.ToDecimal(cmd.ExecuteScalar());
+            }
+
+            return totalExpenses;
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            if (dgvTransactions.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvTransactions.SelectedRows[0];
+                string paymentID = selectedRow.Cells["PaymentID"].Value.ToString();   
+
+                string query = "UPDATE Payments SET Status = 'Voided' WHERE PaymentID = @PaymentID";
+                using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
+                using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PaymentID", paymentID);
+
+                    try
+                    {
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Payment has been voided successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadPayables();  
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to void the payment. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a payment to return.", "Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnExpenses_Click(object sender, EventArgs e)
+        {
+            using(expenses exp = new expenses())
+            {
+                exp.ShowDialog();
+                loadPayables();
             }
         }
     }

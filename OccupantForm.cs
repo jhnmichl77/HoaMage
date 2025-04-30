@@ -148,6 +148,7 @@ namespace HoaMage
         private void label1_Click(object sender, EventArgs e)
         {
             string selectedImagePath = Shared.uploadImage();
+            
             if (!string.IsNullOrEmpty(selectedImagePath))
             {
                 imagePath = selectedImagePath;

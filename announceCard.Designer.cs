@@ -49,7 +49,7 @@
             materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard1.Name = "materialCard1";
             materialCard1.Padding = new Padding(14);
-            materialCard1.Size = new Size(280, 177);
+            materialCard1.Size = new Size(275, 177);
             materialCard1.TabIndex = 0;
             // 
             // tbxDate
@@ -72,7 +72,7 @@
             tbxContext.Name = "tbxContext";
             tbxContext.ReadOnly = true;
             tbxContext.ScrollBars = ScrollBars.Vertical;
-            tbxContext.Size = new Size(280, 107);
+            tbxContext.Size = new Size(272, 107);
             tbxContext.TabIndex = 1;
             // 
             // lblTitle
@@ -90,7 +90,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(materialCard1);
             Name = "announceCard";
-            Size = new Size(280, 177);
+            Size = new Size(275, 177);
             materialCard1.ResumeLayout(false);
             materialCard1.PerformLayout();
             ResumeLayout(false);
