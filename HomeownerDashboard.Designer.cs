@@ -49,6 +49,7 @@
             materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             materialTabControl2 = new MaterialSkin.Controls.MaterialTabControl();
             tbpMember = new TabPage();
+            linkLabel1 = new LinkLabel();
             btnMemberEdit = new MaterialSkin.Controls.MaterialSwitch();
             tbxContactNumber = new TextBox();
             tbxGender = new TextBox();
@@ -150,7 +151,7 @@
             tbpPayables.Padding = new Padding(3);
             tbpPayables.Size = new Size(863, 489);
             tbpPayables.TabIndex = 3;
-            tbpPayables.Text = "Payables";
+            tbpPayables.Text = "Payment";
             tbpPayables.UseVisualStyleBackColor = true;
             // 
             // dgvPayables
@@ -160,6 +161,7 @@
             dgvPayables.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
             dgvPayables.Location = new Point(6, 6);
             dgvPayables.Name = "dgvPayables";
+            dgvPayables.ReadOnly = true;
             dgvPayables.Size = new Size(850, 336);
             dgvPayables.TabIndex = 2;
             dgvPayables.CellClick += dgvPayables_CellClick;
@@ -169,35 +171,41 @@
             Column1.FillWeight = 30F;
             Column1.HeaderText = "Reference";
             Column1.Name = "Column1";
+            Column1.ReadOnly = true;
             // 
             // Column2
             // 
             Column2.HeaderText = "Billed To";
             Column2.Name = "Column2";
+            Column2.ReadOnly = true;
             // 
             // Column3
             // 
             Column3.FillWeight = 50F;
             Column3.HeaderText = "Description";
             Column3.Name = "Column3";
+            Column3.ReadOnly = true;
             // 
             // Column4
             // 
             Column4.FillWeight = 35F;
             Column4.HeaderText = "Amount";
             Column4.Name = "Column4";
+            Column4.ReadOnly = true;
             // 
             // Column5
             // 
             Column5.FillWeight = 25F;
             Column5.HeaderText = "Date";
             Column5.Name = "Column5";
+            Column5.ReadOnly = true;
             // 
             // Column6
             // 
             Column6.FillWeight = 25F;
             Column6.HeaderText = "Status";
             Column6.Name = "Column6";
+            Column6.ReadOnly = true;
             // 
             // btnPay
             // 
@@ -361,6 +369,7 @@
             // 
             // tbpMember
             // 
+            tbpMember.Controls.Add(linkLabel1);
             tbpMember.Controls.Add(btnMemberEdit);
             tbpMember.Controls.Add(tbxContactNumber);
             tbpMember.Controls.Add(tbxGender);
@@ -382,6 +391,18 @@
             tbpMember.TabIndex = 1;
             tbpMember.Text = "Member";
             tbpMember.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.BackColor = Color.FromArgb(36, 52, 60);
+            linkLabel1.Location = new Point(798, 3);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(45, 15);
+            linkLabel1.TabIndex = 1;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Logout";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // btnMemberEdit
             // 
@@ -824,8 +845,10 @@
             dgvOccupants.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvOccupants.Location = new Point(6, 6);
             dgvOccupants.Name = "dgvOccupants";
+            dgvOccupants.ReadOnly = true;
             dgvOccupants.Size = new Size(404, 383);
             dgvOccupants.TabIndex = 7;
+            dgvOccupants.CellClick += dgvOccupants_CellClick_1;
             // 
             // materialCard6
             // 
@@ -850,6 +873,7 @@
             pbxOccupantImage.Location = new Point(27, 49);
             pbxOccupantImage.Name = "pbxOccupantImage";
             pbxOccupantImage.Size = new Size(100, 100);
+            pbxOccupantImage.SizeMode = PictureBoxSizeMode.Zoom;
             pbxOccupantImage.TabIndex = 4;
             pbxOccupantImage.TabStop = false;
             // 
@@ -992,6 +1016,7 @@
             dgvRequest.Columns.AddRange(new DataGridViewColumn[] { colType, colSubject, colContext, colStatus, colDate });
             dgvRequest.Location = new Point(23, 40);
             dgvRequest.Name = "dgvRequest";
+            dgvRequest.ReadOnly = true;
             dgvRequest.Size = new Size(803, 269);
             dgvRequest.TabIndex = 0;
             // 
@@ -1007,23 +1032,27 @@
             colSubject.FillWeight = 60.9137039F;
             colSubject.HeaderText = "Subject";
             colSubject.Name = "colSubject";
+            colSubject.ReadOnly = true;
             // 
             // colContext
             // 
             colContext.FillWeight = 189.074234F;
             colContext.HeaderText = "Context";
             colContext.Name = "colContext";
+            colContext.ReadOnly = true;
             // 
             // colStatus
             // 
             colStatus.FillWeight = 81.83353F;
             colStatus.HeaderText = "Status";
             colStatus.Name = "colStatus";
+            colStatus.ReadOnly = true;
             // 
             // colDate
             // 
             colDate.HeaderText = "Date Submitted";
             colDate.Name = "colDate";
+            colDate.ReadOnly = true;
             // 
             // tbpHome
             // 
@@ -1159,13 +1188,6 @@
         private Label label8;
         private PictureBox pbxVehicleImage;
         private TabPage tbpOccupants;
-        private DataGridView dgvOccupants;
-        private MaterialSkin.Controls.MaterialCard materialCard6;
-        private PictureBox pbxOccupantImage;
-        private Label lblBirthday;
-        private Label lblAge;
-        private Label lblGender;
-        private Label lblName;
         private MaterialSkin.Controls.MaterialButton btnEditOccupant;
         private MaterialSkin.Controls.MaterialButton btnDeleteOccupant;
         private MaterialSkin.Controls.MaterialButton btnAddOccupant;
@@ -1186,5 +1208,13 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
+        private DataGridView dgvOccupants;
+        private MaterialSkin.Controls.MaterialCard materialCard6;
+        private PictureBox pbxOccupantImage;
+        private Label lblBirthday;
+        private Label lblAge;
+        private Label lblGender;
+        private Label lblName;
+        private LinkLabel linkLabel1;
     }
 }

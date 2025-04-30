@@ -81,5 +81,8 @@ public class Shared : Form
             return builder.ToString();
         }
     }
-
+    public static void Logout(Form currentForm)
+    {
+        currentForm.Close();
+    }
 }

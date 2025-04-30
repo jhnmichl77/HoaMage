@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using System.Data.OleDb;
-using static Google.Protobuf.Reflection.FieldOptions.Types;
-using Mysqlx.Expr;
 namespace HoaMage
 {
     public partial class HomeownerDashboard : MaterialForm
@@ -570,13 +568,13 @@ namespace HoaMage
             int accountId = Shared.Identification.AccountID;
             string query = " Select PayableID, BilledTo, Description, Amount, DateAdded, Status From Payables Where AccountID = ?";
 
-            using(OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
             {
                 connection.Open();
-                using(OleDbCommand command = new OleDbCommand(query, connection))
+                using (OleDbCommand command = new OleDbCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("?", accountId);
-                    using(OleDbDataReader reader = command.ExecuteReader())
+                    using (OleDbDataReader reader = command.ExecuteReader())
                     {
                         dgvPayables.Rows.Clear();
                         while (reader.Read())
@@ -601,7 +599,7 @@ namespace HoaMage
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            using (Payment pay = new Payment(selectedReferenceID,selectedBilledTo,selectedAmount, selectedDescription))
+            using (Payment pay = new Payment(selectedReferenceID, selectedBilledTo, selectedAmount, selectedDescription))
             {
                 pay.ShowDialog();
                 loadPayables();
@@ -610,15 +608,52 @@ namespace HoaMage
 
         private void dgvPayables_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) 
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvPayables.Rows[e.RowIndex];
 
                 selectedReferenceID = row.Cells[0].Value.ToString();
                 selectedBilledTo = row.Cells[1].Value.ToString();
-                selectedDescription = row.Cells[2].Value.ToString();  
+                selectedDescription = row.Cells[2].Value.ToString();
                 selectedAmount = row.Cells[3].Value.ToString();
                 loadPayables();
+            }
+        }
+
+        private void dgvOccupants_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvOccupants.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvOccupants.SelectedRows[0];
+                string name = selectedRow.Cells["Name"].Value.ToString();
+                string gender = selectedRow.Cells["Gender"].Value.ToString();
+                string age = selectedRow.Cells["Age"].Value.ToString();
+                string bday = selectedRow.Cells["Birthday"].Value.ToString();
+                string imagePath = selectedRow.Cells["ImagePath"].Value.ToString();
+
+                lblName.Text = name;
+                lblGender.Text = gender;
+                lblAge.Text = age;
+                lblBirthday.Text = bday;
+
+                if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
+                {
+                    pbxOccupantImage.Image = Image.FromFile(imagePath);
+                }
+                else
+                {
+                    pbxOccupantImage.Image = null;
+                }
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Shared.Logout(this);
             }
         }
     }
