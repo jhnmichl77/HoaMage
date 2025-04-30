@@ -33,10 +33,6 @@
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tbpHome = new TabPage();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            materialCard3 = new MaterialSkin.Controls.MaterialCard();
-            materialCard6 = new MaterialSkin.Controls.MaterialCard();
-            materialCard5 = new MaterialSkin.Controls.MaterialCard();
-            materialCard4 = new MaterialSkin.Controls.MaterialCard();
             tbpProfile = new TabPage();
             panel1 = new Panel();
             btnSearch = new MaterialSkin.Controls.MaterialButton();
@@ -62,6 +58,13 @@
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             label2 = new Label();
             dgvTransactions = new DataGridView();
+            Column7 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
+            Column9 = new DataGridViewTextBoxColumn();
+            Column11 = new DataGridViewTextBoxColumn();
+            Column12 = new DataGridViewTextBoxColumn();
+            Column13 = new DataGridViewTextBoxColumn();
+            Column14 = new DataGridViewTextBoxColumn();
             tbpAnnouncement = new TabPage();
             btnDeleteAnnouncement = new MaterialSkin.Controls.MaterialButton();
             btnCreate = new MaterialSkin.Controls.MaterialButton();
@@ -91,16 +94,8 @@
             btnDelBill = new MaterialSkin.Controls.MaterialButton();
             btnBill = new MaterialSkin.Controls.MaterialButton();
             imageList1 = new ImageList(components);
-            Column7 = new DataGridViewTextBoxColumn();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
-            Column11 = new DataGridViewTextBoxColumn();
-            Column12 = new DataGridViewTextBoxColumn();
-            Column13 = new DataGridViewTextBoxColumn();
-            Column14 = new DataGridViewTextBoxColumn();
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
             tbpProfile.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDisplay).BeginInit();
@@ -151,67 +146,12 @@
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.Controls.Add(materialCard3);
-            flowLayoutPanel2.Controls.Add(materialCard6);
-            flowLayoutPanel2.Controls.Add(materialCard5);
-            flowLayoutPanel2.Controls.Add(materialCard4);
+            flowLayoutPanel2.AutoScroll = true;
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(857, 483);
             flowLayoutPanel2.TabIndex = 0;
-            // 
-            // materialCard3
-            // 
-            materialCard3.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard3.Depth = 0;
-            materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard3.Location = new Point(14, 14);
-            materialCard3.Margin = new Padding(14);
-            materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard3.Name = "materialCard3";
-            materialCard3.Padding = new Padding(14);
-            materialCard3.Size = new Size(186, 93);
-            materialCard3.TabIndex = 0;
-            // 
-            // materialCard6
-            // 
-            materialCard6.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard6.Depth = 0;
-            materialCard6.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard6.Location = new Point(228, 14);
-            materialCard6.Margin = new Padding(14);
-            materialCard6.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard6.Name = "materialCard6";
-            materialCard6.Padding = new Padding(14);
-            materialCard6.Size = new Size(186, 93);
-            materialCard6.TabIndex = 1;
-            // 
-            // materialCard5
-            // 
-            materialCard5.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard5.Depth = 0;
-            materialCard5.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard5.Location = new Point(442, 14);
-            materialCard5.Margin = new Padding(14);
-            materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard5.Name = "materialCard5";
-            materialCard5.Padding = new Padding(14);
-            materialCard5.Size = new Size(186, 93);
-            materialCard5.TabIndex = 1;
-            // 
-            // materialCard4
-            // 
-            materialCard4.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard4.Depth = 0;
-            materialCard4.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard4.Location = new Point(656, 14);
-            materialCard4.Margin = new Padding(14);
-            materialCard4.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard4.Name = "materialCard4";
-            materialCard4.Padding = new Padding(14);
-            materialCard4.Size = new Size(186, 93);
-            materialCard4.TabIndex = 1;
             // 
             // tbpProfile
             // 
@@ -605,6 +545,48 @@
             dgvTransactions.Size = new Size(819, 274);
             dgvTransactions.TabIndex = 0;
             // 
+            // Column7
+            // 
+            Column7.HeaderText = "ID";
+            Column7.Name = "Column7";
+            Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            Column8.HeaderText = "AccountID";
+            Column8.Name = "Column8";
+            Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            Column9.HeaderText = "Billed To";
+            Column9.Name = "Column9";
+            Column9.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            Column11.HeaderText = "Amount";
+            Column11.Name = "Column11";
+            Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            Column12.HeaderText = "Date";
+            Column12.Name = "Column12";
+            Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            Column13.HeaderText = "Status";
+            Column13.Name = "Column13";
+            Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            Column14.HeaderText = "Paid";
+            Column14.Name = "Column14";
+            Column14.ReadOnly = true;
+            // 
             // tbpAnnouncement
             // 
             tbpAnnouncement.Controls.Add(btnDeleteAnnouncement);
@@ -916,48 +898,6 @@
             imageList1.Images.SetKeyName(4, "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png");
             imageList1.Images.SetKeyName(5, "Rules");
             // 
-            // Column7
-            // 
-            Column7.HeaderText = "ID";
-            Column7.Name = "Column7";
-            Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "AccountID";
-            Column8.Name = "Column8";
-            Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            Column9.HeaderText = "Billed To";
-            Column9.Name = "Column9";
-            Column9.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            Column11.HeaderText = "Amount";
-            Column11.Name = "Column11";
-            Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            Column12.HeaderText = "Date";
-            Column12.Name = "Column12";
-            Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            Column13.HeaderText = "Status";
-            Column13.Name = "Column13";
-            Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            Column14.HeaderText = "Paid";
-            Column14.Name = "Column14";
-            Column14.ReadOnly = true;
-            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -973,7 +913,6 @@
             Text = "HoaMage";
             materialTabControl1.ResumeLayout(false);
             tbpHome.ResumeLayout(false);
-            flowLayoutPanel2.ResumeLayout(false);
             tbpProfile.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -1024,10 +963,6 @@
         private MaterialSkin.Controls.MaterialButton btnMail;
         private MaterialSkin.Controls.MaterialButton btnView;
         private FlowLayoutPanel flowLayoutPanel2;
-        private MaterialSkin.Controls.MaterialCard materialCard3;
-        private MaterialSkin.Controls.MaterialCard materialCard6;
-        private MaterialSkin.Controls.MaterialCard materialCard5;
-        private MaterialSkin.Controls.MaterialCard materialCard4;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private Label label2;

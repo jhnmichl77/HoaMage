@@ -108,11 +108,7 @@
             colStatus = new DataGridViewTextBoxColumn();
             colDate = new DataGridViewTextBoxColumn();
             tbpHome = new TabPage();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            materialCard2 = new MaterialSkin.Controls.MaterialCard();
-            materialCard3 = new MaterialSkin.Controls.MaterialCard();
-            materialCard4 = new MaterialSkin.Controls.MaterialCard();
-            materialCard5 = new MaterialSkin.Controls.MaterialCard();
+            flowLayoutPanel2 = new FlowLayoutPanel();
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tbpPayables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPayables).BeginInit();
@@ -131,7 +127,6 @@
             tbpHomeownerRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRequest).BeginInit();
             tbpHome.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             materialTabControl1.SuspendLayout();
             SuspendLayout();
             // 
@@ -1032,7 +1027,7 @@
             // 
             // tbpHome
             // 
-            tbpHome.Controls.Add(flowLayoutPanel1);
+            tbpHome.Controls.Add(flowLayoutPanel2);
             tbpHome.ImageKey = "Home.png";
             tbpHome.Location = new Point(4, 39);
             tbpHome.Name = "tbpHome";
@@ -1042,69 +1037,13 @@
             tbpHome.Text = "Home";
             tbpHome.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanel2
             // 
-            flowLayoutPanel1.Controls.Add(materialCard2);
-            flowLayoutPanel1.Controls.Add(materialCard3);
-            flowLayoutPanel1.Controls.Add(materialCard4);
-            flowLayoutPanel1.Controls.Add(materialCard5);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(3, 3);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(857, 483);
-            flowLayoutPanel1.TabIndex = 0;
-            // 
-            // materialCard2
-            // 
-            materialCard2.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard2.Depth = 0;
-            materialCard2.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard2.Location = new Point(14, 14);
-            materialCard2.Margin = new Padding(14);
-            materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard2.Name = "materialCard2";
-            materialCard2.Padding = new Padding(14);
-            materialCard2.Size = new Size(186, 109);
-            materialCard2.TabIndex = 0;
-            // 
-            // materialCard3
-            // 
-            materialCard3.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard3.Depth = 0;
-            materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard3.Location = new Point(228, 14);
-            materialCard3.Margin = new Padding(14);
-            materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard3.Name = "materialCard3";
-            materialCard3.Padding = new Padding(14);
-            materialCard3.Size = new Size(186, 109);
-            materialCard3.TabIndex = 1;
-            // 
-            // materialCard4
-            // 
-            materialCard4.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard4.Depth = 0;
-            materialCard4.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard4.Location = new Point(442, 14);
-            materialCard4.Margin = new Padding(14);
-            materialCard4.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard4.Name = "materialCard4";
-            materialCard4.Padding = new Padding(14);
-            materialCard4.Size = new Size(186, 109);
-            materialCard4.TabIndex = 2;
-            // 
-            // materialCard5
-            // 
-            materialCard5.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard5.Depth = 0;
-            materialCard5.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard5.Location = new Point(656, 14);
-            materialCard5.Margin = new Padding(14);
-            materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard5.Name = "materialCard5";
-            materialCard5.Padding = new Padding(14);
-            materialCard5.Size = new Size(186, 109);
-            materialCard5.TabIndex = 3;
+            flowLayoutPanel2.Dock = DockStyle.Fill;
+            flowLayoutPanel2.Location = new Point(3, 3);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(857, 483);
+            flowLayoutPanel2.TabIndex = 0;
             // 
             // materialTabControl1
             // 
@@ -1127,6 +1066,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(877, 599);
             Controls.Add(materialTabControl1);
             DrawerTabControl = materialTabControl1;
@@ -1160,7 +1100,6 @@
             tbpHomeownerRequest.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRequest).EndInit();
             tbpHome.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
             materialTabControl1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -1239,11 +1178,7 @@
         private DataGridViewTextBoxColumn colStatus;
         private DataGridViewTextBoxColumn colDate;
         private TabPage tbpHome;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private MaterialSkin.Controls.MaterialCard materialCard2;
-        private MaterialSkin.Controls.MaterialCard materialCard3;
-        private MaterialSkin.Controls.MaterialCard materialCard4;
-        private MaterialSkin.Controls.MaterialCard materialCard5;
+        private FlowLayoutPanel flowLayoutPanel2;
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;

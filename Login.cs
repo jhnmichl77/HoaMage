@@ -1,5 +1,8 @@
 using System.Data;
 using System.Data.OleDb;
+using System.Security.Cryptography;
+using System.Text;
+
 
 namespace HoaMage
 {
@@ -20,7 +23,7 @@ namespace HoaMage
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = tbxUsername.Text.Trim();
-            string password = tbxPassword.Text.Trim();
+            string password = Shared.HashPassword(tbxPassword.Text.Trim());
 
             if (string.IsNullOrWhiteSpace(username))
             {

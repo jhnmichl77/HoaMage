@@ -32,12 +32,6 @@ namespace HoaMage
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(tbxMI.Text))
-            {
-                MessageBox.Show("Middle Initial is Empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (!IsRadioButtonChecked(gbxGender))
             {
                 MessageBox.Show("Please select a gender.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
