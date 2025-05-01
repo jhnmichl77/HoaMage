@@ -113,7 +113,6 @@
             tbpHome = new TabPage();
             flowLayoutPanel2 = new FlowLayoutPanel();
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
-            tabPage1 = new TabPage();
             tbpPayables.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPayables).BeginInit();
@@ -1130,7 +1129,6 @@
             materialTabControl1.Controls.Add(tbpProfile);
             materialTabControl1.Controls.Add(tbpRequest);
             materialTabControl1.Controls.Add(tbpPayables);
-            materialTabControl1.Controls.Add(tabPage1);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.ImageList = imageList1;
@@ -1141,16 +1139,6 @@
             materialTabControl1.SelectedIndex = 0;
             materialTabControl1.Size = new Size(871, 532);
             materialTabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Location = new Point(4, 39);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(863, 489);
-            tabPage1.TabIndex = 4;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // HomeownerDashboard
             // 
@@ -1281,7 +1269,6 @@
         private MaterialSkin.Controls.MaterialLabel cntAmount;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private Panel panel1;
-        private TabPage tabPage1;
         private DataGridView dgvViolators;
         private DataGridView dgvPayables;
     }
