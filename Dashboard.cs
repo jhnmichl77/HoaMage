@@ -11,6 +11,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using System.Collections.Generic;
+using ClosedXML.Excel;
 
 namespace HoaMage
 {
@@ -998,6 +999,106 @@ namespace HoaMage
             }
         }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void dgvDisplay_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (currentTable != "Accounts" || e.RowIndex < 0) return;
+
+            DataGridViewRow row = dgvDisplay.Rows[e.RowIndex];
+            int accountId = Convert.ToInt32(row.Cells["AccountID"].Value);
+
+            Form1 editForm = new Form1(accountId);
+            editForm.FormClosed += (s, args) => LoadData();
+            editForm.ShowDialog();
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel Workbook|*.xlsx";
+            saveDialog.FileName = "Hoamage.xlsx";
+            ExportToExcelDocument(saveDialog, dgvDisplay);
+        }
+        private void ExportToExcelDocument(SaveFileDialog saveDialog, DataGridView dgv)
+        {
+            if (dgv.Rows.Count == 0)
+            {
+                MessageBox.Show("No data to export.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (XLWorkbook workbook = new XLWorkbook())
+                    {
+                        var worksheet = workbook.Worksheets.Add("Sheet");
+
+                        for (int col = 0; col < dgv.Columns.Count; col++)
+                        {
+                            worksheet.Cell(1, col + 1).Value = dgv.Columns[col].HeaderText;
+                            worksheet.Cell(1, col + 1).Style.Font.Bold = true;
+                            worksheet.Cell(1, col + 1).Style.Fill.BackgroundColor = XLColor.LightGray;
+                        }
+
+                        for (int row = 0; row < dgv.Rows.Count; row++)
+                        {
+                            for (int col = 0; col < dgv.Columns.Count; col++)
+                            {
+                                worksheet.Cell(row + 2, col + 1).Value = dgv.Rows[row].Cells[col].Value?.ToString();
+                            }
+                        }
+
+                        worksheet.Columns().AdjustToContents();
+
+                        workbook.SaveAs(saveDialog.FileName);
+                    }
+
+                    MessageBox.Show("Excel file created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error exporting to Excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel Workbook|*.xlsx";
+            saveDialog.FileName = "Request.xlsx";
+            ExportToExcelDocument(saveDialog, dgvRequest);
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel Workbook|*.xlsx";
+            saveDialog.FileName = "Rules.xlsx";
+            ExportToExcelDocument(saveDialog, dgvViolations);
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel Workbook|*.xlsx";
+            saveDialog.FileName = "Violators.xlsx";
+            ExportToExcelDocument(saveDialog, dgvViolators);
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel Workbook|*.xlsx";
+            saveDialog.FileName = "Payables.xlsx";
+            ExportToExcelDocument(saveDialog, dgvPayables);
+        }
     }
 }
