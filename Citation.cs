@@ -19,6 +19,7 @@ namespace HoaMage
             Shared.Set(this);
             loadRules();
             loadAccounts();
+            tbxAmount.Enabled = false;
         }
         Dictionary<string, string> rulePenalty = new Dictionary<string, string>();
         Dictionary<string, string> violator = new Dictionary<string, string>();
@@ -126,7 +127,8 @@ namespace HoaMage
                 return;
             }
 
-            string query = "INSERT INTO Payables (AccountID, BilledTo, Description, Amount, DateAdded, Status) VALUES (?, ?, ?, ?, ?, ?)";
+            string query = "INSERT INTO Violators (AccountID, ViolatorName, Violation, Amount, DateIssued, Status) " +
+                           "VALUES (?, ?, ?, ?, ?, ?)";
 
             try
             {
@@ -141,20 +143,16 @@ namespace HoaMage
                             return;
                         }
 
-                        command.Parameters.AddWithValue("?", accountId);
-                        command.Parameters.AddWithValue("?", tbxName.Text);
-                        command.Parameters.AddWithValue("?", cbxRuleViolated.Text);
-
-                        if (int.TryParse(tbxAmount.Text, out int penalty))
-                        {
-                            command.Parameters.AddWithValue("?", penalty);
-                        }
-                        else
+                        if (!int.TryParse(tbxAmount.Text, out int penalty))
                         {
                             MessageBox.Show("Please enter a valid amount for the penalty.");
                             return;
                         }
 
+                        command.Parameters.AddWithValue("?", accountId);
+                        command.Parameters.AddWithValue("?", tbxName.Text.Trim());
+                        command.Parameters.AddWithValue("?", cbxRuleViolated.Text.Trim());
+                        command.Parameters.AddWithValue("?", penalty);
                         command.Parameters.AddWithValue("?", dtpViolationDay.Value.Date);
                         command.Parameters.AddWithValue("?", "Unpaid");
 
@@ -176,6 +174,7 @@ namespace HoaMage
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
+
 
     }
 }

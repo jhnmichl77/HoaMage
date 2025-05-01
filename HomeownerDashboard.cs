@@ -28,6 +28,8 @@ namespace HoaMage
             loadRequest();
             loadPayables();
             Dashboard.LoadAnnouncements(flowLayoutPanel2);
+            billAnalytics();
+            LoadViolators();
         }
 
         private void loadRequest()
@@ -562,63 +564,45 @@ namespace HoaMage
                 MessageBox.Show("Please select a request to view.");
             }
         }
+        private DataTable originalPayablesData;
 
         private void loadPayables()
         {
-            int accountId = Shared.Identification.AccountID;
-            string query = " Select PayableID, BilledTo, Description, Amount, DateAdded, Status From Payables Where AccountID = ?";
-
-            using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
+            int currentAccountId = Shared.Identification.AccountID;
+            try
             {
-                connection.Open();
-                using (OleDbCommand command = new OleDbCommand(query, connection))
+                using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
                 {
-                    command.Parameters.AddWithValue("?", accountId);
-                    using (OleDbDataReader reader = command.ExecuteReader())
-                    {
-                        dgvPayables.Rows.Clear();
-                        while (reader.Read())
-                        {
-                            string pID = reader["PayableID"].ToString();
-                            string billedTo = reader["BilledTo"].ToString();
-                            string description = reader["Description"].ToString();
-                            string amt = reader["Amount"].ToString();
-                            string date = reader["DateAdded"].ToString();
-                            string stats = reader["Status"].ToString();
+                    conn.Open();
+                    string query = @"SELECT PayableID, FeeName, Amount, DateIssued, Status, DatePaid 
+                             FROM Payables 
+                             WHERE AccountID = ? 
+                             ORDER BY DateIssued DESC";
 
-                            dgvPayables.Rows.Add(pID, billedTo, description, amt, date, stats);
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("?", currentAccountId);
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dgvPayables.DataSource = dt;
+                            originalPayablesData = dt;
+                            dgvPayables.Columns["FeeName"].HeaderText = "Description";
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load your payables: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private string selectedReferenceID;
         private string selectedBilledTo;
         private string selectedDescription;
         private string selectedAmount;
-
-        private void btnPay_Click(object sender, EventArgs e)
-        {
-            using (Payment pay = new Payment(selectedReferenceID, selectedBilledTo, selectedAmount, selectedDescription))
-            {
-                pay.ShowDialog();
-                loadPayables();
-            }
-        }
-
-        private void dgvPayables_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvPayables.Rows[e.RowIndex];
-
-                selectedReferenceID = row.Cells[0].Value.ToString();
-                selectedBilledTo = row.Cells[1].Value.ToString();
-                selectedDescription = row.Cells[2].Value.ToString();
-                selectedAmount = row.Cells[3].Value.ToString();
-                loadPayables();
-            }
-        }
 
         private void dgvOccupants_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -655,6 +639,88 @@ namespace HoaMage
             {
                 Shared.Logout(this);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (originalPayablesData == null)
+            {
+
+                string filterText = textBox1.Text.Trim().Replace("'", "''");
+
+                string filterExpression = $"FeeName LIKE '%{filterText}%' OR Status LIKE '%{filterText}%'";
+
+                DataView dv = originalPayablesData.DefaultView;
+                dv.RowFilter = filterExpression;
+
+                dgvPayables.DataSource = dv;
+            }
+        }
+
+        private void billAnalytics()
+        {
+            int unpaidCount = 0;
+            decimal totalUnpaidAmount = 0;
+
+            foreach (DataGridViewRow row in dgvPayables.Rows)
+            {
+                if (row.Cells["Status"].Value != null && row.Cells["Amount"].Value != null)
+                {
+                    string status = row.Cells["Status"].Value.ToString();
+                    decimal amount = Convert.ToDecimal(row.Cells["Amount"].Value);
+
+                    if (status == "Unpaid")
+                    {
+                        unpaidCount++;
+                        totalUnpaidAmount += amount;
+                    }
+                }
+            }
+            cntUnpaid.Text = unpaidCount.ToString();
+            cntAmount.Text = "₱" + totalUnpaidAmount.ToString("N2");
+        }
+
+        private void dgvPayables_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || dgvPayables.Rows[e.RowIndex].Cells["PayableID"].Value == null)
+                return;
+
+            int payableId = Convert.ToInt32(dgvPayables.Rows[e.RowIndex].Cells["PayableID"].Value);
+
+            Payment paymentForm = new Payment(payableId);
+            paymentForm.ShowDialog();
+            loadPayables();
+            billAnalytics();
+        }
+
+        private void LoadViolators()
+        {
+            using (OleDbConnection conn = new OleDbConnection(DatabaseHelper.myConn))
+            {
+                string query = "SELECT * FROM Violators WHERE AccountID = ?";
+                using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                {
+                    cmd.Parameters.Add("?", OleDbType.Integer).Value = Shared.Identification.AccountID;
+
+                    OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dgvViolators.DataSource = dt;
+                }
+            }
+        }
+
+        private void dgvViolators_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || dgvViolators.Rows[e.RowIndex].Cells["ID"].Value == null)
+                return;
+
+            int violationId = Convert.ToInt32(dgvViolators.Rows[e.RowIndex].Cells["ID"].Value);
+
+            vPayment vPaymentForm = new vPayment(violationId);
+            vPaymentForm.ShowDialog();
+            LoadViolators();
+            billAnalytics();
         }
     }
 }

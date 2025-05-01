@@ -21,27 +21,21 @@ namespace HoaMage
         string imagePath;
         private void btnFinish_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbxMake.Text))
+            if (cbxNoVehicle.Checked)
             {
-                MessageBox.Show("Car Make is Empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                MessageBox.Show("Registration Successfull!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Registration parentForm = (Registration)this.FindForm();
+                if (parentForm != null)
+                {
+                    parentForm.MarkCheckbox("VehicleInfo");
 
-            if (string.IsNullOrWhiteSpace(tbxModel.Text))
-            {
-                MessageBox.Show("Car Model is Empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(tbxColor.Text))
-            {
-                MessageBox.Show("Car Color is Empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(tbxLicencePlate.Text))
-            {
-                MessageBox.Show("Please enter LicensePlate.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (!parentForm.IsFromDashboard)
+                    {
+                        Login login = new Login();
+                        login.Show();
+                    }
+                    parentForm.Close();
+                }
                 return;
             }
 
@@ -61,18 +55,20 @@ namespace HoaMage
                         MessageBox.Show("No valid AccountID found. Please register an account first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    string query = "Insert Into VehicleInformation (AccountID, PlateNumber, Make, Model, Color, VehicleImage) values (@AccountID, @PlateNumber, @Make, @Model, @Color, @VehicleImage)";
+
+                    string query = "INSERT INTO VehicleInformation (AccountID, PlateNumber, Make, Model, Color, VehicleImage) VALUES (@AccountID, @PlateNumber, @Make, @Model, @Color, @VehicleImage)";
 
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("AccountID", AccountID);
+                        command.Parameters.AddWithValue("@AccountID", AccountID);
                         command.Parameters.AddWithValue("@PlateNumber", tbxLicencePlate.Text);
                         command.Parameters.AddWithValue("@Make", tbxMake.Text);
                         command.Parameters.AddWithValue("@Model", tbxModel.Text);
                         command.Parameters.AddWithValue("@Color", tbxColor.Text);
                         command.Parameters.AddWithValue("@VehicleImage", imagePath);
+
                         command.ExecuteNonQuery();
-                        MessageBox.Show("Vehicle Information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Registration Successfull!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         Registration parentForm = (Registration)this.FindForm();
                         if (parentForm != null)
@@ -94,6 +90,7 @@ namespace HoaMage
                 }
             }
         }
+
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
