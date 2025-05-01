@@ -88,13 +88,13 @@
             tbpBills = new TabPage();
             panel2 = new Panel();
             btnRefund = new MaterialSkin.Controls.MaterialButton();
+            materialCard1 = new MaterialSkin.Controls.MaterialCard();
             cntAvailable = new MaterialSkin.Controls.MaterialLabel();
+            cntOutstanding = new MaterialSkin.Controls.MaterialLabel();
             materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             cntExpenses = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            cntOutstanding = new MaterialSkin.Controls.MaterialLabel();
             cntTotal = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             btnExpenses = new MaterialSkin.Controls.MaterialButton();
@@ -898,6 +898,7 @@
             // 
             tbpBills.AutoScroll = true;
             tbpBills.Controls.Add(panel2);
+            tbpBills.ImageKey = "be7b74a4-ae2f-4cb3-88fa-98fbcfcd07e5_removalai_preview.png";
             tbpBills.Location = new Point(4, 39);
             tbpBills.Name = "tbpBills";
             tbpBills.Padding = new Padding(3);
@@ -944,6 +945,27 @@
             btnRefund.UseVisualStyleBackColor = true;
             btnRefund.Click += btnRefund_Click;
             // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(cntAvailable);
+            materialCard1.Controls.Add(cntOutstanding);
+            materialCard1.Controls.Add(materialLabel16);
+            materialCard1.Controls.Add(cntExpenses);
+            materialCard1.Controls.Add(cntTotal);
+            materialCard1.Controls.Add(materialLabel1);
+            materialCard1.Controls.Add(materialLabel11);
+            materialCard1.Controls.Add(materialLabel2);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(399, 419);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(336, 174);
+            materialCard1.TabIndex = 12;
+            // 
             // cntAvailable
             // 
             cntAvailable.AutoSize = true;
@@ -955,6 +977,18 @@
             cntAvailable.Size = new Size(19, 19);
             cntAvailable.TabIndex = 3;
             cntAvailable.Text = "00";
+            // 
+            // cntOutstanding
+            // 
+            cntOutstanding.AutoSize = true;
+            cntOutstanding.Depth = 0;
+            cntOutstanding.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cntOutstanding.Location = new Point(169, 51);
+            cntOutstanding.MouseState = MaterialSkin.MouseState.HOVER;
+            cntOutstanding.Name = "cntOutstanding";
+            cntOutstanding.Size = new Size(19, 19);
+            cntOutstanding.TabIndex = 7;
+            cntOutstanding.Text = "00";
             // 
             // materialLabel16
             // 
@@ -980,51 +1014,6 @@
             cntExpenses.TabIndex = 2;
             cntExpenses.Text = "00";
             // 
-            // materialLabel1
-            // 
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(29, 122);
-            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(118, 19);
-            materialLabel1.TabIndex = 0;
-            materialLabel1.Text = "Available Funds:";
-            // 
-            // materialCard1
-            // 
-            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard1.Controls.Add(cntAvailable);
-            materialCard1.Controls.Add(cntOutstanding);
-            materialCard1.Controls.Add(materialLabel16);
-            materialCard1.Controls.Add(cntExpenses);
-            materialCard1.Controls.Add(cntTotal);
-            materialCard1.Controls.Add(materialLabel1);
-            materialCard1.Controls.Add(materialLabel11);
-            materialCard1.Controls.Add(materialLabel2);
-            materialCard1.Depth = 0;
-            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard1.Location = new Point(399, 419);
-            materialCard1.Margin = new Padding(14);
-            materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard1.Name = "materialCard1";
-            materialCard1.Padding = new Padding(14);
-            materialCard1.Size = new Size(336, 174);
-            materialCard1.TabIndex = 12;
-            // 
-            // cntOutstanding
-            // 
-            cntOutstanding.AutoSize = true;
-            cntOutstanding.Depth = 0;
-            cntOutstanding.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cntOutstanding.Location = new Point(169, 51);
-            cntOutstanding.MouseState = MaterialSkin.MouseState.HOVER;
-            cntOutstanding.Name = "cntOutstanding";
-            cntOutstanding.Size = new Size(19, 19);
-            cntOutstanding.TabIndex = 7;
-            cntOutstanding.Text = "00";
-            // 
             // cntTotal
             // 
             cntTotal.AutoSize = true;
@@ -1036,6 +1025,18 @@
             cntTotal.Size = new Size(19, 19);
             cntTotal.TabIndex = 5;
             cntTotal.Text = "00";
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(29, 122);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(118, 19);
+            materialLabel1.TabIndex = 0;
+            materialLabel1.Text = "Available Funds:";
             // 
             // materialLabel11
             // 
@@ -1183,6 +1184,7 @@
             imageList1.Images.SetKeyName(3, "Home.png");
             imageList1.Images.SetKeyName(4, "0e604856-d18d-4a30-a36e-ee92b6581865_removalai_preview.png");
             imageList1.Images.SetKeyName(5, "Rules");
+            imageList1.Images.SetKeyName(6, "be7b74a4-ae2f-4cb3-88fa-98fbcfcd07e5_removalai_preview.png");
             // 
             // Column7
             // 

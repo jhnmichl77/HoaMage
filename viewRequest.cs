@@ -38,7 +38,6 @@ namespace HoaMage
             tbxReqContext.Enabled = false;
             cbxStatus.Enabled = isAdmin;
             btnSave.Visible = isAdmin;
-            btnReply.Visible = isAdmin;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
