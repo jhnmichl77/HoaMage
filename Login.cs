@@ -36,7 +36,8 @@ namespace HoaMage
                 MessageBox.Show("Please enter a password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            string query = "Select AccountID, Role FROM Accounts WHERE Username=@Username AND Password = @Password";
+            string query = "SELECT AccountID, [Role] FROM Accounts WHERE [Username]=? AND [Password]=?";
+
             using (OleDbConnection connection = new OleDbConnection(DatabaseHelper.myConn))
             {
                 try
@@ -44,18 +45,20 @@ namespace HoaMage
                     connection.Open();
                     using(OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Username", username);
-                        command.Parameters.AddWithValue("@Password", password);
+                        command.Parameters.AddWithValue("?", username);
+                        command.Parameters.AddWithValue("?", password);
+                        //MessageBox.Show($"Username: {username}\nPassword: {password}", "Debug");
+
                         using (OleDbDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
                                 int AccountID = reader.GetInt32(0);
                                 string UserRole = reader.GetString(1);
-                                string propertyQuery = "Select PropertyID From PropertyInformation where AccountID=@AccountID";
-                                using(OleDbCommand propertycommnad = new OleDbCommand(propertyQuery, connection))
+                                string propertyQuery = "SELECT PropertyID FROM PropertyInformation WHERE AccountID=?";
+                                using (OleDbCommand propertycommnad = new OleDbCommand(propertyQuery, connection))
                                 {
-                                    propertycommnad.Parameters.AddWithValue("@AccountID", AccountID);
+                                    propertycommnad.Parameters.AddWithValue("?", AccountID);
                                     using(OleDbDataReader propertyRead = propertycommnad.ExecuteReader())
                                     {
                                         if (propertyRead.Read())
@@ -91,7 +94,8 @@ namespace HoaMage
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
         }

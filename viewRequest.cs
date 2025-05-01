@@ -45,7 +45,7 @@ namespace HoaMage
         {
             string newStatus = cbxStatus.Text;
             string subject = tbxReqSubject.Text;
-            string dateSubmitted = tbxReqDate.Text; 
+            string dateSubmitted = tbxReqDate.Text;
 
             string query = "UPDATE Request SET Status = ? WHERE ReqSubject = ? AND DateSubmitted = ?";
 
@@ -79,6 +79,9 @@ namespace HoaMage
             }
         }
 
+        private void btnReply_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

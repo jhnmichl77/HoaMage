@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
@@ -13,15 +12,15 @@ using QRCoder;
 
 namespace HoaMage
 {
-    public partial class Payment : MaterialForm
+    public partial class vPayment : MaterialForm
     {
-        private int payableId;
-        public Payment(int id)
+        private int violatorID;
+        public vPayment(int vId)
         {
             InitializeComponent();
             Shared.Set(this);
             GenerateQRCode(paymentLink);
-            payableId = id;
+            violatorID = vId;
         }
         string paymentLink = "https://s.binance.com/5ZziOxeo";
         private void GenerateQRCode(string data)
@@ -30,7 +29,6 @@ namespace HoaMage
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(data, QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
-
             pbxQR.Image = qrCodeImage;
         }
 
@@ -41,7 +39,6 @@ namespace HoaMage
                 MessageBox.Show("Please attach a proof of payment image before proceeding.", "Missing Proof", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             try
             {
                 using (MemoryStream ms = new MemoryStream())
@@ -53,15 +50,14 @@ namespace HoaMage
                     {
                         conn.Open();
 
-                        string updateQuery = @"UPDATE Payables 
-                                       SET Status = 'Paid', DatePaid = ?, ProofImage = ? 
-                                       WHERE PayableID = ?";
+                        string updateQuery = @"UPDATE Violators 
+                                       SET Status = 'Paid', ProofImage = ? 
+                                       WHERE ID = ?";
 
                         using (OleDbCommand cmd = new OleDbCommand(updateQuery, conn))
                         {
-                            cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;
                             cmd.Parameters.Add("?", OleDbType.LongVarBinary).Value = imageBytes;
-                            cmd.Parameters.Add("?", OleDbType.Integer).Value = payableId;
+                            cmd.Parameters.Add("?", OleDbType.Integer).Value = violatorID;
 
                             int rowsAffected = cmd.ExecuteNonQuery();
 

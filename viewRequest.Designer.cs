@@ -34,7 +34,6 @@
             tbxReqDate = new MaterialSkin.Controls.MaterialTextBox2();
             cbxStatus = new MaterialSkin.Controls.MaterialComboBox();
             btnSave = new MaterialSkin.Controls.MaterialButton();
-            btnReply = new MaterialSkin.Controls.MaterialButton();
             SuspendLayout();
             // 
             // tbxReqType
@@ -176,31 +175,11 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // btnReply
-            // 
-            btnReply.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnReply.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnReply.Depth = 0;
-            btnReply.HighEmphasis = true;
-            btnReply.Icon = null;
-            btnReply.Location = new Point(454, 490);
-            btnReply.Margin = new Padding(4, 6, 4, 6);
-            btnReply.MouseState = MaterialSkin.MouseState.HOVER;
-            btnReply.Name = "btnReply";
-            btnReply.NoAccentTextColor = Color.Empty;
-            btnReply.Size = new Size(65, 36);
-            btnReply.TabIndex = 6;
-            btnReply.Text = "Reply";
-            btnReply.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnReply.UseAccentColor = false;
-            btnReply.UseVisualStyleBackColor = true;
-            // 
             // viewRequest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(617, 540);
-            Controls.Add(btnReply);
             Controls.Add(btnSave);
             Controls.Add(cbxStatus);
             Controls.Add(tbxReqDate);
@@ -221,6 +200,5 @@
         private MaterialSkin.Controls.MaterialTextBox2 tbxReqDate;
         private MaterialSkin.Controls.MaterialComboBox cbxStatus;
         private MaterialSkin.Controls.MaterialButton btnSave;
-        private MaterialSkin.Controls.MaterialButton btnReply;
     }
 }

@@ -32,14 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeownerDashboard));
             imageList1 = new ImageList(components);
             tbpPayables = new TabPage();
+            textBox1 = new TextBox();
+            label10 = new Label();
+            panel1 = new Panel();
             dgvPayables = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            btnPay = new MaterialSkin.Controls.MaterialButton();
+            dgvViolators = new DataGridView();
+            materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            cntUnpaid = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            cntAmount = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             tbpRequest = new TabPage();
             btnSubmit = new MaterialSkin.Controls.MaterialButton();
             tbxContext = new TextBox();
@@ -111,8 +113,12 @@
             tbpHome = new TabPage();
             flowLayoutPanel2 = new FlowLayoutPanel();
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            tabPage1 = new TabPage();
             tbpPayables.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPayables).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvViolators).BeginInit();
+            materialCard1.SuspendLayout();
             tbpRequest.SuspendLayout();
             tbpProfile.SuspendLayout();
             materialTabControl2.SuspendLayout();
@@ -143,89 +149,133 @@
             // 
             // tbpPayables
             // 
-            tbpPayables.Controls.Add(dgvPayables);
-            tbpPayables.Controls.Add(btnPay);
+            tbpPayables.Controls.Add(textBox1);
+            tbpPayables.Controls.Add(label10);
+            tbpPayables.Controls.Add(panel1);
             tbpPayables.ImageKey = "Payment.png";
             tbpPayables.Location = new Point(4, 39);
             tbpPayables.Name = "tbpPayables";
             tbpPayables.Padding = new Padding(3);
             tbpPayables.Size = new Size(863, 489);
             tbpPayables.TabIndex = 3;
-            tbpPayables.Text = "Payment";
+            tbpPayables.Text = "Bills";
             tbpPayables.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(80, 10);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(388, 23);
+            textBox1.TabIndex = 4;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(29, 18);
+            label10.Name = "label10";
+            label10.Size = new Size(45, 15);
+            label10.TabIndex = 3;
+            label10.Text = "Search:";
+            // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(dgvPayables);
+            panel1.Controls.Add(dgvViolators);
+            panel1.Controls.Add(materialCard1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(857, 483);
+            panel1.TabIndex = 6;
             // 
             // dgvPayables
             // 
             dgvPayables.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPayables.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPayables.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
-            dgvPayables.Location = new Point(6, 6);
+            dgvPayables.Location = new Point(26, 49);
             dgvPayables.Name = "dgvPayables";
             dgvPayables.ReadOnly = true;
-            dgvPayables.Size = new Size(850, 336);
-            dgvPayables.TabIndex = 2;
+            dgvPayables.Size = new Size(809, 230);
+            dgvPayables.TabIndex = 7;
             dgvPayables.CellClick += dgvPayables_CellClick;
             // 
-            // Column1
+            // dgvViolators
             // 
-            Column1.FillWeight = 30F;
-            Column1.HeaderText = "Reference";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
+            dgvViolators.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvViolators.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvViolators.Location = new Point(26, 446);
+            dgvViolators.Name = "dgvViolators";
+            dgvViolators.ReadOnly = true;
+            dgvViolators.Size = new Size(809, 179);
+            dgvViolators.TabIndex = 6;
+            dgvViolators.CellClick += dgvViolators_CellClick;
             // 
-            // Column2
+            // materialCard1
             // 
-            Column2.HeaderText = "Billed To";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(cntUnpaid);
+            materialCard1.Controls.Add(materialLabel3);
+            materialCard1.Controls.Add(cntAmount);
+            materialCard1.Controls.Add(materialLabel1);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(26, 286);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(312, 143);
+            materialCard1.TabIndex = 5;
             // 
-            // Column3
+            // cntUnpaid
             // 
-            Column3.FillWeight = 50F;
-            Column3.HeaderText = "Description";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
+            cntUnpaid.AutoSize = true;
+            cntUnpaid.Depth = 0;
+            cntUnpaid.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cntUnpaid.Location = new Point(155, 71);
+            cntUnpaid.MouseState = MaterialSkin.MouseState.HOVER;
+            cntUnpaid.Name = "cntUnpaid";
+            cntUnpaid.Size = new Size(107, 19);
+            cntUnpaid.TabIndex = 3;
+            cntUnpaid.Text = "materialLabel4";
             // 
-            // Column4
+            // materialLabel3
             // 
-            Column4.FillWeight = 35F;
-            Column4.HeaderText = "Amount";
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
+            materialLabel3.AutoSize = true;
+            materialLabel3.Depth = 0;
+            materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel3.Location = new Point(29, 71);
+            materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel3.Name = "materialLabel3";
+            materialLabel3.Size = new Size(89, 19);
+            materialLabel3.TabIndex = 2;
+            materialLabel3.Text = "Unpaid Bills:";
             // 
-            // Column5
+            // cntAmount
             // 
-            Column5.FillWeight = 25F;
-            Column5.HeaderText = "Date";
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
+            cntAmount.AutoSize = true;
+            cntAmount.Depth = 0;
+            cntAmount.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cntAmount.Location = new Point(155, 30);
+            cntAmount.MouseState = MaterialSkin.MouseState.HOVER;
+            cntAmount.Name = "cntAmount";
+            cntAmount.Size = new Size(107, 19);
+            cntAmount.TabIndex = 1;
+            cntAmount.Text = "materialLabel2";
             // 
-            // Column6
+            // materialLabel1
             // 
-            Column6.FillWeight = 25F;
-            Column6.HeaderText = "Status";
-            Column6.Name = "Column6";
-            Column6.ReadOnly = true;
-            // 
-            // btnPay
-            // 
-            btnPay.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnPay.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnPay.Depth = 0;
-            btnPay.HighEmphasis = true;
-            btnPay.Icon = null;
-            btnPay.Location = new Point(766, 351);
-            btnPay.Margin = new Padding(4, 6, 4, 6);
-            btnPay.MouseState = MaterialSkin.MouseState.HOVER;
-            btnPay.Name = "btnPay";
-            btnPay.NoAccentTextColor = Color.Empty;
-            btnPay.Size = new Size(90, 36);
-            btnPay.TabIndex = 1;
-            btnPay.Text = "Payment";
-            btnPay.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnPay.UseAccentColor = false;
-            btnPay.UseVisualStyleBackColor = true;
-            btnPay.Click += btnPay_Click;
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(17, 30);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(122, 19);
+            materialLabel1.TabIndex = 0;
+            materialLabel1.Text = "Payable Amount:";
             // 
             // tbpRequest
             // 
@@ -1080,6 +1130,7 @@
             materialTabControl1.Controls.Add(tbpProfile);
             materialTabControl1.Controls.Add(tbpRequest);
             materialTabControl1.Controls.Add(tbpPayables);
+            materialTabControl1.Controls.Add(tabPage1);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.ImageList = imageList1;
@@ -1090,6 +1141,16 @@
             materialTabControl1.SelectedIndex = 0;
             materialTabControl1.Size = new Size(871, 532);
             materialTabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 39);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(863, 489);
+            tabPage1.TabIndex = 4;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // HomeownerDashboard
             // 
@@ -1106,7 +1167,11 @@
             Text = "Homeowner Dashboard";
             tbpPayables.ResumeLayout(false);
             tbpPayables.PerformLayout();
+            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPayables).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvViolators).EndInit();
+            materialCard1.ResumeLayout(false);
+            materialCard1.PerformLayout();
             tbpRequest.ResumeLayout(false);
             tbpRequest.PerformLayout();
             tbpProfile.ResumeLayout(false);
@@ -1137,8 +1202,6 @@
         private ImageList imageList1;
         private Button button1;
         private TabPage tbpPayables;
-        private DataGridView dgvPayables;
-        private MaterialSkin.Controls.MaterialButton btnPay;
         private TabPage tbpRequest;
         private MaterialSkin.Controls.MaterialButton btnSubmit;
         private TextBox tbxContext;
@@ -1202,12 +1265,6 @@
         private TabPage tbpHome;
         private FlowLayoutPanel flowLayoutPanel2;
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
         private DataGridView dgvOccupants;
         private MaterialSkin.Controls.MaterialCard materialCard6;
         private PictureBox pbxOccupantImage;
@@ -1216,5 +1273,16 @@
         private Label lblGender;
         private Label lblName;
         private LinkLabel linkLabel1;
+        private TextBox textBox1;
+        private Label label10;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
+        private MaterialSkin.Controls.MaterialLabel cntUnpaid;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel cntAmount;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private Panel panel1;
+        private TabPage tabPage1;
+        private DataGridView dgvViolators;
+        private DataGridView dgvPayables;
     }
 }
