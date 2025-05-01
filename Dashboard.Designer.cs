@@ -35,6 +35,7 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             tbpProfile = new TabPage();
             panel1 = new Panel();
+            linkLabel1 = new LinkLabel();
             btnSearch = new MaterialSkin.Controls.MaterialButton();
             tbxSearch = new TextBox();
             label1 = new Label();
@@ -58,6 +59,7 @@
             btnVehicles = new MaterialSkin.Controls.MaterialButton();
             btnOccupants = new MaterialSkin.Controls.MaterialButton();
             tbpRequest = new TabPage();
+            linkLabel2 = new LinkLabel();
             materialCard9 = new MaterialSkin.Controls.MaterialCard();
             cntSolved = new Label();
             materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
@@ -75,6 +77,8 @@
             dgvAnnouncements = new DataGridView();
             tbpRulesEnforcement = new TabPage();
             panel3 = new Panel();
+            linkLabel4 = new LinkLabel();
+            linkLabel3 = new LinkLabel();
             dgvViolators = new DataGridView();
             label3 = new Label();
             btnIssue = new LinkLabel();
@@ -112,6 +116,7 @@
             Column12 = new DataGridViewTextBoxColumn();
             Column13 = new DataGridViewTextBoxColumn();
             Column14 = new DataGridViewTextBoxColumn();
+            linkLabel5 = new LinkLabel();
             materialTabControl1.SuspendLayout();
             tbpHome.SuspendLayout();
             tbpProfile.SuspendLayout();
@@ -193,6 +198,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(linkLabel1);
             panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(tbxSearch);
             panel1.Controls.Add(label1);
@@ -206,6 +212,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(857, 441);
             panel1.TabIndex = 4;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(819, 305);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(32, 15);
+            linkLabel1.TabIndex = 8;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Print";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // btnSearch
             // 
@@ -277,7 +294,7 @@
             btnAdd.Depth = 0;
             btnAdd.HighEmphasis = true;
             btnAdd.Icon = null;
-            btnAdd.Location = new Point(708, 405);
+            btnAdd.Location = new Point(636, 405);
             btnAdd.Margin = new Padding(4, 6, 4, 6);
             btnAdd.MouseState = MaterialSkin.MouseState.HOVER;
             btnAdd.Name = "btnAdd";
@@ -300,6 +317,7 @@
             dgvDisplay.ReadOnly = true;
             dgvDisplay.Size = new Size(857, 239);
             dgvDisplay.TabIndex = 0;
+            dgvDisplay.CellClick += dgvDisplay_CellClick;
             // 
             // materialCard4
             // 
@@ -557,6 +575,7 @@
             // 
             // tbpRequest
             // 
+            tbpRequest.Controls.Add(linkLabel2);
             tbpRequest.Controls.Add(materialCard9);
             tbpRequest.Controls.Add(materialCard8);
             tbpRequest.Controls.Add(materialCard7);
@@ -570,6 +589,17 @@
             tbpRequest.TabIndex = 2;
             tbpRequest.Text = "Request";
             tbpRequest.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.Location = new Point(813, 372);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(32, 15);
+            linkLabel2.TabIndex = 9;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "Print";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
             // 
             // materialCard9
             // 
@@ -791,6 +821,8 @@
             // panel3
             // 
             panel3.AutoScroll = true;
+            panel3.Controls.Add(linkLabel4);
+            panel3.Controls.Add(linkLabel3);
             panel3.Controls.Add(dgvViolators);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(btnIssue);
@@ -802,6 +834,28 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(857, 483);
             panel3.TabIndex = 7;
+            // 
+            // linkLabel4
+            // 
+            linkLabel4.AutoSize = true;
+            linkLabel4.Location = new Point(805, 302);
+            linkLabel4.Name = "linkLabel4";
+            linkLabel4.Size = new Size(32, 15);
+            linkLabel4.TabIndex = 11;
+            linkLabel4.TabStop = true;
+            linkLabel4.Text = "Print";
+            linkLabel4.LinkClicked += linkLabel4_LinkClicked;
+            // 
+            // linkLabel3
+            // 
+            linkLabel3.AutoSize = true;
+            linkLabel3.Location = new Point(805, 22);
+            linkLabel3.Name = "linkLabel3";
+            linkLabel3.Size = new Size(32, 15);
+            linkLabel3.TabIndex = 10;
+            linkLabel3.TabStop = true;
+            linkLabel3.Text = "Print";
+            linkLabel3.LinkClicked += linkLabel3_LinkClicked;
             // 
             // dgvViolators
             // 
@@ -910,6 +964,7 @@
             // panel2
             // 
             panel2.AutoScroll = true;
+            panel2.Controls.Add(linkLabel5);
             panel2.Controls.Add(btnRefund);
             panel2.Controls.Add(materialCard1);
             panel2.Controls.Add(btnExpenses);
@@ -1228,6 +1283,17 @@
             Column14.Name = "Column14";
             Column14.ReadOnly = true;
             // 
+            // linkLabel5
+            // 
+            linkLabel5.AutoSize = true;
+            linkLabel5.Location = new Point(804, 307);
+            linkLabel5.Name = "linkLabel5";
+            linkLabel5.Size = new Size(32, 15);
+            linkLabel5.TabIndex = 15;
+            linkLabel5.TabStop = true;
+            linkLabel5.Text = "Print";
+            linkLabel5.LinkClicked += linkLabel5_LinkClicked;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1364,5 +1430,10 @@
         private MaterialSkin.Controls.MaterialLabel cntExpenses;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton btnRefund;
+        private LinkLabel linkLabel1;
+        private LinkLabel linkLabel2;
+        private LinkLabel linkLabel4;
+        private LinkLabel linkLabel3;
+        private LinkLabel linkLabel5;
     }
 }
